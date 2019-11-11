@@ -1,11 +1,11 @@
 Program TrianguloPascal(output);
  var
  a, b :Integer;
-procedure pascal(r, n : Integer);
+procedure pascal(fil, n : Integer);
   var
     i, c, k : Integer;
   begin
-        for i := 0 to r-1 do
+        for i := 0 to fil-1 do
             begin
             c := n;
             for k := 0 to i do
