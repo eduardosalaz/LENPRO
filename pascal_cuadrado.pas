@@ -1,6 +1,7 @@
-Program PascalsTriangle(output);
- 
-procedure Pascal(r, n : Integer);
+Program TrianguloPascal(output);
+ var
+ a, b :Integer;
+procedure pascal(r, n : Integer);
   var
     i, c, k : Integer;
   begin
@@ -10,6 +11,7 @@ procedure Pascal(r, n : Integer);
       for k := 0 to i do
       begin
         write(c:3);
+        write(' ');
         c := ((c * (i-k)) div (k+1));
       end;
       writeln;
@@ -17,5 +19,8 @@ procedure Pascal(r, n : Integer);
 end;
  
 begin
-  Pascal(10, 3)
+writeln ('Triangulo de Pascal, ingresar el numero de filas y la base del triangulo');
+readln( a, b);
+pascal(a, b);
+
 end.
