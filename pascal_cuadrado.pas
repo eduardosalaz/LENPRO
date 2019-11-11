@@ -29,3 +29,4 @@ else
     else
     writeln('Ingresar filas y bases distintas a 0')
 end.
+recetas d eofrtran romeo y julieta
