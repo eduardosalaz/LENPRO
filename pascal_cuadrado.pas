@@ -21,12 +21,12 @@ procedure pascal(fil, n : Integer);
 begin
 writeln ('Triangulo de Pascal, ingresar el numero de filas y la base del triangulo');
 readln( a, b);
-if a <> 0 then
-    if b <> 0 then
+if a > 0 then
+    if b > 0 then
         pascal(a, b)
 else
-    writeln('Ingresar filas y bases distintas a 0')
+    writeln('Ingresar filas y bases mayores a 0')
     else
-    writeln('Ingresar filas y bases distintas a 0')
+    writeln('Ingresar filas y bases mayores a 0')
 end.
 recetas d eofrtran romeo y julieta
