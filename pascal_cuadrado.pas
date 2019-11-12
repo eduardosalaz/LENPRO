@@ -10,7 +10,7 @@ procedure pascal(fil, n : Integer);
             c := n;
             for k := 0 to i do
                 begin
-                write(c:3);
+                write(c);
                 write(' ');
                 c := ((c * (i-k)) div (k+1));
                 end;
