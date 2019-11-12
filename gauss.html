@@ -1,0 +1,99 @@
+<html>
+<head>
+  <title>
+    Resolucion de sistema de ecuaciones
+  </title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var abs = Math.abs;
+
+    function llenar_array(i, n, v) {
+      var a = [];
+      for (; i < n; i++) {
+        a.push(v);
+      }
+      return a;
+    }
+    function gauss(A, x) {
+      var i, k, j;
+
+      var A_copia = [];
+      var x_copia = [];
+
+      //Copiar A
+      for (var i = 0; i < A.length; ++i) {
+        A_copia[i] = A[i].slice();
+      }
+
+      //Copiar b
+      for (var i = 0; i < x.length; ++i) {
+        x_copia[i] = x[i];
+      }
+      // Hacer una sola matriz
+      for (i = 0; i < A_copia.length; i++) {
+        A_copia[i].push(x_copia[i]);
+      }
+      var n = A_copia.length;
+
+      for (i = 0; i < n; i++) {
+        // Maximo en la columna
+        var maxEl = abs(A_copia[i][i]),
+          maximoFila = i;
+        for (k = i + 1; k < n; k++) {
+          if (abs(A_copia[k][i]) > maxEl) {
+            maxEl = abs(A_copia[k][i]);
+            maximoFila = k;
+          }
+        }
+        // Intercambiasr maximo de fila con fila actual
+        for (k = i; k < n + 1; k++) {
+          var tmp = A_copia[maximoFila][k];
+          A_copia[maximoFila][k] = A_copia[i][k];
+          A_copia[i][k] = tmp;
+        }
+        // Hacer todas las filas debajo a esta 0 en la columna actual
+        for (k = i + 1; k < n; k++) {
+          var c = -A_copia[k][i] / A_copia[i][i];
+          for (j = i; j < n + 1; j++) {
+            if (i === j) {
+              A_copia[k][j] = 0;
+            } else {
+              A_copia[k][j] += c * A_copia[i][j];
+            }
+          }
+        }
+      }
+      // Resolver ecuacion Ac=b
+      x_copia = llenar_array(0, n, 0);
+      for (i = n - 1; i > -1; i--) {
+        x_copia[i] = A_copia[i][n] / A_copia[i][i];
+        for (k = i - 1; k > -1; k--) {
+          A_copia[k][n] -= A_copia[k][i] * x_copia[i];
+        }
+      }
+      return x_copia;
+    }
+
+    alert("Resolver sistema de ecuaciones")
+    var rows = prompt("Ingresar el numero de variables del sistema");
+    var A = [];
+    alert("Ingresar los coeficientes de la ecuacion");
+    for (var i = 0; i < rows; i++) {
+      A.push([]);
+      A[i].push(new Array(rows));
+      for (var j = 0; j < rows; j++) {
+        A[i][j] = +prompt()
+      }
+    }
+    alert("Ingresar las soluciones de cada ecuacion");
+    x = new Array(rows)
+    for (i = 0; i < rows; i++) {
+      x[i] = +prompt()
+    }
+    resultado = gauss(A, x);
+    document.write(resultado);
+  </script>
+</body>
+</html>
