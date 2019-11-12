@@ -1,0 +1,18 @@
+import System.IO
+triangulos :: Int -> Int -> Int -> String
+triangulos a b c | (a <= 0) = "Las dimensiones no pueden ser 0 o negativas"
+     | (b <= 0) = "Las dimensiones no pueden ser 0 o negativas"
+     | (c <= 0) = "Las dimensiones no pueden ser 0 o negativas"
+     | (max a b > c && (b + c < max a b)) = "Es fisicamente imposible construir ese triangulo"
+     | (max a b > c && (a + c < max a b)) = "Es fisicamente imposible construir ese triangulo"
+     | (max a c > b && (a + b < max a c)) = "Es fisicamente imposible construir ese triangulo"
+     | (max b c > a && (a + b < max b c)) = "Es fisicamente imposible construir ese triangulo"
+     | (a == b && a /= c) = "Es un triangulo isosceles"
+     | (b == c && b /= a) = "Es un triangulo isosceles"
+     | (a == c && a /= b) = "Es un triangulo isosceles"
+     | (a == b && a == c) = "Es un triangulo equilatero"
+     | (b == c && b == a) = "Es un triangulo equilatero"
+     | (c == a && c == b) = "Es un triangulo equilatero"
+     | (a /= b && a /= c) = "Es un triangulo escaleno"
+     | (b /= c && b /= a) = "Es un triangulo escaleno"
+     | (c /= a && c /= b) = "Es un triangulo escaleno"
