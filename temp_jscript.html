@@ -1,0 +1,158 @@
+<html>
+	<head>
+		<title>
+		Programa para convertir temperaturas en Celsius, Fahrenheit, Kelvin y Rankine		
+		</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		var temp_inicial
+		var temp_final
+		var escala_inicial
+		var escala_final
+        function imprimirResultado (escala_final, temp_final)
+			{ 
+				document.write("La temperatura en ");
+				document.write(escala_final);
+				document.write(" es ");
+				document.write(temp_final);
+			}
+		alert("Convertir temperaturas en Celsius, Fahrenheit, Kelvin y Rankine");
+		escala_inicial=prompt("Ingresar el nombre completo de la escala de la temperatura inicial empezando con letra mayuscula");
+		switch(escala_inicial)
+			{
+				case "Celsius":
+				temp_inicial=prompt("Ingresar el numero en grados de la temperatura inicial");
+				temp_inicial= parseFloat(temp_inicial);
+					if (temp_inicial > -274)
+						{
+							escala_final=prompt("Ingresar el nombre completo de la escala final de la temperatura empezando con letra mayuscula");
+										switch(escala_final)
+										{
+											case "Fahrenheit":
+												temp_final= (temp_inicial * 1.8) + 32;
+												temp_final=parseFloat(temp_final);
+												imprimirResultado (escala_final, temp_final);
+												break;
+											case "Kelvin":
+												temp_final= (temp_inicial + 273.15);
+												temp_final=parseFloat(temp_final);					
+												imprimirResultado (escala_final, temp_final);	
+												break;
+											case "Rankine":
+												temp_final= (temp_inicial +  273.15) * 1.8;
+												temp_final=parseFloat(temp_final);
+												imprimirResultado (escala_final, temp_final);
+												break;
+											default:
+												alert("Ingresa una escala valida");
+										
+										}		
+						}
+					else
+						{
+							alert("Ingresar una temperatura valida");
+						}
+				break;	
+				case "Fahrenheit":
+					temp_inicial=prompt("Ingresar el numero en grados de la temperatura inicial");
+					temp_inicial= parseFloat(temp_inicial);	
+					if (temp_inicial > -459.67)
+						{
+							escala_final=prompt("Ingresar el nombre completo de la escala final de la temperatura empezando con letra mayuscula");
+										switch(escala_final)
+										{
+											case "Celsius":
+												temp_final= (temp_inicial -32) *0.555;
+												temp_final=parseFloat(temp_final);
+												imprimirResultado (escala_final, temp_final);
+												break;
+											case "Kelvin":
+												temp_final= (temp_inicial + 459.67)* 0.555;
+												temp_final=parseFloat(temp_final);
+												imprimirResultado (escala_final, temp_final);
+												break;
+											case "Rankine":
+												temp_final=temp_inicial + 459.67;
+												temp_final=parseFloat(temp_final);
+												imprimirResultado (escala_final, temp_final);	
+												break;
+											default:
+												alert("Ingresa una escala valida");
+										}		
+						}
+						else
+						{
+							alert("Ingresar una temperatura valida");
+						}
+				break;
+				case "Kelvin":
+					temp_inicial=prompt("Ingresar el numero en grados de la temperatura inicial");
+					temp_inicial= parseFloat(temp_inicial);
+					if (temp_inicial >-1)
+						{
+							escala_final=prompt("Ingresar el nombre completo de la escala final de la temperatura empezando con letra mayuscula");
+									switch(escala_final)
+										{
+											case "Celsius":
+												temp_final= temp_inicial -273.15;
+												temp_final=parseFloat(temp_final);
+												imprimirResultado (escala_final, temp_final);
+												break;
+											case "Fahrenheit":
+												temp_final = (temp_inicial * 1.8) - 459.67;
+												temp_final=parseFloat(temp_final);
+												imprimirResultado (escala_final, temp_final);
+												break;
+											case "Rankine":
+												temp_final= temp_inicial * 1.8;
+												temp_final=parseFloat(temp_final);
+												imprimirResultado (escala_final, temp_final);
+												break;
+											default:
+												alert("Ingresa una escala valida");
+										}
+                      				 }
+						else
+						{
+							alert("Ingresar una temperatura valida");
+						}              
+                break;
+				case "Rankine":
+					temp_inicial=prompt("Ingresar el numero en grados de la temperatura inicial");
+					temp_inicial= parseFloat(temp_inicial);
+					if (temp_inicial >-1)
+						{
+							escala_final=prompt("Ingresar el nombre completo de la escala final de la temperatura empezando con letra mayuscula");
+									switch(escala_final)
+										{
+											case "Celsius":
+												temp_final= (temp_inicial - 491.67)/1.8;
+												temp_final=parseFloat(temp_final);
+												imprimirResultado (escala_final, temp_final);	
+												break;
+											case "Fahrenheit":
+												temp_final= temp_inicial - 459.67;
+												temp_final=parseFloat(temp_final);
+												imprimirResultado (escala_final, temp_final);
+												break;
+											case "Kelvin":
+												temp_final = temp_inicial/1.8
+												temp_final=parseFloat(temp_final);
+												imprimirResultado (escala_final, temp_final);
+                                                break;
+                                           	default:
+												alert("Ingresa una escala valida");
+										}
+						}
+						else
+						{
+							alert("Ingresar una temperatura valida");
+						}
+				break;
+				default:
+					alert("Ingresar una escala valida");
+            }   
+		</script>
+	</body>
+</html>
