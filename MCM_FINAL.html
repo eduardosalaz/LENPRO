@@ -1,0 +1,75 @@
+<html>
+	 <script>
+     var n= prompt("Cuantos numeros ingresará?");
+    while (n<1 || n == 1){
+           alert("Tiene que haber mas de un numero");
+           n= prompt("Cuantos numeros ingresará?");
+           }
+         
+         // Empieza codigo
+    var mcm=new Array();
+    var a=new Array();  
+    var i=0;   
+    var mcmSwitch=0;
+    do
+    {
+        var control = 0;
+        var name = prompt("Introduce un numero");
+        if (name ==0 || name <0){
+            alert("El numero tiene que ser mayor a uno");
+            control=1;
+        }
+        for (var j = 0;j<i;j++)
+            {
+                if(name == a[j]){
+                    alert("No se puede introducir un numero mas de una vez");
+                    control = 1;
+                    break;
+                }
+            }
+             if (control == 1){
+            i--;
+        }
+        else if(control == 0){
+            a.push(name);
+             mcm.push(name);
+        }
+        i++;
+    }while (i!=n);
+         
+// Hasta aqui corre bien el programa 
+         
+         
+    var max = mcm[0];
+     do   
+    {
+        //asgnar valor maximo a variable max
+            
+        for(var j=0;j<n;j++){
+            if(mcm[j]>max){
+                max= mcm[j];
+            }
+        }
+        //empieza el desmadre de el mcm
+        for(var k=0;k<n;k++){
+        if(mcm[k]!=max){
+         mcm[k]= mcm[k]+ a[k];
+        }
+        }
+        //checa si todos los numeros son iguales
+         mcmSwitch=0;
+        for(var z=0;z<n;z++){
+            if(max!=mcm[z]){
+             mcmSwitch = 1;
+                break;
+            }
+        }
+
+    }while (mcmSwitch==1);
+        
+    
+         alert("El menor comun multiplo es ");
+         alert (max);
+
+    </script>
+</html>
