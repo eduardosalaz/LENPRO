@@ -1,0 +1,108 @@
+<html>
+
+<body>
+    
+    <script type="text/javascript">
+    
+    var n = parseInt(prompt("1.- Array de 3x3 2.- Array de 4x4 3.- Array de 5x5"))
+    var newarray = new Array();
+    var resultado = new Array();
+    if(n==1){
+        n=3
+    } else if(n==2){
+        n=4
+    }else if (n==3){
+        n=5
+    }
+        
+        
+      for(var i=0;i<n;i++){
+        
+        newarray[i]=new Array();
+    }
+    
+for(var i=0; i<n; i++) {
+    
+   
+    for(var j=0; j<n; j++) {
+        newarray[i][j] = prompt("Ingrese el valor ["+i+"] ["+j+"]")
+        newarray[i][j] = parseInt(newarray[i][j])
+        document.write(newarray[i][j]+"          ")
+    }
+    resultado[i] = parseInt(prompt("Ingrese el resultado de la ecuacion #"+i))
+    document.write(" = ",resultado[i])
+    document.write("<br>")
+}  
+ 
+       
+        if(n==3){
+            
+          
+        //pivote 1
+        var PA = newarray[0][0]
+            
+            
+        newarray[1][1] = ((newarray[0][0])*(newarray[1][1])-(newarray[1][0])*(newarray[0][1]))/1
+        newarray[1][2]= ((newarray[0][0])*(newarray[1][2])-(newarray[1][0])*(newarray[0][2]))/1
+        resultado[1]= ((newarray[0][0])*(resultado[1])-(newarray[1][0])*(resultado[0]))/1
+    
+        newarray[2][1]= ((newarray[0][0])*(newarray[2][1])-(newarray[2][0])*(newarray[0][1]))/1
+        newarray[2][2]= ((newarray[0][0])*(newarray[2][2])-(newarray[2][0])*(newarray[0][2]))/1
+        resultado[2]= ((newarray[0][0])*(resultado[2])-(newarray[2][0])*(resultado[0]))/1
+        
+        newarray[1][0] = 0
+        newarray[2][0] = 0
+        //pivote 2
+        newarray[0][0]= ((newarray[1][1])*(newarray[0][0])-(newarray[0][1])*(newarray[1][0]))/PA
+        newarray[0][2]= ((newarray[1][1])*(newarray[0][2])-(newarray[0][1])*(newarray[1][2]))/PA
+        resultado[0]= ((newarray[1][1])*(resultado[0])-(newarray[0][1])*(resultado[1]))/PA
+        
+        newarray[2][2]= ((newarray[1][1])*(newarray[2][2])-(newarray[2][1])*(newarray[1][2]))/PA
+        resultado[2]= ((newarray[1][1])*(resultado[2])-(newarray[2][1])*(resultado[1]))/PA      
+        
+        newarray[0][1] = 0
+        newarray[2][1] = 0
+        
+        PA = newarray[1][1]
+    //pivote 3
+        
+        newarray[0][0]= ((newarray[2][2])*(newarray[0][0])-(newarray[0][2])*(newarray[2][0]))/PA
+        resultado[0]= ((newarray[2][2])*(resultado[0])-(newarray[0][2])*(resultado[2]))/PA
+        
+        newarray[1][1]= ((newarray[2][2])*(newarray[1][1])-(newarray[1][2])*(newarray[2][1]))/PA
+        resultado[1]= ((newarray[2][2])*(resultado[1])-(newarray[1][2])*(resultado[2]))/PA      
+                
+        newarray[0][2] = 0
+        newarray[1][2] = 0  
+        
+    //Resultado
+        resultado[0] = resultado[0]/newarray[0][0]
+         resultado[1] = resultado[1]/newarray[1][1]
+         resultado[2] = resultado[2]/newarray[2][2]
+    
+    document.write("X = "+resultado[0])
+        document.write("   Y = "+resultado[1])
+        document.write("   Z = "+resultado[2])
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+    
+</body>
+    
+</html>
