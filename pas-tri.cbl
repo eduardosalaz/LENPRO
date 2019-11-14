@@ -1,5 +1,5 @@
             IDENTIFICATION DIVISION.
-            PROGRAM-ID. pas-tri.
+            PROGRAM-ID. pas-tri2.
 
             DATA DIVISION.
               WORKING-STORAGE SECTION.
@@ -7,6 +7,7 @@
               01 POTENCIA PIC 999 VALUE 1.
               01 TERMINO PIC 999 VALUE 1.
               01 OP PIC 9999999 VALUE 1.
+              01 N PIC 9999999.
               01 DOP PIC 999 VALUE 1.
               01 DIF PIC 999 VALUE 1.
               01 DEN1 PIC 9999999 VALUE 1.
@@ -16,12 +17,12 @@
             
               DISPLAY "                         " WITH NO ADVANCING.
               DISPLAY "TRIANGULO DE PASCAL".
+              Accept N.
               PERFORM Ciclo WITH TEST AFTER
                VARYING POTENCIA FROM 1 BY 1
                UNTIL POTENCIA = 10.
               DISPLAY "                        " WITH NO ADVANCING
               STOP RUN.
-              DISPLAY "NUMERO DE FILAS DESEADO : " WITH NO ADVANCING.
               
               Ciclo.
                 COMPUTE FACT = 14 - POTENCIA.
@@ -33,7 +34,7 @@
                     UNTIL TERMINO = POTENCIA.
                 DISPLAY "  ".
               Ciclo2.
-                MOVE 1 TO OP.
+                MOVE N TO OP.
                 MOVE 1 TO DEN1.
                 MOVE 1 TO DEN2.
                 COMPUTE DIF = POTENCIA - TERMINO.
