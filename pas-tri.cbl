@@ -1,5 +1,5 @@
             IDENTIFICATION DIVISION.
-            PROGRAM-ID. pas-tri2.
+            PROGRAM-ID. triangulo_pas.
 
             DATA DIVISION.
               WORKING-STORAGE SECTION.
@@ -7,7 +7,7 @@
               01 POTENCIA PIC 999 VALUE 1.
               01 TERMINO PIC 999 VALUE 1.
               01 OP PIC 9999999 VALUE 1.
-              01 N PIC 9999999.
+              01 N PIC S9(11)9999999.
               01 DOP PIC 999 VALUE 1.
               01 DIF PIC 999 VALUE 1.
               01 DEN1 PIC 9999999 VALUE 1.
@@ -18,10 +18,14 @@
               DISPLAY "                         " WITH NO ADVANCING.
               DISPLAY "TRIANGULO DE PASCAL".
               Accept N.
-              PERFORM Ciclo WITH TEST AFTER
-               VARYING POTENCIA FROM 1 BY 1
-               UNTIL POTENCIA = 10.
-              DISPLAY "                        " WITH NO ADVANCING
+              IF N > 0 THEN
+                PERFORM Ciclo WITH TEST AFTER
+                VARYING POTENCIA FROM 1 BY 1
+                UNTIL POTENCIA = 10
+                DISPLAY "                        " WITH NO ADVANCING
+              ELSE
+                DISPLAY "INGRESAR NUMERO VALIDO"
+              END-IF.
               STOP RUN.
               
               Ciclo.
