@@ -21,8 +21,8 @@ procedure pascal(fil, n : Integer);
 begin
 writeln ('Triangulo de Pascal, ingresar el numero de filas y la base del triangulo');
 readln( a, b);
-if a > 0 then
-    if b > 0 then
+if a > 3 then
+    if b > 1 then
         pascal(a, b)
 else
     writeln('Ingresar filas y bases mayores a 0')
