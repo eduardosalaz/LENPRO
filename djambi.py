@@ -264,6 +264,7 @@ while(terminar == 0):
             if(tablero[inicio][inicio2]%10==10):
                print("no puedes seleccionar piezas muertas")
                reiniciar=0
+            #EN la linea de abajo esta el error
             if((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10) or (tablero[inicio+1][inicio2]==0 and inicio+1<10) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0)):
                print(" ",end="")
             else:   
