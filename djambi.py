@@ -249,7 +249,7 @@ while(terminar == 0):
             reiniciar = 1
             while True:
                inicio = int(input("\033[1;37;40mQue pieza desea mover? (fila)   "))
-               if(inicio<10 and inicio>0):
+               if(inicio < 11 and inicio > 0):
                   break
                print("debe ingresar un valor entre 1 y 9")
             while True:
