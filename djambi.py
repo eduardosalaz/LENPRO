@@ -42,7 +42,7 @@ clear()
 
 
 '''
-Aqui empieze la impresion del tablero
+Aqui empieza la impresion del tablero
 '''
 
 tablero=[]
