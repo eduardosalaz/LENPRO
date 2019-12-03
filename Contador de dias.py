@@ -1,14 +1,14 @@
 DIAN=int(input("Dia de nacimiento : ")) 
 MESN=int(input("Mes de nacimiento (numero) : ")) 
-AﾑON=int(input("Dia de nacimiento (4 digitos) : ")) 
+Aﾃ前N=int(input("Dia de nacimiento (4 digitos) : ")) 
 
 DIAA=int(input("Dia Actual : ")) 
 MESA=int(input("Mes Actual (numero) : ")) 
-AﾑOA=int(input("Dia Actual (4 digitos) : ")) 
+Aﾃ前A=int(input("Dia Actual (4 digitos) : ")) 
 
 while True :
     
-    if AﾑOA % 4 = 0:
+    if Aﾃ前A % 4 = 0:
         #Es bisiesto
         bisiesto=1
     #Cuando el dia llegue a 0 se baja un valor de mes
@@ -16,7 +16,7 @@ while True :
         MESA=MESA-1
     #Cuando el mes llegue a 0 se baja un valor de mes
     if MESA<1:
-        AﾑOA=AﾑOA-1
+        Aﾃ前A=Aﾃ前A-1
     #Cuando sea mes de 31 dias    
     if MESA = 1 or 3 or 5 or 7 or 8 or 10 or 12:
         DIAA=31
@@ -34,7 +34,7 @@ while True :
         
     
     #Cuando lleguemos al limite
-    if DIAN=DIAA and MESA=MESN and AﾑON=AﾑOA:
+    if DIAN=DIAA and MESA=MESN and Aﾃ前N=Aﾃ前A:
         break
     
 print(Dias)    
