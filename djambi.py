@@ -42,7 +42,7 @@ clear()
 
 
 '''
-Aqui empieza la impresion del tablero
+Aqui empieza la impresión del tablero
 '''
 
 tablero=[]
@@ -124,24 +124,24 @@ Reglamento
 print("REGLAMENTO\n")
 print("El juego consta de un tablero de tamaño 9x9 con un sistema coordenado para identificar la posicion inical de la pieza que quieras mover asi como su posicion final")
 print("\nPiezas:")
-print("L = lider: mata desplazándose a la casilla ocupada por una ficha contraria, a la que matan, y la mueven a cualquier casilla vacía del tablero excepto la central.")
-print("M = militante: matan de igual forma que el líder. Un militante no puede matar a un líder situado en la casilla centra y solo se pueden mover una o dos casillas")
+print("L = Lider: mata desplazándose a la casilla ocupada por una ficha contraria, a la que matan, y la mueven a cualquier casilla vacía del tablero excepto la central.")
+print("M = Militante: matan de igual forma que el líder. Un militante no puede matar a un líder situado en la casilla centra y solo se pueden mover una o dos casillas")
 print("A = Asesino: mata de la misma forma que el líder, pero debe situar la ficha muerta en la casilla que ocupaba antes de mover.")
 print("R = Reportero: mata ocupando una casilla adyacente vertical u horizontalmente (no en diagonal) a la casilla ocupada por la ficha contraria. La ficha muerta no se mueve, y permanece en el sitio donde fue sorprendida")
 print("P = Provocador: puede mover fichas vivas contrarias desplazándose hasta la casilla que ocupan. Las sitúa en cualquier casilla vacía excepto la central si esa ficha no es un líder.")
 print("N = Necromovil: mueve fichas contrarias de la misma forma que el diplomático, pero sólo si están muertas y nunca a la casilla central.")
-print("\nreglas basicas:")
-print("1.-cuando un lider muere, el jugador que lo mato toma el control de sus fichas")
+print("\nReglas basicas:")
+print("1.-Cuando un lider muere, el jugador que lo mato toma el control de sus fichas")
 print("2.-El poder, localizado en el centro, si tu lider esta en esa posicion tu equipo repite turno cade vez que un equipo termine su turno")
-print("3.-las fichas se pueden desplazar de manera vertical, horizontal o en diagnoal las casillas que quieran, excepto los militantes que solo pueden moverse una o dos casillas")
-print("4.-para las coordenadas solo se puede ingresar numero enteros entre 1 y 9")
-print("5.- no se pueden colocar piezas muertes en el centro")
+print("3.-Las fichas se pueden desplazar de manera vertical, horizontal o en diagnoal las casillas que quieran, excepto los militantes que solo pueden moverse una o dos casillas")
+print("4.-Para las coordenadas solo se puede ingresar numero enteros entre 1 y 9")
+print("5.- No se pueden colocar piezas muertes en el centro")
 
 
 
               
 print("\n")
-input("\033[1;37;40mde click en enter para iniciar el juego...")
+input("\033[1;37;40mDe click en enter para iniciar el juego...")
 def actualizar():
     clear()
     for x in range (0,10):
@@ -235,7 +235,7 @@ def actualizar():
 
 
 while(terminar == 0):
-    #checar que ningue rey este encerrado por piezas muertas y no tenga necromovil
+    #checar que ningun rey este encerrado por piezas muertas y no tenga necromovil
     for x in range (0,10):
        for y in range (0,10):
           pieza=int(tablero[x][y]/100)   
@@ -268,7 +268,7 @@ while(terminar == 0):
            if (pieza==5 and color==4):
               sr4=status    
     '''
-    Aqui empieza turnos
+    Aqui empiezan los turnos
     '''
     
     if (turnos == 1 and sr1==1):
