@@ -1,9 +1,9 @@
-print("Programa para convertir temperaturas en Celsius, Fahrenheit, Kelvin y Rankine")
-escala_inicial = input("Ingresar el nombre completo de la escala de la temperatura inicial empezando con letra mayuscula")
+print("Programa para convertir temperaturas en Celsius, Fahrenheit, Kelvin y Rankine \n")
+escala_inicial = input("Ingresar el nombre completo de la escala de la temperatura inicial empezando con letra mayuscula \n")
 if escala_inicial == "Celsius":
-    temp_inicial= float(input("Ingresar en grados la temperatura inicial"))
+    temp_inicial= float(input("Ingresar en grados la temperatura inicial \n"))
     if temp_inicial > -274:
-        escala_final = input("Ingresar el nombre completo de la escala a convertir empezando con letra mayuscula")
+        escala_final = input("Ingresar el nombre completo de la escala a convertir empezando con letra mayuscula \n")
         if escala_final == "Fahrenheit":
             temp_final= (temp_inicial *1.8) +32
             print ("La temperatura en " + escala_final + " es " + repr(temp_final))
@@ -66,7 +66,7 @@ elif escala_inicial == "Rankine":
             print ("La temperatura en " + escala_final + " es " + repr(temp_final))
         else:
             print ("Ingresar una escala valida")
-    else:
+    else:   
         print ("Ingresar una temperatura valida")
 else:
     print ("Ingresar una escala valida")
