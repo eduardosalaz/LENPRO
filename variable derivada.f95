@@ -1,7 +1,7 @@
 ! A fortran95 program for G95
 ! By WQY
 program main
-
+implicit none
 TYPE jugador
     CHARACTER(50) nombre
     REAL winrate
