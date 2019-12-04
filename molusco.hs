@@ -40,7 +40,7 @@ validarFloat prompt = do
         Nothing -> putStrLn "\n[Error] Numero invalido, por favor intentelo denuevo." >> validarFloat prompt
 
 main = do
-    segmentoo <- validarInt "Por favor especifique el numero de segmento deseado: "
-    diametro <- validarFloat "Por favor especifique el diametro del segmentoo actual: "
+    segmento <- validarInt "Por favor especifique el numero de segmento deseado: "
+    diametro <- validarFloat "Por favor especifique el diametro del segmento actual: "
     putStrLn ""
     ciclo segmento diametro segmento
