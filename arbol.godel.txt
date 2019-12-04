@@ -1,0 +1,19 @@
+MODULE ARBOL.
+BASE Humano, Hombre, Mujer.
+CONSTANT Lalito, Laura, Lalo, Angeles, Carlos, Carmen, Eduardo: Humano.
+CONSTANT Lalito, Lalo, Carlos, Eduardo: Hombre.
+CONSTANT Laura, Angeles, Carmen: Mujer.
+PREDICATE Padre : Hombre * Humano.
+PREDICATE Madre : Mujer * Humano.
+PREDICATE Abuelo : Padre * Humano.
+PREDICATE Abuela : Madre * Humano.
+Padre(Lalo, Lalito).
+Madre(Laura, Lalito).
+Padre(Eduardo, Lalo).
+Padre(Laura, Carlos).
+Madre(Carmen, Lalo).
+Madre(Angeles, Laura).
+Abuelo(Carlos, Lalito).
+Abuelo(Eduardo, Lalito).
+Abuela(Angeles, Lalito).
+Abuela(Carmen, Lalito).
