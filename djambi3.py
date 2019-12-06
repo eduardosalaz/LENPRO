@@ -33,6 +33,15 @@ LAM
 Inicio del menu
 '''
 print("     Bienvenido a Djambi.")
+print(r"""
+____   _                 _     _ 
+|  _ \(_) __ _ _ __ ___ | |__ (_)
+| | | | |/ _` | '_ ` _ \| '_ \| |
+| |_| | | (_| | | | | | | |_) | |
+|____// |\__,_|_| |_| |_|_.__/|_|
+    |__/                         
+
+""")
 input("Presione la tecla intro para continuar...")
 clear()
 
@@ -121,7 +130,7 @@ tablero[9][9]=541
 '''
 Reglamento 
 '''
-print("REGLAMENTO\n")
+
 print("El objetivo del juego es obtener el poder absoluto al ser el último jefe vivo a bordo. \n Aunque las alianzas informales se pueden acordar temporalmente, no hay equipo: cada jugador juega contra los otros jugadores.\n")
 print("Cada jugador mueve en su turno una de sus fichas pudiendo capturar una pieza adversaria o solo moverse a una casilla vacía.\n")
 print("Cuando un jugador mueve una pieza no puede saltar por encima de las demás piezas aliadas o adversarias.\n")
