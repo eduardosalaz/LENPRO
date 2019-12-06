@@ -285,7 +285,10 @@ for x in range (0,10):
             elif(color==4 and status==1):
                 print ("\033[1;37;40m 0", end ="")
             elif(status==0):
-                print ("\033[1;35;40m 0", end ="")   
+                print ("\033[1;35;40m 0", end ="")  
+        elif(x==1 and y==2 or (x-1==y and x>1)):
+            print ("\033[1;36;40m 0", end ="")
+
         elif(y==1 and x>0):
             print ("\033[1;36;40m 0", end ="")
         elif(x==2 and y>0):
@@ -311,15 +314,19 @@ for x in range (0,10):
         status=int(tablero[x][y]%10)
         if (pieza==4):
             if (color==1 and status==1):
-                print("\033[1;34;40m P", end ="")
+                print("\033[1;36;40m P", end ="")
             elif(color==2 and status==1):
-                print ("\033[1;31;40m P", end ="")
+                print ("\033[1;36;40m 0", end ="")
             elif(color==3 and status==1):
-                print ("\033[1;33;40m P", end ="")   
+                print ("\033[1;36;40m 0", end ="")   
             elif(color==4 and status==1):
-                print ("\033[1;32;40m P", end ="")
+                print ("\033[1;36;40m 0", end ="")
             elif(status==0):
-                print ("\033[1;35;40m P", end ="")    
+                print ("\033[1;35;40m 0", end ="") 
+        elif(x==y and x>0 or x==1 and y==3 or x==3 and y==1):
+            print ("\033[1;36;40m 0", end ="")          
+        elif(x==2 and y>0 or y==2 and x>0):
+            print ("\033[1;36;40m 0", end ="")         
         elif (x==5 and y==5):
             print ("\033[1;36;40m 0", end="")
         elif (pieza!=4 and pieza !=0):
