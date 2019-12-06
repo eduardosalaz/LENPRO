@@ -130,8 +130,10 @@ for x in range (0,10):
         if (pieza==1):
             if (color==1 and status==1 and x ==1):
                 print("\033[1;34;40m M", end ="")
-            elif (color==1 and status==1 and x !=1):
+            elif (color==1 and status==1 and x !=1 and x!=2):
                 print("\033[1;37;40m 0", end ="")
+            elif (color==1 and status==1 and x !=1):
+                print("\033[1;36;40m 0", end ="")    
             elif(color==2 and status==1):
                 print ("\033[1;37;40m 0", end ="")
             elif(color==3 and status==1):
@@ -139,19 +141,16 @@ for x in range (0,10):
             elif(color==4 and status==1):
                 print ("\033[1;37;40m 0", end ="")
             elif(status==0):
-                print ("\033[1;35;40m M", end ="")  
-        elif(x==1 and ((y<3 and y>0) or y>3)):   
-            print("\033[1;36;40m 0", end="")
-        elif(y==3 and x>1):   
-            print("\033[1;36;40m 0", end="") 
-                     
+                print ("\033[1;35;40m M", end ="") 
+        elif((x==1 and y==1)or(x==1 and y==2) or(x==1 and y==4) or(x==1 and y==5) or(x==2 and y==3)or(x==3 and y==3)):    
+             print ("\033[1;36;40m 0", end ="")               
         elif (x==5 and y==5):
             print ("\033[1;36;40m 0", end="")
         elif (pieza!=1 and pieza !=0):
             print ("\033[1;37;40m 0", end="")
         elif(pieza==0):  
             print("\033[1;37;40m",tablero[x][y], end="")  
-           
+         
         
               
     print("\n")
