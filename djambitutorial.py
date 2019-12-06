@@ -120,7 +120,9 @@ ____   _                 _     _
     |__/                         
 
 """)
-print("Objetivo: \nMatar a los demás líderes enemigos con el uso de las diferentes piezas o estrategias entre jugadores como alianzas de manera informal. \n")
+print("Objetivo: \nCapturar a los demás líderes enemigos con el uso de las diferentes piezas o estrategias entre jugadores como alianzas de manera informal. \n")
+print("Movimientos del djambi: \nCada jugador moverá una pieza en su turno, con la posibilidad de capturar en este movimiento a una ficha contraria. \n")
+clear()
 print("La letra M en el tablero Representa a los Militantes.\n")
 for x in range (0,10):
     for y in range (0,10):
