@@ -277,7 +277,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio = int(input("\033[1;37;40m¿Qué pieza desea mover? (fila)   ."))
+                     inicio = int(input("\033[1;37;40m¿Qué pieza desea mover? (fila)   "))
                      break
                   except ValueError:
                      print("Sólo números enteros entre 1 y 9.")
@@ -287,7 +287,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio2 = int(input("\033[1;37;40m¿Qué pieza desea mover? (columna)  ."))
+                     inicio2 = int(input("\033[1;37;40m¿Qué pieza desea mover? (columna)  "))
                      break
                   except ValueError:
                      print("Sólo numero enteros entre 1 y 9.")
@@ -322,7 +322,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     final = int(input("¿A dónde la quiere mover? (fila)   ."))
+                     final = int(input("¿A dónde la quiere mover? (fila)   "))
                      break
                   except ValueError:
                      print("Sólo numeros enteros entre 1 y 9.")
@@ -332,7 +332,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     final2 = int(input("¿A dónde la quiere mover? (columna)   ."))
+                     final2 = int(input("¿A dónde la quiere mover? (columna)   "))
                      break
                   except ValueError:
                      print("Sólo numeros enteros entre 1 y 9.")
@@ -700,7 +700,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio = int(input("\033[1;37;40m¿Qué pieza desea mover? (fila)   ."))
+                     inicio = int(input("\033[1;37;40m¿Qué pieza desea mover? (fila)   "))
                      break
                   except ValueError:
                      print("Sólo numero enteros entre 1 y 9.")
@@ -710,7 +710,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio2 = int(input("\033[1;37;40m¿Qué pieza desea mover? (columna)  ."))
+                     inicio2 = int(input("\033[1;37;40m¿Qué pieza desea mover? (columna)  "))
                      break
                   except ValueError:
                      print("Sólo numero enteros entre 1 y 9.")
@@ -745,7 +745,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     final = int(input("¿A dónde la quiere mover? (fila)   ."))
+                     final = int(input("¿A dónde la quiere mover? (fila)   "))
                      break
                   except ValueError:
                      print("Sólo números enteros entre 1 y 9.")
@@ -755,7 +755,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     final2 = int(input("¿A dónde la quiere mover? (columna)   ."))
+                     final2 = int(input("¿A dónde la quiere mover? (columna)   "))
                      break
                   except ValueError:
                      print("Sólo números enteros entre 1 y 9.")
@@ -1126,7 +1126,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio = int(input("\033[1;37;40m¿Qué pieza desea mover? (fila)   ."))
+                     inicio = int(input("\033[1;37;40m¿Qué pieza desea mover? (fila)   "))
                      break
                   except ValueError:
                      print("Sólo numero enteros entre 1 y 9.")
@@ -1136,7 +1136,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio2 = int(input("\033[1;37;40m¿Qué pieza desea mover? (columna)  ."))
+                     inicio2 = int(input("\033[1;37;40m¿Qué pieza desea mover? (columna)  "))
                      break
                   except ValueError:
                      print("Sólo numero enteros entre 1 y 9.")
@@ -1171,7 +1171,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     final = int(input("¿A dónde la quiere mover? (fila)   ."))
+                     final = int(input("¿A dónde la quiere mover? (fila)   "))
                      break
                   except ValueError:
                      print("Sólo números enteros entre 1 y 9.")
@@ -1181,7 +1181,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     final2 = int(input("¿A dónde la quiere mover? (columna)   ."))
+                     final2 = int(input("¿A dónde la quiere mover? (columna)   "))
                      break
                   except ValueError:
                      print("Sólo números enteros entre 1 y 9.")
@@ -1551,7 +1551,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio = int(input("\033[1;37;40m¿Qué pieza desea mover? (fila)   ."))
+                     inicio = int(input("\033[1;37;40m¿Qué pieza desea mover? (fila)   "))
                      break
                   except ValueError:
                      print("Sólo numero enteros entre 1 y 9.")
@@ -1561,7 +1561,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio2 = int(input("\033[1;37;40m¿Qué pieza desea mover? (columna)  ."))
+                     inicio2 = int(input("\033[1;37;40m¿Qué pieza desea mover? (columna)  "))
                      break
                   except ValueError:
                      print("Sólo numero enteros entre 1 y 9.")
@@ -1596,7 +1596,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     final = int(input("¿A dónde la quiere mover? (fila)   ."))
+                     final = int(input("¿A dónde la quiere mover? (fila)   "))
                      break
                   except ValueError:
                      print("Sólo números enteros entre 1 y 9.")
@@ -1606,7 +1606,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     final2 = int(input("¿A dónde la quiere mover? (columna)   ."))
+                     final2 = int(input("¿A dónde la quiere mover? (columna)   "))
                      break
                   except ValueError:
                      print("Sólo números enteros entre 1 y 9.")
