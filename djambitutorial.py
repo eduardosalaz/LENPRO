@@ -195,7 +195,7 @@ for x in range (0,10):
 mensaje_salida()
 #MOVIMIENTO DE ASESINO
 impresion_pantalla()
-print("La letra A en el tablero Representa a los Asesinos.\n")
+print("La letra A en el tablero Representa a los Asesinos.\nLos asesinos pueden moverse en las 8 direcciones marcadas, con un máximo de 8 casillas.\nCuando un asesino captura una pieza, se ve obligado a mover a dicha pieza a la posición original del asesino.\n")
 for x in range (0,10):
     for y in range (0,10):
         pieza=int(tablero[x][y]/100)   
@@ -233,7 +233,7 @@ for x in range (0,10):
 mensaje_salida()
 #MOVIMIENTO DE NECROMÓVIL
 impresion_pantalla()
-print("La letra N en el tablero Representa a los Necromóviles.\n")
+print("La letra N en el tablero Representa a los Necromóviles.\nLos necromóviles pueden moverse en las 8 direcciones marcadas, con un máximo de 8 casillas.\nLos necromóviles no pueden capturar piezas, pero pueden mover piezas enemigas previamente capturadas\n")
 for x in range (0,10):
     for y in range (0,10):
         pieza=int(tablero[x][y]/100)   
@@ -271,7 +271,7 @@ for x in range (0,10):
 mensaje_salida()
 #MOVIMIENTO DE reportero
 impresion_pantalla()
-print("La letra R en el tablero Representa a los Reporteros.\n")
+print("La letra R en el tablero Representa a los Reporteros.\nLos reporteros pueden moverse en las 8 direcciones marcadas, con un máximo de 8 casillas.\nLos reporteros no pueden capturar de manera diagonal y la pieza capturada permanece en su misma posición.\n")
 for x in range (0,10):
     for y in range (0,10):
         pieza=int(tablero[x][y]/100)   
@@ -308,7 +308,7 @@ for x in range (0,10):
 mensaje_salida()
 #MOVIMIENTO DE provocador
 impresion_pantalla()
-print("La letra P en el tablero Representa a los Provocadores.\n")
+print("La letra P en el tablero Representa a los Provocadores.\nLos provocadores pueden moverse en las 8 direcciones marcadas, con un máximo de 8 casillas.\nLos provocadores no pueden capturar piezas, pero pueden mover piezas enemigas que no han sido capturadas.\n")
 for x in range (0,10):
     for y in range (0,10):
         pieza=int(tablero[x][y]/100)   
