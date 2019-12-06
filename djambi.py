@@ -42,7 +42,7 @@ clear()
 
 
 '''
-Aqui empieza la impresión del tablero
+Aqui empieze la impresion del tablero
 '''
 
 tablero=[]
@@ -122,28 +122,26 @@ tablero[9][9]=541
 Reglamento 
 '''
 print("REGLAMENTO\n")
-print("El juego consta de un tablero de tamaño 9x9 con un sistema coordenado para identificar la posicion inical de la pieza que quieras mover asi como su posicion final")
-print("\nPiezas:")
-print("L = Lider: mata desplazándose a la casilla ocupada por una ficha contraria, a la que matan, y la mueven a cualquier casilla vacía del tablero excepto la central.")
-print("M = Militante: matan de igual forma que el líder. Un militante no puede matar a un líder situado en la casilla centra y solo se pueden mover una o dos casillas")
-print("A = Asesino: mata de la misma forma que el líder, pero debe situar la ficha muerta en la casilla que ocupaba antes de mover.")
-print("R = Reportero: mata ocupando una casilla adyacente vertical u horizontalmente (no en diagonal) a la casilla ocupada por la ficha contraria. La ficha muerta no se mueve, y permanece en el sitio donde fue sorprendida")
-print("P = Provocador: puede mover fichas vivas contrarias desplazándose hasta la casilla que ocupan. Las sitúa en cualquier casilla vacía excepto la central si esa ficha no es un líder.")
-print("N = Necromovil: mueve fichas contrarias de la misma forma que el diplomático, pero sólo si están muertas y nunca a la casilla central.")
-print("\nReglas basicas:")
-print("1.-Cuando un lider muere, el jugador que lo mato toma el control de sus fichas")
-print("2.-El poder, localizado en el centro, si tu lider esta en esa posicion tu equipo repite turno cade vez que un equipo termine su turno")
-print("3.-Las fichas se pueden desplazar de manera vertical, horizontal o en diagnoal las casillas que quieran, excepto los militantes que solo pueden moverse una o dos casillas")
-print("4.-Para las coordenadas solo se puede ingresar numero enteros entre 1 y 9")
-print("5.- No se pueden colocar piezas muertes en el centro")
-
-
-
-              
+print("Djambi o también conocido como ajedrez de Maquiavelo, es un juego para 4 personas similar al ajedrez tradicional.\n")
+print("El objetivo del juego es matar a los demás líderes para poder ganar.\n")
+print("El tablero es de un tamaño 9x9, en el cual cada jugador se sitúa en una esquina utilizando un cuadrado 3x3 donde están acomodadas sus piezas.\n")
+print("Cada jugador mueve en su turno una de sus fichas pudiendo matar una pieza contraria o solo moverse a una casilla vacía. El líder es la única pieza que puede estar en el centro.\n")
+print("Las fichas se pueden mover de manera horizontal, vertical o diagonal, tantas casillas como quieran, excepto los militantes que solo se pueden mover una o dos casillas. Ninguna ficha puede saltar sobre otra.\n")
+print("Ninguna pieza muerta puede colocarse en la casilla central.\n")
+print("Líder: Mata desplazándose a la casilla ocupada por una ficha contraria, y la mueven a cualquier casilla desocupada.\n")
+print("Militantes: Matan de la misma manera del líder.\n")
+print("Asesino: Mata de la misma forma que el líder, pero debe situar la ficha muerta en la posición que ocupaba antes de mover.\n")
+print("Reportero: Mata ocupando una casilla adyacente, no en diagonal, a la casilla ocupada por la ficha contraria\n")
+print("El provocador y necromóvil son las únicas 2 piezas que no pueden matar otras, pero transportan piezas enemigas vivas o muertas.\n")
+print("Provocador: Puede mover fichas vivas contrarias desplazándose hasta la casilla que ocupen y luego la sitúan en cualquier casilla vacía menos la central.\n")
+print("Necromóvil: Mueve fichas contrarias de la misma forma del provocador, pero solo si están muertas.\n")
+print("El centro es una casilla importante debido a que si un líder esta sobre esa casilla, adquire el poder, lo cual significa que volverá a repetir turno después de cada jugador hasta que se mueva de ahí\n")
 print("\n")
-input("\033[1;37;40mDe click en enter para iniciar el juego...")
+input("\033[1;37;40mde click en enter para iniciar el juego...")
 def actualizar():
     clear()
+    print("L = Líder. M = Militante. A = Asesino. R = Reportero. P = Provocador. N = Necromóvil.   Solo se pueden ingresar numeros enteros del 1 al 9\n")
+    
     for x in range (0,10):
        for y in range (0,10):
            pieza=int(tablero[x][y]/100)   
@@ -217,7 +215,7 @@ def actualizar():
                elif(status==0):
                    print ("\033[1;35;40m A", end ="")    
            elif (x==5 and y==5):
-               print ("\033[1;32;40m",tablero[x][y], end="")
+               print ("\033[1;36;40m",tablero[x][y], end="")
            elif (pieza==0 and pieza!=10 ):
                print ("\033[1;37;40m",tablero[x][y], end="")
            elif(pieza==10):
@@ -235,7 +233,7 @@ def actualizar():
 
 
 while(terminar == 0):
-    #checar que ningun rey este encerrado por piezas muertas y no tenga necromovil
+    #checar que ningue rey este encerrado por piezas muertas y no tenga necromovil
     for x in range (0,10):
        for y in range (0,10):
           pieza=int(tablero[x][y]/100)   
@@ -268,7 +266,7 @@ while(terminar == 0):
            if (pieza==5 and color==4):
               sr4=status    
     '''
-    Aqui empiezan los turnos
+    Aqui empieza turnos
     '''
     
     if (turnos == 1 and sr1==1):
@@ -277,12 +275,23 @@ while(terminar == 0):
         while(reiniciar == 0):
             reiniciar = 1
             while True:
-               inicio = int(input("\033[1;37;40mQue pieza desea mover? (fila)   "))
+               while True:
+                  try:
+                     inicio = int(input("\033[1;37;40mQue pieza desea mover? (fila)   "))
+                     break
+                  except ValueError:
+                     print("Solo numero enteros entre 1 y 9")
                if(inicio<10 and inicio>0):
                   break
                print("debe ingresar un valor entre 1 y 9")
             while True:
-               inicio2 = int(input("\033[1;37;40mQue pieza desea mover? (columna)  "))
+               while True:
+                  try:
+                     inicio2 = int(input("\033[1;37;40mQue pieza desea mover? (columna)  "))
+                     break
+                  except ValueError:
+                     print("Solo numero enteros entre 1 y 9")
+                     
                if(inicio2<10 and inicio2>0):
                   break
                print("debe ingresar un valor entre 1 y 9")
@@ -311,12 +320,22 @@ while(terminar == 0):
         while (reiniciar==1):
             reiniciar = 0
             while True:
-               final = int(input("A donde la quiere mover? (fila)   "))
+               while True:
+                  try:
+                     final = int(input("A donde la quiere mover? (fila)   "))
+                     break
+                  except ValueError:
+                     print("Solo numeros enteros entre 1 y 9")
                if(final<10 and final>0):
                   break
                print("debe ingresar un valor entre 1 y 9")
-            while True:   
-               final2 = int(input("A donde la quiere mover? (columna)   "))
+            while True:
+               while True:
+                  try:
+                     final2 = int(input("A donde la quiere mover? (columna)   "))
+                     break
+                  except ValueError:
+                     print("Solo numeros enteros entre 1 y 9")
                if(final2<10 and final2>0):
                   break
                print("debe ingresar un valor entre 1 y 9")
@@ -332,7 +351,8 @@ while(terminar == 0):
                 reiniciar = 1
             if(tablero[inicio][inicio2]/100==1.11 and (final-inicio<-2 or final-inicio>2 or final2-inicio2<-2 or final2-inicio2>2)):
                print("los militantes solo pueden moverse una o dos casillas")
-               reiniciar =1 
+               reiniciar =1
+               #movimientos
             if(inicio2==final2):
                vertical=1
                print("", end ="")
@@ -353,6 +373,7 @@ while(terminar == 0):
                diagonal=4
             else:   
                print("Las piezas solo se pueden mover de manera vertical, horizontal o diagonal")
+               
                reiniciar=1
             com=int(tablero[inicio][inicio2]/100)    
             if(tablero[final][final2]!=0 and tablero[final][final2]%10==0 and com!=2):
@@ -444,13 +465,23 @@ while(terminar == 0):
               tablero[inicio][inicio2] = 0
               actualizar()
               while True:
-                  filam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (fila)   "))
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (fila)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numero enteros entre 1 y 9")
                   if(filam<10 and filam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
                   reiniciar=0
               while True:
-                  columnam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (columna)   "))
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (columna)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numero enteros entre 1 y 9")
                   if(columnam<10 and columnam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
@@ -470,13 +501,23 @@ while(terminar == 0):
               tablero[inicio][inicio2] = 0
               actualizar()
               while True:
-                  filam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (fila)   "))
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (fila)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numero enteros entre 1 y 9")
                   if(filam<10 and filam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
                   reiniciar=0
               while True:
-                  columnam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (columna)   "))
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (columna)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                   if(columnam<10 and columnam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
@@ -497,13 +538,23 @@ while(terminar == 0):
               temporal=tablero[final][final2]-1
               tablero[final][final2] = tablero[inicio][inicio2]
               while True:
-                  filam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (fila)   "))
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (fila)   "))
+                        break
+                     except ValueError:
+                        print("debes ingresar un numero entero entre 1 y 9")
                   if(filam<10 and filam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
                   reiniciar=0
               while True:
-                  columnam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (columna)   "))
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (columna)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                   if(columnam<10 and columnam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
@@ -527,13 +578,23 @@ while(terminar == 0):
               temporal=tablero[final][final2]-1
               tablero[final][final2] = tablero[inicio][inicio2]
               while True:
-                  filam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (fila)   "))
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (fila)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                   if(filam<10 and filam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
                   reiniciar=0
               while True:
-                  columnam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (columna)   "))
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (columna)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                   if(columnam<10 and columnam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
@@ -541,13 +602,19 @@ while(terminar == 0):
 
               if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
                  print("las piezas muertas solo pueden ocupar lugares vacios y no se pueden poner en el centro")
+           tablero[inicio][inicio2]=0 
            tablero[filam][columnam] = temporal
          #comer con reportero
         if(pieza==3):
            actualizar()
            reiniciar==0
-           while True: 
-              cr= int(input("\033[1;37;40mdesea comer alguna pieza con el reportero? (1.-si 0.-no )   "))
+           while True:
+              while True:
+                 try:
+                    cr= int(input("\033[1;37;40mdesea comer alguna pieza con el reportero? (1.-si 0.-no )   "))
+                    break
+                 except ValueError:
+                     print("Solo se pueden ingresar numeros enteros entre 1 y 9")
               if(cr==0 or cr==1):
                   break
               print("debe ingresar 1 o 0")
@@ -555,13 +622,23 @@ while(terminar == 0):
                while (reiniciar==0):
                  reiniciar=1 
                  while True:
-                    filam = int(input("\033[1;37;40mQue pieza desea comer? (fila)   "))
+                    while True:
+                       try:
+                          filam = int(input("\033[1;37;40mQue pieza desea comer? (fila)   "))
+                          break
+                       except VauleError:
+                           print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                     if(filam<10 and filam>0):
                        break
                     print("debe ingresar un valor entre 1 y 9")
                     reiniciar=0
                  while True:
-                    columnam = int(input("\033[1;37;40mQue pieza desea comer? (columna)  "))
+                    while True:
+                       try:
+                          columnam = int(input("\033[1;37;40mQue pieza desea comer? (columna)  "))
+                          break
+                       except ValueError:
+                           print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                     if(columnam<10 and columnam>0):
                        break
                     print("debe ingresar un valor entre 1 y 9")
@@ -577,7 +654,7 @@ while(terminar == 0):
                  if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
                     print("no puedes comer piezan muertas")
                     reiniciar=0
-               
+               tablero[inicio][inicio2]=0 
                tablero[filam][columnam] = tablero[filam][columnam]-1
               
         #comer con asesino
@@ -627,12 +704,23 @@ while(terminar == 0):
         while(reiniciar == 0):
             reiniciar = 1
             while True:
-               inicio = int(input("\033[1;37;40mQue pieza desea mover? (fila)   "))
+               while True:
+                  try:
+                     inicio = int(input("\033[1;37;40mQue pieza desea mover? (fila)   "))
+                     break
+                  except ValueError:
+                     print("Solo numero enteros entre 1 y 9")
                if(inicio<10 and inicio>0):
                   break
                print("debe ingresar un valor entre 1 y 9")
             while True:
-               inicio2 = int(input("\033[1;37;40mQue pieza desea mover? (columna)  "))
+               while True:
+                  try:
+                     inicio2 = int(input("\033[1;37;40mQue pieza desea mover? (columna)  "))
+                     break
+                  except ValueError:
+                     print("Solo numero enteros entre 1 y 9")
+                     
                if(inicio2<10 and inicio2>0):
                   break
                print("debe ingresar un valor entre 1 y 9")
@@ -661,12 +749,22 @@ while(terminar == 0):
         while (reiniciar==1):
             reiniciar = 0
             while True:
-               final = int(input("A donde la quiere mover? (fila)   "))
+               while True:
+                  try:
+                     final = int(input("A donde la quiere mover? (fila)   "))
+                     break
+                  except ValueError:
+                     print("Solo numeros enteros entre 1 y 9")
                if(final<10 and final>0):
                   break
                print("debe ingresar un valor entre 1 y 9")
-            while True:   
-               final2 = int(input("A donde la quiere mover? (columna)   "))
+            while True:
+               while True:
+                  try:
+                     final2 = int(input("A donde la quiere mover? (columna)   "))
+                     break
+                  except ValueError:
+                     print("Solo numeros enteros entre 1 y 9")
                if(final2<10 and final2>0):
                   break
                print("debe ingresar un valor entre 1 y 9")
@@ -682,7 +780,8 @@ while(terminar == 0):
                 reiniciar = 1
             if(tablero[inicio][inicio2]/100==1.11 and (final-inicio<-2 or final-inicio>2 or final2-inicio2<-2 or final2-inicio2>2)):
                print("los militantes solo pueden moverse una o dos casillas")
-               reiniciar =1 
+               reiniciar =1
+               #movimientos
             if(inicio2==final2):
                vertical=1
                print("", end ="")
@@ -703,6 +802,7 @@ while(terminar == 0):
                diagonal=4
             else:   
                print("Las piezas solo se pueden mover de manera vertical, horizontal o diagonal")
+               
                reiniciar=1
             com=int(tablero[inicio][inicio2]/100)    
             if(tablero[final][final2]!=0 and tablero[final][final2]%10==0 and com!=2):
@@ -794,13 +894,23 @@ while(terminar == 0):
               tablero[inicio][inicio2] = 0
               actualizar()
               while True:
-                  filam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (fila)   "))
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (fila)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numero enteros entre 1 y 9")
                   if(filam<10 and filam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
                   reiniciar=0
               while True:
-                  columnam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (columna)   "))
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (columna)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numero enteros entre 1 y 9")
                   if(columnam<10 and columnam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
@@ -820,13 +930,23 @@ while(terminar == 0):
               tablero[inicio][inicio2] = 0
               actualizar()
               while True:
-                  filam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (fila)   "))
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (fila)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numero enteros entre 1 y 9")
                   if(filam<10 and filam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
                   reiniciar=0
               while True:
-                  columnam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (columna)   "))
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (columna)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                   if(columnam<10 and columnam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
@@ -847,13 +967,23 @@ while(terminar == 0):
               temporal=tablero[final][final2]-1
               tablero[final][final2] = tablero[inicio][inicio2]
               while True:
-                  filam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (fila)   "))
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (fila)   "))
+                        break
+                     except ValueError:
+                        print("debes ingresar un numero entero entre 1 y 9")
                   if(filam<10 and filam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
                   reiniciar=0
               while True:
-                  columnam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (columna)   "))
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (columna)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                   if(columnam<10 and columnam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
@@ -877,13 +1007,23 @@ while(terminar == 0):
               temporal=tablero[final][final2]-1
               tablero[final][final2] = tablero[inicio][inicio2]
               while True:
-                  filam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (fila)   "))
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (fila)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                   if(filam<10 and filam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
                   reiniciar=0
               while True:
-                  columnam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (columna)   "))
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (columna)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                   if(columnam<10 and columnam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
@@ -891,13 +1031,19 @@ while(terminar == 0):
 
               if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
                  print("las piezas muertas solo pueden ocupar lugares vacios y no se pueden poner en el centro")
+           tablero[inicio][inicio2]=0 
            tablero[filam][columnam] = temporal
          #comer con reportero
         if(pieza==3):
            actualizar()
            reiniciar==0
-           while True: 
-              cr= int(input("\033[1;37;40mdesea comer alguna pieza con el reportero? (1.-si 0.-no )   "))
+           while True:
+              while True:
+                 try:
+                    cr= int(input("\033[1;37;40mdesea comer alguna pieza con el reportero? (1.-si 0.-no )   "))
+                    break
+                 except ValueError:
+                     print("Solo se pueden ingresar numeros enteros entre 1 y 9")
               if(cr==0 or cr==1):
                   break
               print("debe ingresar 1 o 0")
@@ -905,13 +1051,23 @@ while(terminar == 0):
                while (reiniciar==0):
                  reiniciar=1 
                  while True:
-                    filam = int(input("\033[1;37;40mQue pieza desea comer? (fila)   "))
+                    while True:
+                       try:
+                          filam = int(input("\033[1;37;40mQue pieza desea comer? (fila)   "))
+                          break
+                       except VauleError:
+                           print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                     if(filam<10 and filam>0):
                        break
                     print("debe ingresar un valor entre 1 y 9")
                     reiniciar=0
                  while True:
-                    columnam = int(input("\033[1;37;40mQue pieza desea comer? (columna)  "))
+                    while True:
+                       try:
+                          columnam = int(input("\033[1;37;40mQue pieza desea comer? (columna)  "))
+                          break
+                       except ValueError:
+                           print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                     if(columnam<10 and columnam>0):
                        break
                     print("debe ingresar un valor entre 1 y 9")
@@ -927,7 +1083,7 @@ while(terminar == 0):
                  if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
                     print("no puedes comer piezan muertas")
                     reiniciar=0
-               
+               tablero[inicio][inicio2]=0 
                tablero[filam][columnam] = tablero[filam][columnam]-1
               
         #comer con asesino
@@ -964,7 +1120,9 @@ while(terminar == 0):
                  if(pieza==5 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
                  if(pieza==6 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma               
+                    tablero[x][y]=tablero[x][y]+suma
+                   
+                     
         
     if (turnos == 3 and sr3==1):
         reiniciar = 0
@@ -972,12 +1130,23 @@ while(terminar == 0):
         while(reiniciar == 0):
             reiniciar = 1
             while True:
-               inicio = int(input("\033[1;37;40mQue pieza desea mover? (fila)   "))
+               while True:
+                  try:
+                     inicio = int(input("\033[1;37;40mQue pieza desea mover? (fila)   "))
+                     break
+                  except ValueError:
+                     print("Solo numero enteros entre 1 y 9")
                if(inicio<10 and inicio>0):
                   break
                print("debe ingresar un valor entre 1 y 9")
             while True:
-               inicio2 = int(input("\033[1;37;40mQue pieza desea mover? (columna)  "))
+               while True:
+                  try:
+                     inicio2 = int(input("\033[1;37;40mQue pieza desea mover? (columna)  "))
+                     break
+                  except ValueError:
+                     print("Solo numero enteros entre 1 y 9")
+                     
                if(inicio2<10 and inicio2>0):
                   break
                print("debe ingresar un valor entre 1 y 9")
@@ -1006,12 +1175,22 @@ while(terminar == 0):
         while (reiniciar==1):
             reiniciar = 0
             while True:
-               final = int(input("A donde la quiere mover? (fila)   "))
+               while True:
+                  try:
+                     final = int(input("A donde la quiere mover? (fila)   "))
+                     break
+                  except ValueError:
+                     print("Solo numeros enteros entre 1 y 9")
                if(final<10 and final>0):
                   break
                print("debe ingresar un valor entre 1 y 9")
-            while True:   
-               final2 = int(input("A donde la quiere mover? (columna)   "))
+            while True:
+               while True:
+                  try:
+                     final2 = int(input("A donde la quiere mover? (columna)   "))
+                     break
+                  except ValueError:
+                     print("Solo numeros enteros entre 1 y 9")
                if(final2<10 and final2>0):
                   break
                print("debe ingresar un valor entre 1 y 9")
@@ -1027,7 +1206,8 @@ while(terminar == 0):
                 reiniciar = 1
             if(tablero[inicio][inicio2]/100==1.11 and (final-inicio<-2 or final-inicio>2 or final2-inicio2<-2 or final2-inicio2>2)):
                print("los militantes solo pueden moverse una o dos casillas")
-               reiniciar =1 
+               reiniciar =1
+               #movimientos
             if(inicio2==final2):
                vertical=1
                print("", end ="")
@@ -1048,6 +1228,7 @@ while(terminar == 0):
                diagonal=4
             else:   
                print("Las piezas solo se pueden mover de manera vertical, horizontal o diagonal")
+               
                reiniciar=1
             com=int(tablero[inicio][inicio2]/100)    
             if(tablero[final][final2]!=0 and tablero[final][final2]%10==0 and com!=2):
@@ -1139,13 +1320,23 @@ while(terminar == 0):
               tablero[inicio][inicio2] = 0
               actualizar()
               while True:
-                  filam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (fila)   "))
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (fila)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numero enteros entre 1 y 9")
                   if(filam<10 and filam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
                   reiniciar=0
               while True:
-                  columnam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (columna)   "))
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (columna)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numero enteros entre 1 y 9")
                   if(columnam<10 and columnam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
@@ -1165,13 +1356,23 @@ while(terminar == 0):
               tablero[inicio][inicio2] = 0
               actualizar()
               while True:
-                  filam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (fila)   "))
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (fila)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numero enteros entre 1 y 9")
                   if(filam<10 and filam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
                   reiniciar=0
               while True:
-                  columnam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (columna)   "))
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (columna)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                   if(columnam<10 and columnam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
@@ -1192,13 +1393,23 @@ while(terminar == 0):
               temporal=tablero[final][final2]-1
               tablero[final][final2] = tablero[inicio][inicio2]
               while True:
-                  filam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (fila)   "))
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (fila)   "))
+                        break
+                     except ValueError:
+                        print("debes ingresar un numero entero entre 1 y 9")
                   if(filam<10 and filam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
                   reiniciar=0
               while True:
-                  columnam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (columna)   "))
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (columna)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                   if(columnam<10 and columnam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
@@ -1222,13 +1433,23 @@ while(terminar == 0):
               temporal=tablero[final][final2]-1
               tablero[final][final2] = tablero[inicio][inicio2]
               while True:
-                  filam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (fila)   "))
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (fila)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                   if(filam<10 and filam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
                   reiniciar=0
               while True:
-                  columnam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (columna)   "))
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (columna)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                   if(columnam<10 and columnam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
@@ -1236,13 +1457,19 @@ while(terminar == 0):
 
               if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
                  print("las piezas muertas solo pueden ocupar lugares vacios y no se pueden poner en el centro")
+           tablero[inicio][inicio2]=0 
            tablero[filam][columnam] = temporal
          #comer con reportero
         if(pieza==3):
            actualizar()
            reiniciar==0
-           while True: 
-              cr= int(input("\033[1;37;40mdesea comer alguna pieza con el reportero? (1.-si 0.-no )   "))
+           while True:
+              while True:
+                 try:
+                    cr= int(input("\033[1;37;40mdesea comer alguna pieza con el reportero? (1.-si 0.-no )   "))
+                    break
+                 except ValueError:
+                     print("Solo se pueden ingresar numeros enteros entre 1 y 9")
               if(cr==0 or cr==1):
                   break
               print("debe ingresar 1 o 0")
@@ -1250,13 +1477,23 @@ while(terminar == 0):
                while (reiniciar==0):
                  reiniciar=1 
                  while True:
-                    filam = int(input("\033[1;37;40mQue pieza desea comer? (fila)   "))
+                    while True:
+                       try:
+                          filam = int(input("\033[1;37;40mQue pieza desea comer? (fila)   "))
+                          break
+                       except VauleError:
+                           print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                     if(filam<10 and filam>0):
                        break
                     print("debe ingresar un valor entre 1 y 9")
                     reiniciar=0
                  while True:
-                    columnam = int(input("\033[1;37;40mQue pieza desea comer? (columna)  "))
+                    while True:
+                       try:
+                          columnam = int(input("\033[1;37;40mQue pieza desea comer? (columna)  "))
+                          break
+                       except ValueError:
+                           print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                     if(columnam<10 and columnam>0):
                        break
                     print("debe ingresar un valor entre 1 y 9")
@@ -1272,7 +1509,7 @@ while(terminar == 0):
                  if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
                     print("no puedes comer piezan muertas")
                     reiniciar=0
-               
+               tablero[inicio][inicio2]=0 
                tablero[filam][columnam] = tablero[filam][columnam]-1
               
         #comer con asesino
@@ -1310,19 +1547,31 @@ while(terminar == 0):
                     tablero[x][y]=tablero[x][y]+suma
                  if(pieza==6 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
-               
+                   
+        
         
     if(turnos == 4 and sr4==1):
         reiniciar = 0
         while(reiniciar == 0):
             reiniciar = 1
             while True:
-               inicio = int(input("\033[1;37;40mQue pieza desea mover? (fila)   "))
+               while True:
+                  try:
+                     inicio = int(input("\033[1;37;40mQue pieza desea mover? (fila)   "))
+                     break
+                  except ValueError:
+                     print("Solo numero enteros entre 1 y 9")
                if(inicio<10 and inicio>0):
                   break
                print("debe ingresar un valor entre 1 y 9")
             while True:
-               inicio2 = int(input("\033[1;37;40mQue pieza desea mover? (columna)  "))
+               while True:
+                  try:
+                     inicio2 = int(input("\033[1;37;40mQue pieza desea mover? (columna)  "))
+                     break
+                  except ValueError:
+                     print("Solo numero enteros entre 1 y 9")
+                     
                if(inicio2<10 and inicio2>0):
                   break
                print("debe ingresar un valor entre 1 y 9")
@@ -1351,12 +1600,22 @@ while(terminar == 0):
         while (reiniciar==1):
             reiniciar = 0
             while True:
-               final = int(input("A donde la quiere mover? (fila)   "))
+               while True:
+                  try:
+                     final = int(input("A donde la quiere mover? (fila)   "))
+                     break
+                  except ValueError:
+                     print("Solo numeros enteros entre 1 y 9")
                if(final<10 and final>0):
                   break
                print("debe ingresar un valor entre 1 y 9")
-            while True:   
-               final2 = int(input("A donde la quiere mover? (columna)   "))
+            while True:
+               while True:
+                  try:
+                     final2 = int(input("A donde la quiere mover? (columna)   "))
+                     break
+                  except ValueError:
+                     print("Solo numeros enteros entre 1 y 9")
                if(final2<10 and final2>0):
                   break
                print("debe ingresar un valor entre 1 y 9")
@@ -1372,7 +1631,8 @@ while(terminar == 0):
                 reiniciar = 1
             if(tablero[inicio][inicio2]/100==1.11 and (final-inicio<-2 or final-inicio>2 or final2-inicio2<-2 or final2-inicio2>2)):
                print("los militantes solo pueden moverse una o dos casillas")
-               reiniciar =1 
+               reiniciar =1
+               #movimientos
             if(inicio2==final2):
                vertical=1
                print("", end ="")
@@ -1393,6 +1653,7 @@ while(terminar == 0):
                diagonal=4
             else:   
                print("Las piezas solo se pueden mover de manera vertical, horizontal o diagonal")
+               
                reiniciar=1
             com=int(tablero[inicio][inicio2]/100)    
             if(tablero[final][final2]!=0 and tablero[final][final2]%10==0 and com!=2):
@@ -1484,13 +1745,23 @@ while(terminar == 0):
               tablero[inicio][inicio2] = 0
               actualizar()
               while True:
-                  filam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (fila)   "))
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (fila)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numero enteros entre 1 y 9")
                   if(filam<10 and filam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
                   reiniciar=0
               while True:
-                  columnam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (columna)   "))
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (columna)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numero enteros entre 1 y 9")
                   if(columnam<10 and columnam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
@@ -1510,13 +1781,23 @@ while(terminar == 0):
               tablero[inicio][inicio2] = 0
               actualizar()
               while True:
-                  filam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (fila)   "))
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (fila)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numero enteros entre 1 y 9")
                   if(filam<10 and filam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
                   reiniciar=0
               while True:
-                  columnam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (columna)   "))
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma donde desea mover la pieza sobre la que esta? (columna)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                   if(columnam<10 and columnam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
@@ -1537,13 +1818,23 @@ while(terminar == 0):
               temporal=tablero[final][final2]-1
               tablero[final][final2] = tablero[inicio][inicio2]
               while True:
-                  filam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (fila)   "))
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (fila)   "))
+                        break
+                     except ValueError:
+                        print("debes ingresar un numero entero entre 1 y 9")
                   if(filam<10 and filam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
                   reiniciar=0
               while True:
-                  columnam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (columna)   "))
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (columna)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                   if(columnam<10 and columnam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
@@ -1567,13 +1858,23 @@ while(terminar == 0):
               temporal=tablero[final][final2]-1
               tablero[final][final2] = tablero[inicio][inicio2]
               while True:
-                  filam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (fila)   "))
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (fila)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                   if(filam<10 and filam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
                   reiniciar=0
               while True:
-                  columnam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (columna)   "))
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma donde desea mover la pieza muerta? (columna)   "))
+                        break
+                     except ValueError:
+                        print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                   if(columnam<10 and columnam>0):
                      break
                   print("debe ingresar un valor entre 1 y 9")
@@ -1581,13 +1882,19 @@ while(terminar == 0):
 
               if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
                  print("las piezas muertas solo pueden ocupar lugares vacios y no se pueden poner en el centro")
+           tablero[inicio][inicio2]=0 
            tablero[filam][columnam] = temporal
          #comer con reportero
         if(pieza==3):
            actualizar()
            reiniciar==0
-           while True: 
-              cr= int(input("\033[1;37;40mdesea comer alguna pieza con el reportero? (1.-si 0.-no )   "))
+           while True:
+              while True:
+                 try:
+                    cr= int(input("\033[1;37;40mdesea comer alguna pieza con el reportero? (1.-si 0.-no )   "))
+                    break
+                 except ValueError:
+                     print("Solo se pueden ingresar numeros enteros entre 1 y 9")
               if(cr==0 or cr==1):
                   break
               print("debe ingresar 1 o 0")
@@ -1595,13 +1902,23 @@ while(terminar == 0):
                while (reiniciar==0):
                  reiniciar=1 
                  while True:
-                    filam = int(input("\033[1;37;40mQue pieza desea comer? (fila)   "))
+                    while True:
+                       try:
+                          filam = int(input("\033[1;37;40mQue pieza desea comer? (fila)   "))
+                          break
+                       except VauleError:
+                           print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                     if(filam<10 and filam>0):
                        break
                     print("debe ingresar un valor entre 1 y 9")
                     reiniciar=0
                  while True:
-                    columnam = int(input("\033[1;37;40mQue pieza desea comer? (columna)  "))
+                    while True:
+                       try:
+                          columnam = int(input("\033[1;37;40mQue pieza desea comer? (columna)  "))
+                          break
+                       except ValueError:
+                           print("Solo se pueden ingresar numeros enteros entre 1 y 9")
                     if(columnam<10 and columnam>0):
                        break
                     print("debe ingresar un valor entre 1 y 9")
@@ -1617,7 +1934,7 @@ while(terminar == 0):
                  if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
                     print("no puedes comer piezan muertas")
                     reiniciar=0
-               
+               tablero[inicio][inicio2]=0 
                tablero[filam][columnam] = tablero[filam][columnam]-1
               
         #comer con asesino
@@ -1655,6 +1972,8 @@ while(terminar == 0):
                     tablero[x][y]=tablero[x][y]+suma
                  if(pieza==6 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
+                   
+        
 
                 
     if(tablero[5][5]!=0):
