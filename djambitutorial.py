@@ -120,7 +120,7 @@ ____   _                 _     _
     |__/                         
 
 """)
-print("Matar a los demás líderes enemigos con el uso de las diferentes piezas o estrategias entre jugadores como alianzas de manera informal. \n")
+print("Objetivo: \nMatar a los demás líderes enemigos con el uso de las diferentes piezas o estrategias entre jugadores como alianzas de manera informal. \n")
 print("La letra M en el tablero Representa a los Militantes.\n")
 for x in range (0,10):
     for y in range (0,10):
