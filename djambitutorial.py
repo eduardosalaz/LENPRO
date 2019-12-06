@@ -118,10 +118,11 @@ tablero[9][9]=541
 #MOVIMIENTO DE MILITANTE
 impresion_pantalla()
 print("Objetivo: \nCapturar a los demás líderes enemigos con el uso de las diferentes piezas o estrategias entre jugadores como alianzas de manera informal. \n")
-print("Movimientos del djambi: \nCada jugador moverá una pieza en su turno, con la posibilidad de capturar en este movimiento a una ficha contraria. \n")
+print("Movimientos: \nCada jugador moverá una pieza en su turno, con la posibilidad de capturar en este movimiento a una ficha contraria. \nNinguna ficha puede saltar sobre otra (viva o muerta)\n")
+print("Capturas: \n Para capturar una pieza enemiga, debes posar una de las piezas que tienen permitido capturar, y colocar a la pieza muerta en una casilla distinta a la central. \n")
 mensaje_salida()
 impresion_pantalla()
-print("La letra M en el tablero Representa a los Militantes.\n")
+print("La letra M en el tablero Representa a los Militantes.\nLos militantes pueden moverse en las 8 direcciones marcadas, con un máximo de 2 casillas.\nNo pueden capturar al líder. \n")
 for x in range (0,10):
     for y in range (0,10):
         pieza=int(tablero[x][y]/100)   
@@ -157,7 +158,8 @@ for x in range (0,10):
 mensaje_salida()
 #MOVIMIENTO DE LIDER
 impresion_pantalla()
-print("La letra L en el tablero Representa a los lideres.\n")
+print("La letra L en el tablero Representa a los lideres.\n Los líderes pueden moverse en las 8 direcciones marcadas, con un máximo de 8 casillas. \n")
+print("El líder es la pieza mas importante de Djambi, ya que tiene la capacidad de entrar a la casilla central, lo que le permite al jugador volver a hacer un movimiento después del turno de cada uno de sus adversarios. \n ")
 for x in range (0,10):
     for y in range (0,10):
         pieza=int(tablero[x][y]/100)   
