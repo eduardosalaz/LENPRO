@@ -153,7 +153,7 @@ for x in range (0,10):
          
         
               
-    print("\n")
+    print("\033[1;37;40m\n")
 mensaje_salida()
 #MOVIMIENTO DE LIDER
 impresion_pantalla()
@@ -189,7 +189,7 @@ for x in range (0,10):
            
         
               
-    print("\n")
+    print("\033[1;37;40m\n")
 mensaje_salida()
 #MOVIMIENTO DE ASESINO
 impresion_pantalla()
@@ -203,13 +203,21 @@ for x in range (0,10):
             if (color==1 and status==1):
                 print("\033[1;34;40m A", end ="")
             elif(color==2 and status==1):
-                print ("\033[1;31;40m A", end ="")
+                print ("\033[1;36;40m 0", end ="")
             elif(color==3 and status==1):
-                print ("\033[1;33;40m A", end ="")   
+                print ("\033[1;36;40m 0", end ="")   
             elif(color==4 and status==1):
-                print ("\033[1;32;40m A", end ="")
+                print ("\033[1;37;40m 0", end ="")
             elif(status==0):
-                print ("\033[1;35;40m A", end ="")    
+                print ("\033[1;35;40m 0", end ="")
+        elif(x==1 and y==0 or x==0 and y==1):
+            print("\033[1;37;40m",tablero[x][y], end="")    
+        elif((x==2 and y==1) or (x+1==y)):
+            print("\033[1;36;40m 0", end="")                
+        elif(x==1 and y>1 and y<10):   
+            print("\033[1;36;40m 0", end="")
+        elif(y==2 and x>1 or (x<2 and x>0)):   
+            print("\033[1;36;40m 0", end="")            
         elif (x==5 and y==5):
             print ("\033[1;36;40m 0", end="")
         elif (pieza!=6 and pieza !=0):
@@ -219,7 +227,7 @@ for x in range (0,10):
            
         
               
-    print("\n")
+    print("\033[1;37;40m\n")
 mensaje_salida()
 #MOVIMIENTO DE NECROMÓVIL
 impresion_pantalla()
@@ -233,13 +241,21 @@ for x in range (0,10):
             if (color==1 and status==1):
                 print("\033[1;34;40m N", end ="")
             elif(color==2 and status==1):
-                print ("\033[1;31;40m N", end ="")
+                print ("\033[1;36;40m 0", end ="")
             elif(color==3 and status==1):
-                print ("\033[1;33;40m N", end ="")   
+                print ("\033[1;36;40m 0", end ="")   
             elif(color==4 and status==1):
-                print ("\033[1;32;40m N", end ="")
+                print ("\033[1;36;40m 0", end ="")
             elif(status==0):
-                print ("\033[1;35;40m N", end ="")    
+                print ("\033[1;35;40m N", end ="")
+        elif(x==2 and y==4 or x==1 and y==5 or x==4 and y==2 or x==5 and y==1):
+            print ("\033[1;36;40m 0", end ="")        
+        elif(x==y and x>0):
+            print ("\033[1;36;40m 0", end ="")
+        elif(x==3 and x>0 and y>0):
+            print ("\033[1;36;40m 0", end ="")
+        elif(y==3 and y>0 and x>0):
+            print ("\033[1;36;40m N", end ="")                    
         elif (x==5 and y==5):
             print ("\033[1;36;40m 0", end="")
         elif (pieza!=2 and pieza !=0):
@@ -249,7 +265,7 @@ for x in range (0,10):
            
         
               
-    print("\n")
+    print("\033[1;37;40m\n")
 mensaje_salida()
 #MOVIMIENTO DE reportero
 impresion_pantalla()
@@ -263,13 +279,17 @@ for x in range (0,10):
             if (color==1 and status==1):
                 print("\033[1;34;40m R", end ="")
             elif(color==2 and status==1):
-                print ("\033[1;31;40m R", end ="")
+                print ("\033[1;36;40m 0", end ="")
             elif(color==3 and status==1):
-                print ("\033[1;33;40m R", end ="")   
+                print ("\033[1;36;40m 0", end ="")   
             elif(color==4 and status==1):
-                print ("\033[1;32;40m R", end ="")
+                print ("\033[1;37;40m 0", end ="")
             elif(status==0):
-                print ("\033[1;35;40m R", end ="")    
+                print ("\033[1;35;40m 0", end ="")   
+        elif(y==1 and x>0):
+            print ("\033[1;36;40m 0", end ="")
+        elif(x==2 and y>0):
+            print ("\033[1;36;40m 0", end ="")              
         elif (x==5 and y==5):
             print ("\033[1;36;40m 0", end="")
         elif (pieza!=3 and pieza !=0):
@@ -279,7 +299,7 @@ for x in range (0,10):
            
         
               
-    print("\n")
+    print("\033[1;37;40m\n")
 mensaje_salida()
 #MOVIMIENTO DE provocador
 impresion_pantalla()
@@ -309,5 +329,5 @@ for x in range (0,10):
            
         
               
-    print("\n")
+    print("\033[1;37;40m\n")
 mensaje_salida()
