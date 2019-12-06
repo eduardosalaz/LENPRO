@@ -25,7 +25,8 @@ LAM
 Inicio del menu
 '''
 print("     Bienvenido a Djambi.\n")
-print(r"""
+def impresion_pantalla():
+    print(r"""
 ____   _                 _     _ 
 |  _ \(_) __ _ _ __ ___ | |__ (_)
 | | | | |/ _` | '_ ` _ \| '_ \| |
@@ -34,8 +35,12 @@ ____   _                 _     _
     |__/                         
 
 """)
-input("\nPresione la tecla intro para continuar...")
-clear()
+
+
+def mensaje_salida():
+    input("\nPresione la tecla intro para continuar...")
+    clear()
+
 
 tablero=[]
  
@@ -111,18 +116,11 @@ tablero[9][7]=141
 tablero[9][8]=641
 tablero[9][9]=541
 #MOVIMIENTO DE MILITANTE
-print(r"""
-____   _                 _     _ 
-|  _ \(_) __ _ _ __ ___ | |__ (_)
-| | | | |/ _` | '_ ` _ \| '_ \| |
-| |_| | | (_| | | | | | | |_) | |
-|____// |\__,_|_| |_| |_|_.__/|_|
-    |__/                         
-
-""")
+impresion_pantalla()
 print("Objetivo: \nCapturar a los demás líderes enemigos con el uso de las diferentes piezas o estrategias entre jugadores como alianzas de manera informal. \n")
 print("Movimientos del djambi: \nCada jugador moverá una pieza en su turno, con la posibilidad de capturar en este movimiento a una ficha contraria. \n")
-clear()
+mensaje_salida()
+impresion_pantalla()
 print("La letra M en el tablero Representa a los Militantes.\n")
 for x in range (0,10):
     for y in range (0,10):
@@ -156,18 +154,9 @@ for x in range (0,10):
         
               
     print("\n")
-input("Presione la tecla intro para continuar...")
-clear()
+mensaje_salida()
 #MOVIMIENTO DE LIDER
-print(r"""
-____   _                 _     _ 
-|  _ \(_) __ _ _ __ ___ | |__ (_)
-| | | | |/ _` | '_ ` _ \| '_ \| |
-| |_| | | (_| | | | | | | |_) | |
-|____// |\__,_|_| |_| |_|_.__/|_|
-    |__/                         
-
-""")
+impresion_pantalla()
 print("La letra L en el tablero Representa a los lideres.\n")
 for x in range (0,10):
     for y in range (0,10):
@@ -201,18 +190,9 @@ for x in range (0,10):
         
               
     print("\n")
-input("\033[1;37;40mPresione la tecla intro para continuar...")
-clear()
+mensaje_salida()
 #MOVIMIENTO DE ASESINO
-print(r"""
-____   _                 _     _ 
-|  _ \(_) __ _ _ __ ___ | |__ (_)
-| | | | |/ _` | '_ ` _ \| '_ \| |
-| |_| | | (_| | | | | | | |_) | |
-|____// |\__,_|_| |_| |_|_.__/|_|
-    |__/                         
-
-""")
+impresion_pantalla()
 print("La letra A en el tablero Representa a los Asesinos.\n")
 for x in range (0,10):
     for y in range (0,10):
@@ -240,18 +220,9 @@ for x in range (0,10):
         
               
     print("\n")
-input("Presione la tecla intro para continuar...")
-clear()
+mensaje_salida()
 #MOVIMIENTO DE NECROMÓVIL
-print(r"""
-____   _                 _     _ 
-|  _ \(_) __ _ _ __ ___ | |__ (_)
-| | | | |/ _` | '_ ` _ \| '_ \| |
-| |_| | | (_| | | | | | | |_) | |
-|____// |\__,_|_| |_| |_|_.__/|_|
-    |__/                         
-
-""")
+impresion_pantalla()
 print("La letra N en el tablero Representa a los Necromóviles.\n")
 for x in range (0,10):
     for y in range (0,10):
@@ -279,18 +250,9 @@ for x in range (0,10):
         
               
     print("\n")
-input("Presione la tecla intro para continuar...")
-clear()
+mensaje_salida()
 #MOVIMIENTO DE reportero
-print(r"""
-____   _                 _     _ 
-|  _ \(_) __ _ _ __ ___ | |__ (_)
-| | | | |/ _` | '_ ` _ \| '_ \| |
-| |_| | | (_| | | | | | | |_) | |
-|____// |\__,_|_| |_| |_|_.__/|_|
-    |__/                         
-
-""")
+impresion_pantalla()
 print("La letra R en el tablero Representa a los Reporteros.\n")
 for x in range (0,10):
     for y in range (0,10):
@@ -318,18 +280,9 @@ for x in range (0,10):
         
               
     print("\n")
-input("Presione la tecla intro para continuar...")
-clear()
+mensaje_salida()
 #MOVIMIENTO DE provocador
-print(r"""
-____   _                 _     _ 
-|  _ \(_) __ _ _ __ ___ | |__ (_)
-| | | | |/ _` | '_ ` _ \| '_ \| |
-| |_| | | (_| | | | | | | |_) | |
-|____// |\__,_|_| |_| |_|_.__/|_|
-    |__/                         
-
-""")
+impresion_pantalla()
 print("La letra P en el tablero Representa a los Provocadores.\n")
 for x in range (0,10):
     for y in range (0,10):
@@ -357,4 +310,4 @@ for x in range (0,10):
         
               
     print("\n")
-input("Presione la tecla intro para continuar...")
+mensaje_salida()
