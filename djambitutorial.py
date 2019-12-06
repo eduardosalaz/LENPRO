@@ -120,6 +120,7 @@ ____   _                 _     _
     |__/                         
 
 """)
+print("Matar a los demás líderes enemigos con el uso de las diferentes piezas o estrategias entre jugadores como alianzas de manera informal. \n")
 print("La letra M en el tablero Representa a los Militantes.\n")
 for x in range (0,10):
     for y in range (0,10):
@@ -127,14 +128,16 @@ for x in range (0,10):
         color=int((tablero[x][y]%100)/10)
         status=int(tablero[x][y]%10)
         if (pieza==1):
-            if (color==1 and status==1):
+            if (color==1 and status==1 and x ==1):
                 print("\033[1;34;40m M", end ="")
+            elif (color==1 and status==1 and x !=1):
+                print("\033[1;37;40m 0", end ="")
             elif(color==2 and status==1):
-                print ("\033[1;31;40m M", end ="")
+                print ("\033[1;37;40m 0", end ="")
             elif(color==3 and status==1):
-                print ("\033[1;33;40m M", end ="")   
+                print ("\033[1;37;40m 0", end ="")   
             elif(color==4 and status==1):
-                print ("\033[1;32;40m M", end ="")
+                print ("\033[1;37;40m 0", end ="")
             elif(status==0):
                 print ("\033[1;35;40m M", end ="")    
         elif (x==5 and y==5):
