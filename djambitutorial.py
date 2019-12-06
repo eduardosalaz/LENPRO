@@ -141,7 +141,12 @@ for x in range (0,10):
             elif(color==4 and status==1):
                 print ("\033[1;37;40m 0", end ="")
             elif(status==0):
-                print ("\033[1;35;40m M", end ="")    
+                print ("\033[1;35;40m M", end ="")  
+        elif(x==1 and ((y<3 and y>0) or y>3)):   
+            print("\033[1;36;40m 0", end="")
+        elif(y==3 and x>1):   
+            print("\033[1;36;40m 0", end="") 
+                     
         elif (x==5 and y==5):
             print ("\033[1;36;40m 0", end="")
         elif (pieza!=1 and pieza !=0):
@@ -185,8 +190,8 @@ for x in range (0,10):
             print("\033[1;36;40m 0", end="")
         elif(y==1 and x>1 and x<10):   
             print("\033[1;36;40m 0", end="") 
-        elif(x==y):
-            print()                 
+        elif(x==y and x>1):
+            print("\033[1;36;40m 0", end="")                 
         elif (x==5 and y==5):
             print ("\033[1;36;40m ", end="")
         elif (pieza!=5 and pieza !=0):
