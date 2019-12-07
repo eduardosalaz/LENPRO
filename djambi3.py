@@ -9,6 +9,7 @@ terminar = 0
 poder=0
 contadorpoder=0
 contadorturnos=1
+r=0
 
 '''
 MMN
@@ -126,9 +127,9 @@ tablero[9][8]=641
 tablero[9][9]=541
 #MOVIMIENTO DE MILITANTE
 impresion_pantalla()
-print("Objetivo: \nCapturar a los demás líderes enemigos con el uso de las diferentes piezas o estrategias entre jugadores como alianzas de manera informal. \n")
-print("Movimientos: \nCada jugador moverá una pieza en su turno, con la posibilidad de capturar en este movimiento a una ficha contraria. \nNinguna ficha puede saltar sobre otra (viva o muerta)\n")
-print("Capturas: \n Para capturar una pieza enemiga, debes posar una de las piezas que tienen permitido capturar, y colocar a la pieza muerta en una casilla distinta a la central. \n")
+print("Objetivo:\nCapturar a los demás líderes enemigos con el uso de las diferentes piezas o estrategias entre jugadores como alianzas de manera informal. \n")
+print("Movimientos:\nCada jugador moverá una pieza en su turno, con la posibilidad de capturar en este movimiento a una ficha contraria. \nNinguna ficha puede saltar sobre otra (viva o capturada)\n")
+print("Capturas:\nPara capturar una pieza enemiga, debes posar una de las piezas que tienen permitido capturar, y colocar a la pieza capturada en una casilla distinta a la central. \n")
 mensaje_salida()
 impresion_pantalla()
 print("La letra M en el tablero Representa a los Militantes.\nLos militantes pueden moverse en las 8 direcciones marcadas, con un máximo de 2 casillas.\nNo pueden capturar al líder. \n")
@@ -138,11 +139,14 @@ for x in range (0,10):
         color=int((tablero[x][y]%100)/10)
         status=int(tablero[x][y]%10)
         if (pieza==1):
-            if (color==1 and status==1 and x ==1):
+            if(x==3 and y==1):
+                print("\033[1;36;40m 0", end ="")
+                r=1    
+            elif(color==1 and status==1 and x ==1):
                 print("\033[1;34;40m M", end ="")
             elif (color==1 and status==1 and x !=1 and x!=2):
                 print("\033[1;37;40m 0", end ="")
-            elif (color==1 and status==1 and x !=1):
+            elif (color==1 and status==1 and x !=1 and y!=1):
                 print("\033[1;36;40m 0", end ="")    
             elif(color==2 and status==1):
                 print ("\033[1;37;40m 0", end ="")
@@ -152,6 +156,8 @@ for x in range (0,10):
                 print ("\033[1;37;40m 0", end ="")
             elif(status==0):
                 print ("\033[1;35;40m M", end ="") 
+        elif(r==0 and  x==2 and y==2 or x==2 and y==4 or x==3 and y==5 ):        
+             print ("\033[1;36;40m 0", end ="")    
         elif((x==1 and y==1)or(x==1 and y==2) or(x==1 and y==4) or(x==1 and y==5) or(x==2 and y==3)or(x==3 and y==3)):    
              print ("\033[1;36;40m 0", end ="")               
         elif (x==5 and y==5):
