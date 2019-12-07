@@ -357,7 +357,7 @@ for x in range (0,10):
 mensaje_salida()
 def actualizar():
     clear()
-    print("L = Líder. M = Militante. A = Asesino. R = Reportero. P = Provocador. N = Necromóvil.   Solo se pueden ingresar numeros enteros del 1 al 9\n")
+    print("L = Líder. M = Militante. A = Asesino. R = Reportero. P = Provocador. N = Necromóvil.\nSolo se pueden ingresar numeros enteros del 1 al 9.\n")
     
     for x in range (0,10):
        for y in range (0,10):
