@@ -494,7 +494,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio = int(input("\033[1;37;40mIngrese el número de la fila en la que se ubica la pieza que desea mover."))
+                     inicio = int(input("\033[1;37;40mIngrese el número (en dígito) de la fila en la que se ubica la pieza que desea mover."))
                      break
                   except ValueError:
                      print("Sólo números enteros entre 1 y 9.")
@@ -504,7 +504,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio2 = int(input("\033[1;37;40mIngrese el número de la columna en la que se ubica la pieza que desea mover"))
+                     inicio2 = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que desea mover"))
                      break
                   except ValueError:
                      print("Sólo numero enteros entre 1 y 9.")
@@ -539,7 +539,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     final = int(input("Ingrese el número de la fila en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
+                     final = int(input("Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
                      break
                   except ValueError:
                      print("Sólo numeros enteros entre 1 y 9.")
@@ -549,7 +549,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     final2 = int(input("Ingrese el número de la columna en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
+                     final2 = int(input("Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
                      break
                   except ValueError:
                      print("Sólo numeros enteros entre 1 y 9.")
@@ -678,7 +678,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
                         break
                      except ValueError:
                         print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
@@ -689,7 +689,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
                         break
                      except ValueError:
                         print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
@@ -714,7 +714,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
                         break
                      except ValueError:
                         print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
@@ -725,7 +725,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
                         break
                      except ValueError:
                         print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
@@ -751,7 +751,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."))
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."))
                         break
                      except ValueError:
                         print("Debes ingresar un numero entero entre 1 y 9.")
@@ -762,7 +762,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
 ))
                         break
                      except ValueError:
@@ -792,7 +792,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
 ))
                         break
                      except ValueError:
@@ -804,7 +804,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
 ))
                         break
                      except ValueError:
@@ -838,7 +838,7 @@ while(terminar == 0):
                  while True:
                     while True:
                        try:
-                          filam = int(input("\033[1;37;40m Ingrese el número de la fila en la que se ubica la pieza que quiere capturar."
+                          filam = int(input("\033[1;37;40m Ingrese el número (en dígito) de la fila en la que se ubica la pieza que quiere capturar."
 ))
                           break
                        except ValueError:
@@ -850,7 +850,7 @@ while(terminar == 0):
                  while True:
                     while True:
                        try:
-                          columnam = int(input("\033[1;37;40mIngrese el número de la columna en la que se ubica la pieza que quiere capturar."
+                          columnam = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que quiere capturar."
 ))
                           break
                        except ValueError:
@@ -922,7 +922,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio = int(input("\033[1;37;40mIngrese el número de la fila en la que se ubica la pieza que desea mover."))
+                     inicio = int(input("\033[1;37;40mIngrese el número (en dígito) de la fila en la que se ubica la pieza que desea mover."))
                      break
                   except ValueError:
                      print("Sólo numero enteros entre 1 y 9.")
@@ -932,7 +932,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio2 = int(input("\033[1;37;40mIngrese el número de la columna en la que se ubica la pieza que desea mover"))
+                     inicio2 = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que desea mover"))
                      break
                   except ValueError:
                      print("Sólo numero enteros entre 1 y 9.")
@@ -967,7 +967,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     final = int(input("Ingrese el número de la fila en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
+                     final = int(input("Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
                      break
                   except ValueError:
                      print("Sólo números enteros entre 1 y 9.")
@@ -977,7 +977,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     final2 = int(input("Ingrese el número de la columna en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
+                     final2 = int(input("Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
                      break
                   except ValueError:
                      print("Sólo números enteros entre 1 y 9.")
@@ -1112,7 +1112,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
                         break
                      except ValueError:
                         print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
@@ -1123,7 +1123,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
                         break
                      except ValueError:
                         print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
@@ -1148,7 +1148,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
                         break
                      except ValueError:
                         print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
@@ -1159,7 +1159,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
                         break
                      except ValueError:
                         print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
@@ -1185,7 +1185,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
 ))
                         break
                      except ValueError:
@@ -1197,7 +1197,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
 ))
                         break
                      except ValueError:
@@ -1227,7 +1227,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
 ))
                         break
                      except ValueError:
@@ -1239,7 +1239,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
 ))
                         break
                      except ValueError:
@@ -1273,7 +1273,7 @@ while(terminar == 0):
                  while True:
                     while True:
                        try:
-                          filam = int(input("\033[1;37;40mIngrese el número de la fila en la que se ubica la pieza que quiere capturar."
+                          filam = int(input("\033[1;37;40mIngrese el número (en dígito) de la fila en la que se ubica la pieza que quiere capturar."
 ))
                           break
                        except ValueError:
@@ -1285,7 +1285,7 @@ while(terminar == 0):
                  while True:
                     while True:
                        try:
-                          columnam = int(input("\033[1;37;40mIngrese el número de la columna en la que se ubica la pieza que quiere capturar."
+                          columnam = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que quiere capturar."
 ))
                           break
                        except ValueError:
@@ -1354,7 +1354,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio = int(input("\033[1;37;40mIngrese el número de la fila en la que se ubica la pieza que desea mover."))
+                     inicio = int(input("\033[1;37;40mIngrese el número (en dígito) de la fila en la que se ubica la pieza que desea mover."))
                      break
                   except ValueError:
                      print("Sólo numero enteros entre 1 y 9.")
@@ -1364,7 +1364,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio2 = int(input("\033[1;37;40mIngrese el número de la columna en la que se ubica la pieza que desea mover"))
+                     inicio2 = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que desea mover"))
                      break
                   except ValueError:
                      print("Sólo numero enteros entre 1 y 9.")
@@ -1399,7 +1399,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     final = int(input("Ingrese el número de la fila en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
+                     final = int(input("Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
                      break
                   except ValueError:
                      print("Sólo números enteros entre 1 y 9.")
@@ -1409,7 +1409,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     final2 = int(input("Ingrese el número de la columna en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
+                     final2 = int(input("Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
                      break
                   except ValueError:
                      print("Sólo números enteros entre 1 y 9.")
@@ -1544,7 +1544,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
                         break
                      except ValueError:
                         print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
@@ -1555,7 +1555,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
                         break
                      except ValueError:
                         print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
@@ -1580,7 +1580,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
                         break
                      except ValueError:
                         print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
@@ -1591,7 +1591,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
                         break
                      except ValueError:
                         print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
@@ -1617,7 +1617,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
 ))
                         break
                      except ValueError:
@@ -1629,7 +1629,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
 ))
                         break
                      except ValueError:
@@ -1659,7 +1659,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
 ))
                         break
                      except ValueError:
@@ -1671,7 +1671,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
 ))
                         break
                      except ValueError:
@@ -1705,7 +1705,7 @@ while(terminar == 0):
                  while True:
                     while True:
                        try:
-                          filam = int(input("\033[1;37;40mIngrese el número de la fila en la que se ubica la pieza que quiere capturar."
+                          filam = int(input("\033[1;37;40mIngrese el número (en dígito) de la fila en la que se ubica la pieza que quiere capturar."
 ))
                           break
                        except ValueError:
@@ -1717,7 +1717,7 @@ while(terminar == 0):
                  while True:
                     while True:
                        try:
-                          columnam = int(input("\033[1;37;40mIngrese el número de la columna en la que se ubica la pieza que quiere capturar."
+                          columnam = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que quiere capturar."
 ))
                           break
                        except ValueError:
@@ -1785,7 +1785,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio = int(input("\033[1;37;40mIngrese el número de la fila en la que se ubica la pieza que desea mover."))
+                     inicio = int(input("\033[1;37;40mIngrese el número (en dígito) de la fila en la que se ubica la pieza que desea mover."))
                      break
                   except ValueError:
                      print("Sólo numero enteros entre 1 y 9.")
@@ -1795,7 +1795,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio2 = int(input("\033[1;37;40mIngrese el número de la columna en la que se ubica la pieza que desea mover."))
+                     inicio2 = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que desea mover."))
                      break
                   except ValueError:
                      print("Sólo numero enteros entre 1 y 9.")
@@ -1830,7 +1830,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     final = int(input("Ingrese el número de la fila en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
+                     final = int(input("Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
                      break
                   except ValueError:
                      print("Sólo números enteros entre 1 y 9.")
@@ -1840,7 +1840,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     final2 = int(input("Ingrese el número de la columna en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
+                     final2 = int(input("Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
                      break
                   except ValueError:
                      print("Sólo números enteros entre 1 y 9.")
@@ -1975,7 +1975,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
                         break
                      except ValueError:
                         print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
@@ -1986,7 +1986,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
                         break
                      except ValueError:
                         print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
@@ -2011,7 +2011,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
                         break
                      except ValueError:
                         print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
@@ -2022,7 +2022,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
                         break
                      except ValueError:
                         print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
@@ -2048,7 +2048,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
 ))
                         break
                      except ValueError:
@@ -2060,7 +2060,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
 ))
                         break
                      except ValueError:
@@ -2090,7 +2090,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
 ))
                         break
                      except ValueError:
@@ -2102,7 +2102,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
 ))
                         break
                      except ValueError:
@@ -2136,7 +2136,7 @@ while(terminar == 0):
                  while True:
                     while True:
                        try:
-                          filam = int(input("\033[1;37;40mIngrese el número de la fila en la que se ubica la pieza que quiere capturar."
+                          filam = int(input("\033[1;37;40mIngrese el número (en dígito) de la fila en la que se ubica la pieza que quiere capturar."
 ))
                           break
                        except ValueError:
@@ -2148,7 +2148,7 @@ while(terminar == 0):
                  while True:
                     while True:
                        try:
-                          columnam = int(input("\033[1;37;40mIngrese el número de la columna en la que se ubica la pieza que quiere capturar."
+                          columnam = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que quiere capturar."
 ))
                           break
                        except ValueError:
