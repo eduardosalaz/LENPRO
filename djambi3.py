@@ -331,7 +331,7 @@ for x in range (0,10):
         status=int(tablero[x][y]%10)
         if (pieza==4):
             if (color==1 and status==1):
-                print("\033[1;36;40m P", end ="")
+                print("\033[1;34;40m P", end ="")
             elif(color==2 and status==1):
                 print ("\033[1;36;40m 0", end ="")
             elif(color==3 and status==1):
