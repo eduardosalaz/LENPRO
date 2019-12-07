@@ -286,7 +286,7 @@ for x in range (0,10):
 mensaje_salida()
 #MOVIMIENTO DE reportero
 impresion_pantalla()
-print("La letra R en el tablero representa a los reporteros.\nLos reporteros pueden moverse en una de las direcciones marcadas, con un máximo de 8 casillas.\nLos reporteros solo pueden comer piezas adyacentes a ellos, de manera horizontal o vertical, pero nunca en diagonal.\nLLa pieza capturada no se mueve de lugar.\n")
+print("La letra R en el tablero representa a los reporteros.\nLos reporteros pueden moverse en una de las direcciones marcadas, con un máximo de 8 casillas.\nLos reporteros solo pueden comer piezas adyacentes a ellos, de manera horizontal o vertical, pero nunca en diagonal.\nLa pieza capturada no se mueve de lugar.\n")
 for x in range (0,10):
     for y in range (0,10):
         pieza=int(tablero[x][y]/100)   
