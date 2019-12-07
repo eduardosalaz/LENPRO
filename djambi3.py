@@ -132,7 +132,7 @@ print("Movimientos:\nCada jugador moverá una de sus piezas en su turno, con la 
 print("Capturas:\nPara capturar una pieza enemiga, el usuario debe mover una de sus piezas con capacidad de captura a una casilla en la cual pueda capturar una pieza enemiga. Cada pieza captura de manera distinta, lo cual se explicará a detalle más adelante. \n")
 mensaje_salida()
 impresion_pantalla()
-print("La letra M en el tablero Representa a los Militantes, hay 4 militantes por equipo.\nLos militantes pueden moverse en las 8 direcciones marcadas, con un máximo de 2 casillas.\nNo pueden capturar al líder. \n El militante marcado de color amarillo muestra los posibles movimientos de un militante.")
+print("La letra M en el tablero representa a los Militantes, hay 4 militantes por equipo.\nLos militantes pueden moverse en una de las direcciones marcadas, con un máximo de 2 casillas.\nNo pueden capturar al líder. \nEl militante marcado de color amarillo muestra los posibles movimientos de un militante.")
 for x in range (0,10):
     for y in range (0,10):
         pieza=int(tablero[x][y]/100)   
@@ -173,7 +173,7 @@ for x in range (0,10):
 mensaje_salida()
 #MOVIMIENTO DE LIDER
 impresion_pantalla()
-print("La letra L en el tablero Representa a los lideres.\n Los líderes pueden moverse en las 8 direcciones marcadas, con un máximo de 8 casillas. \n")
+print("La letra L en el tablero representa a los lideres.\nLos líderes pueden moverse en una de las direcciones marcadas, con un máximo de 8 casillas. \n")
 print("El líder es la pieza mas importante de Djambi, ya que tiene la capacidad de entrar a la casilla central, lo que le permite al jugador volver a hacer un movimiento después del turno de cada uno de sus adversarios. \n ")
 for x in range (0,10):
     for y in range (0,10):
@@ -210,7 +210,7 @@ for x in range (0,10):
 mensaje_salida()
 #MOVIMIENTO DE ASESINO
 impresion_pantalla()
-print("La letra A en el tablero Representa a los Asesinos.\nLos asesinos pueden moverse en las 8 direcciones marcadas, con un máximo de 8 casillas.\nCuando un asesino captura una pieza, se ve obligado a mover a dicha pieza a la posición original del asesino.\n")
+print("La letra A en el tablero representa a los asesinos.\nLos asesinos pueden moverse en una de las direcciones marcadas, con un máximo de 8 casillas.\nCuando un asesino captura una pieza, se ve obligado a mover a dicha pieza a la posición en la que el asesino se encontraba antes de realizar la captura.\n")
 for x in range (0,10):
     for y in range (0,10):
         pieza=int(tablero[x][y]/100)   
@@ -248,7 +248,7 @@ for x in range (0,10):
 mensaje_salida()
 #MOVIMIENTO DE NECROMÓVIL
 impresion_pantalla()
-print("La letra N en el tablero Representa a los Necromóviles.\nLos necromóviles pueden moverse en las 8 direcciones marcadas, con un máximo de 8 casillas.\nLos necromóviles no pueden capturar piezas, pero pueden mover piezas enemigas previamente capturadas\n")
+print("La letra N en el tablero representa a los necromóviles.\nLos necromóviles pueden moverse en una de las direcciones marcadas, con un máximo de 8 casillas.\nLos necromóviles no pueden capturar piezas, pero pueden mover piezas enemigas previamente capturadas a una casilla vacia, excepto la central.\n")
 for x in range (0,10):
     for y in range (0,10):
         pieza=int(tablero[x][y]/100)   
@@ -286,7 +286,7 @@ for x in range (0,10):
 mensaje_salida()
 #MOVIMIENTO DE reportero
 impresion_pantalla()
-print("La letra R en el tablero Representa a los Reporteros.\nLos reporteros pueden moverse en las 8 direcciones marcadas, con un máximo de 8 casillas.\nLos reporteros no pueden capturar de manera diagonal y la pieza capturada permanece en su misma posición.\n")
+print("La letra R en el tablero representa a los reporteros.\nLos reporteros pueden moverse en una de las direcciones marcadas, con un máximo de 8 casillas.\nLos reporteros no pueden capturar de manera diagonal y la pieza capturada permanece en su misma posición.\n")
 for x in range (0,10):
     for y in range (0,10):
         pieza=int(tablero[x][y]/100)   
@@ -323,7 +323,7 @@ for x in range (0,10):
 mensaje_salida()
 #MOVIMIENTO DE provocador
 impresion_pantalla()
-print("La letra P en el tablero Representa a los Provocadores.\nLos provocadores pueden moverse en las 8 direcciones marcadas, con un máximo de 8 casillas.\nLos provocadores no pueden capturar piezas, pero pueden mover piezas enemigas que no han sido capturadas.\n")
+print("La letra P en el tablero representa a los provocadores.\nLos provocadores pueden moverse en una de las direcciones marcadas, con un máximo de 8 casillas.\nLos provocadores no pueden capturar piezas, pero pueden mover piezas enemigas que no han sido capturadas.\n")
 for x in range (0,10):
     for y in range (0,10):
         pieza=int(tablero[x][y]/100)   
