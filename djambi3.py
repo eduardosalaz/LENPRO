@@ -83,7 +83,7 @@ tablero[9][0]=9
 
       
 #Piezas jugador 1
-tablero[1][1]=511
+tablero[1][5]=511
 tablero[1][2]=611  
 tablero[1][3]=111
 tablero[2][1]=311
@@ -94,8 +94,8 @@ tablero[3][2]=111
 tablero[3][3]=211
  
 #Piezas jugador 2
-tablero[1][7]=121
-tablero[1][8]=621  
+tablero[4][4]=121
+tablero[5][6]=621  
 tablero[1][9]=521
 tablero[2][7]=121
 tablero[2][8]=421
@@ -504,7 +504,7 @@ while(terminar == 0):
             while True:
                while True:
                   try:
-                     inicio2 = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que desea mover"))
+                     inicio2 = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que desea mover."))
                      break
                   except ValueError:
                      print("Sólo numero enteros entre 1 y 9.")
@@ -560,7 +560,10 @@ while(terminar == 0):
             if(tablero[final][final2] == tablero[inicio][inicio2] and tablero[final][final2] != 0 ):
                 print("No se puede mover al mismo lugar.")
                 reiniciar = 1
-            if(int(tablero[inicio][inicio2]/100)!=5 and final==5 and final2==5):
+            if(tablero[final][final2]!=0 and int(tablero[inicio][inicio2]/100)==1):
+                print("Los militantes no pueden comer a un lider si este se encuentra en la casilla central.")
+                reiniciar = 1      
+            if(int(tablero[inicio][inicio2]/100)!=5 and final==5 and final2==5 and tablero[final][final2]==0):
                 print("Sólo el líder puede estar en la posicion central.")
                 reiniciar = 1     
             if((tablero[final][final2]%100)/10 == turnos + 0.1 and tablero[final][final2] != tablero[inicio][inicio2]   ):
@@ -878,8 +881,33 @@ while(terminar == 0):
            temporal=tablero[final][final2]-1
            tablero[final][final2] = tablero[inicio][inicio2]
            tablero[inicio][inicio2] = temporal
-
-         #darte las piezas de otro equipo si te comes un rey
+        # si te comes un rey en el centro con otra pieza que no sea el rey 
+        if(((int(tablero[5][5]/100)!=5) and int(tablero[5][5]/100)!=0) or (((int(tablero[x][y]/100)==5) and (int(tablero[x][y]%10))==0 ))):
+           if(tablero[4][4]==0):
+              tablero[4][4]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[4][5]==0):
+              tablero[4][5]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[4][6]==0):
+              tablero[4][6]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[5][4]==0):
+              tablero[5][4]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[5][6]==0):
+              tablero[5][6]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[6][4]==0):
+              tablero[6][4]=tablero[5][5]
+              tablero[5][5]=0  
+           elif(tablero[6][5]==0):
+              tablero[6][5]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[6][6]==0):
+              tablero[6][6]=tablero[5][5]
+              tablero[5][5]=0                   
+        #darte las piezas de otro equipo si te comes un rey
         eq=int((capturarrey%100)/10)
         suma=(((turnos*10)+1))-((eq*10)+1)
         if(int(capturarrey/100)==5):
@@ -925,870 +953,7 @@ while(terminar == 0):
                      inicio = int(input("\033[1;37;40mIngrese el número (en dígito) de la fila en la que se ubica la pieza que desea mover."))
                      break
                   except ValueError:
-                     print("Sólo numero enteros entre 1 y 9.")
-               if(inicio<10 and inicio>0):
-                  break
-               print("Debe ingresar un valor entre 1 y 9.")
-            while True:
-               while True:
-                  try:
-                     inicio2 = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que desea mover"))
-                     break
-                  except ValueError:
-                     print("Sólo numero enteros entre 1 y 9.")
-                     
-               if(inicio2<10 and inicio2>0):
-                  break
-               print("Debe ingresar un valor entre 1 y 9.")
-            
-            if(tablero[inicio][inicio2]== 0):
-              print("No hay pieza en ese lugar.")
-              reiniciar = 0
-            if(tablero[inicio][inicio2]%10==10):
-               print("No puedes seleccionar piezas capturadas.")
-               reiniciar=0
-            if((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10) or (tablero[inicio+1][inicio2]==0 and inicio+1<10) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0)):
-               print(" ",end="")
-            else:   
-               print("No puedes escoger una pieza encerrada.")
-               reiniciar=0
-              
-            
-            
-            if(((tablero[inicio][inicio2]%100)/10 != turnos + 0.1) and tablero[inicio][inicio2]!= 0 ):
-               print("Esa pieza no es de tu  equipo.")
-               reiniciar = 0
-            
-              
-               
-                
-        while (reiniciar==1):
-            reiniciar = 0
-            while True:
-               while True:
-                  try:
-                     final = int(input("Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
-                     break
-                  except ValueError:
                      print("Sólo números enteros entre 1 y 9.")
-               if(final<10 and final>0):
-                  break
-               print("Debe ingresar un valor entre 1 y 9.")
-            while True:
-               while True:
-                  try:
-                     final2 = int(input("Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
-                     break
-                  except ValueError:
-                     print("Sólo números enteros entre 1 y 9.")
-               if(final2<10 and final2>0):
-                  break
-               print("Debe ingresar un valor entre 1 y 9.")
-
-            if(tablero[final][final2] == tablero[inicio][inicio2] and tablero[final][final2] != 0 ):
-                print("No se puede mover al mismo lugar.")
-                reiniciar = 1
-            if(int(tablero[inicio][inicio2]/100)!=5 and final==5 and final2==5):
-                print("Sólo el líder puede estar en la posicion central.")
-                reiniciar = 1     
-            if((tablero[final][final2]%100)/10 == turnos + 0.1 and tablero[final][final2] != tablero[inicio][inicio2]   ):
-                print("No se pueden piezas de tu mismo equipo.")
-                reiniciar = 1
-            if(tablero[inicio][inicio2]/100==1.11 and (final-inicio<-2 or final-inicio>2 or final2-inicio2<-2 or final2-inicio2>2)):
-               print("Los militantes sólo pueden moverse una o dos casillas.")
-               reiniciar =1
-               #movimientos
-            if(inicio2==final2):
-               vertical=1
-               print("", end ="")
-            elif(inicio==final):
-               horizontal=1
-               print("", end ="")   
-            elif((inicio+1==final and inicio2+1==final2) or (inicio+2==final and inicio2+2==final2) or (inicio+3==final and inicio2+3==final2) or (inicio+4==final and inicio2+4==final2) or (inicio+5==final and inicio2+5==final2) or (inicio+6==final and inicio2+6==final2) or (inicio+7==final and inicio2+7==final2) or (inicio+8==final and inicio2+8==final2)):   
-               print("", end ="")
-               diagonal=1
-            elif((inicio-1==final and inicio2-1==final2) or (inicio-2==final and inicio2-2==final2) or (inicio-3==final and inicio2-3==final2) or (inicio-4==final and inicio2-4==final2) or (inicio-5==final and inicio2-5==final2) or (inicio-6==final and inicio2-6==final2) or (inicio-7==final and inicio2-7==final2) or (inicio-8==final and inicio2-8==final2)):   
-               print("", end ="")
-               diagonal=2
-            elif((inicio-1==final and inicio2+1==final2) or (inicio-2==final and inicio2+2==final2) or (inicio-3==final and inicio2+3==final2) or (inicio-4==final and inicio2+4==final2) or (inicio-5==final and inicio2+5==final2) or (inicio-6==final and inicio2+6==final2) or (inicio-7==final and inicio2+7==final2) or (inicio-8==final and inicio2+8==final2)):   
-               print("", end ="")
-               diagonal=3
-            elif((inicio+1==final and inicio2-1==final2) or (inicio+2==final and inicio2-2==final2) or (inicio+3==final and inicio2-3==final2) or (inicio+4==final and inicio2-4==final2) or (inicio+5==final and inicio2-5==final2) or (inicio+6==final and inicio2-6==final2) or (inicio+7==final and inicio2-7==final2) or (inicio+8==final and inicio2-8==final2)):   
-               print("", end ="")
-               diagonal=4
-            else:   
-               print("Las piezas solo se pueden mover de manera vertical, horizontal o diagonal.")
-               
-               reiniciar=1
-            com=int(tablero[inicio][inicio2]/100)    
-            if(tablero[final][final2]!=0 and tablero[final][final2]%10==0 and com!=2):
-               print("No puedes capturar piezas capturadas.")
-               reiniciar=1
-            if(tablero[final][final2]%10==1 and com==2):
-               print("No puedes situarte sobre otras piezas vivas con el necromóvil.")
-               reiniciar=1  
-            if(com==3 and tablero[final][final2]!=0):
-               print("No puedes capturar piezas directamente encima de ellas con el reportero.")
-               reiniciar=1   
-            if(horizontal==1):
-               if(final2-inicio2>0):
-                  for k in range(inicio2,final2-1,1):
-                     if(tablero[inicio][k+1]!=0):
-                        print("No se pueden saltar piezas.")
-                        reiniciar=1
-                        horizontal=0
-               if(final2-inicio2<0):        
-                  for k in range(inicio2,final2+1,-1):
-                     if(tablero[inicio][k-1]!=0):
-                        print("No se pueden saltar piezas.")
-                        reiniciar=1
-                        horizontal=0
-                     
-            if(vertical==1):
-               if(final-inicio>0):
-                  for k in range(inicio,final-1,1):
-                     if(tablero[k+1][inicio2]!=0):
-                        print("No se pueden saltar piezas.")
-                        reiniciar=1
-                        vertical=0
-               if(final-inicio<0):
-                  for k in range(inicio,final+1,-1):
-                     if(tablero[k-1][inicio2]!=0):
-                        print("No se pueden saltar piezas.")
-                        reiniciar=1
-                        vertical=0
-            if(diagonal==1):
-               for k in range(1,final-inicio-1):
-                  if(tablero[inicio+k][inicio2+k]!=0):
-                     print("No se pueden saltar piezas.")
-                     reiniciar=1
-                     diagonal=0
-                     break            
-            if(diagonal==2):
-               for k in range(1,inicio-final-1):
-                  if(tablero[inicio-k][inicio2-k]!=0):
-                     print("No se pueden saltar piezas.")
-                     reiniciar=1
-                     diagonal=0
-                     break            
-            if(diagonal==3):
-               for k in range(1,final-inicio-1):
-                  if(tablero[inicio-k][inicio2+k]!=0):
-                     print("No se pueden saltar piezas.")
-                     reiniciar=1
-                     diagonal=0
-                     break
-                        
-            if(diagonal==4):
-               for k in range(1,inicio-final-1):
-                  if(tablero[inicio+k][inicio2-k]!=0):
-                     print("No se pueden saltar piezas.")
-                     reiniciar=1
-                     diagonal=0
-                     break
-                     
-                           
-
-               
-            
-                  
-#empezar a capturar xdxd  o movimiento xdxd
-        capturarrey= tablero[final][final2]         
-        pieza=int(tablero[inicio][inicio2]/100)          
-        #cuando solo mueves         
-        if(tablero[final][final2] == 0):         
-           tablero[final][final2] = tablero[inicio][inicio2]
-           tablero[inicio][inicio2] = 0
-        
-        #capturar con necromovil
-        if(pieza==2 and tablero[inicio][inicio2] != 0 ):
-           reiniciar = 0
-           while (reiniciar==0):
-              reiniciar = 1
-              temporal=tablero[final][final2]
-              tablero[final][final2] = tablero[inicio][inicio2]
-              tablero[inicio][inicio2] = 0
-              actualizar()
-              while True:
-                  while True:
-                     try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
-                        break
-                     except ValueError:
-                        print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
-                  if(filam<10 and filam>0):
-                     break
-                  print("Debe ingresar un valor entre 1 y 9.")
-                  reiniciar=0
-              while True:
-                  while True:
-                     try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
-                        break
-                     except ValueError:
-                        print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
-                  if(columnam<10 and columnam>0):
-                     break
-                  print("Debe ingresar un valor entre 1 y 9.")
-                  reiniciar=0
-               
-              if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
-                 print("Las piezas capturadas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro.")     
-           if(temporal%10==0):      
-              tablero[filam][columnam] = temporal
-        #capturar con provocador o diplomatico
-        if(pieza==4 and tablero[inicio][inicio2] != 0):
-           reiniciar = 0
-           while (reiniciar==0):
-              reiniciar = 1
-              temporal=tablero[final][final2]
-              tablero[final][final2] = tablero[inicio][inicio2]
-              tablero[inicio][inicio2] = 0
-              actualizar()
-              while True:
-                  while True:
-                     try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
-                        break
-                     except ValueError:
-                        print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
-                  if(filam<10 and filam>0):
-                     break
-                  print("Debe ingresar un valor entre 1 y 9.")
-                  reiniciar=0
-              while True:
-                  while True:
-                     try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
-                        break
-                     except ValueError:
-                        print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
-                  if(columnam<10 and columnam>0):
-                     break
-                  print("Debe ingresar un valor entre 1 y 9.")
-                  reiniciar=0
-               
-              if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5 and int((temporal%100)/10)!= 5)):
-                 print("Las piezas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro si son un líder.")
-                 reiniciar=0
-                 
-           if(temporal%10==1):      
-              tablero[filam][columnam] = temporal
-             
-        #capturar con líder
-        if(pieza==5 and tablero[inicio][inicio2] != 0):
-           reiniciar = 0
-           while (reiniciar==0):
-              reiniciar = 1
-              temporal=tablero[final][final2]-1
-              tablero[final][final2] = tablero[inicio][inicio2]
-              while True:
-                  while True:
-                     try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
-))
-                        break
-                     except ValueError:
-                        print("Debes ingresar un numero entero entre 1 y 9.")
-                  if(filam<10 and filam>0):
-                     break
-                  print("Debe ingresar un valor entre 1 y 9.")
-                  reiniciar=0
-              while True:
-                  while True:
-                     try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
-))
-                        break
-                     except ValueError:
-                        print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
-                  if(columnam<10 and columnam>0):
-                     break
-                  print("Debe ingresar un valor entre 1 y 9.")
-                  reiniciar=0
-
-              if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5)):
-                 print("Las piezas capturadas sólo pueden ocupar lugares vacíos y no se pueden poner en el centro.")
-                 
-           tablero[inicio][inicio2]=0      
-           tablero[filam][columnam] = temporal
-           
-
-
-
-              
-           #capturar con militante
-        if(pieza==1 and tablero[inicio][inicio2] != 0):
-           reiniciar = 0
-           while (reiniciar==0):
-              reiniciar = 1
-              temporal=tablero[final][final2]-1
-              tablero[final][final2] = tablero[inicio][inicio2]
-              while True:
-                  while True:
-                     try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
-))
-                        break
-                     except ValueError:
-                        print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
-                  if(filam<10 and filam>0):
-                     break
-                  print("Debe ingresar un valor entre 1 y 9.")
-                  reiniciar=0
-              while True:
-                  while True:
-                     try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
-))
-                        break
-                     except ValueError:
-                        print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
-                  if(columnam<10 and columnam>0):
-                     break
-                  print("Debe ingresar un valor entre 1 y 9.")
-                  reiniciar=0
-
-              if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
-                 print("Las piezas capturadas sólo pueden ocupar lugares vacíos y no se pueden poner en el centro.")
-           tablero[inicio][inicio2]=0 
-           tablero[filam][columnam] = temporal
-         #capturar con reportero
-        if(pieza==3):
-           actualizar()
-           reiniciar==0
-           while True:
-              while True:
-                 try:
-                    cr= int(input("\033[1;37;40mdesea capturar alguna pieza con el reportero? (1.-si 0.-no )   ."))
-                    break
-                 except ValueError:
-                     print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
-              if(cr==0 or cr==1):
-                  break
-              print("Debe ingresar 1 o 0.")
-           if(cr==1):
-               while (reiniciar==0):
-                 reiniciar=1 
-                 while True:
-                    while True:
-                       try:
-                          filam = int(input("\033[1;37;40mIngrese el número (en dígito) de la fila en la que se ubica la pieza que quiere capturar."
-))
-                          break
-                       except ValueError:
-                           print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
-                    if(filam<10 and filam>0):
-                       break
-                    print("Debe ingresar un valor entre 1 y 9.")
-                    reiniciar=0
-                 while True:
-                    while True:
-                       try:
-                          columnam = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que quiere capturar."
-))
-                          break
-                       except ValueError:
-                           print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
-                    if(columnam<10 and columnam>0):
-                       break
-                    print("Debe ingresar un valor entre 1 y 9.")
-                    reiniciar=0
-                 if((final+1==filam and final2==columnam) or (final-1==filam and final2==columnam) or (final==filam and final2==columnam+1) or (final==filam and final2==columnam-1)):
-                     print("", end="")
-                 else:
-                     print("El reportero solo puede capturar piezas adyacentes horizontales o verticales.")
-                     reiniciar=0
-                 if(tablero[filam][columnam]==0):
-                    print("No hay pieza ahí para capturar.")
-                    reiniciar=0
-                 if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
-                    print("No puedes capturar piezas capturadas.")
-                    reiniciar=0
-               tablero[inicio][inicio2]=0 
-               tablero[filam][columnam] = tablero[filam][columnam]-1
-              
-        #capturar con asesino
-        if(pieza==6 and tablero[inicio][inicio2] != 0):
-           temporal=tablero[final][final2]-1
-           tablero[final][final2] = tablero[inicio][inicio2]
-           tablero[inicio][inicio2] = temporal
-
-         #darte las piezas de otro equipo si te comes un rey
-        eq=int((capturarrey%100)/10)
-        suma=(((turnos*10)+1))-((eq*10)+1)
-        if(int(capturarrey/100)==5):
-           cs=0
-           for x in range (0,10):
-              for y in range (0,10):
-                 cs=cs+1 
-                 pieza=int(tablero[x][y]/100)   
-                 color=int((tablero[x][y]%100)/10)
-                 status=int(tablero[x][y]%10)
-                 if(pieza==1 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma   
-                 if(cs==2 and pieza==1 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma   
-                 if(cs==3 and pieza==1 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma   
-                 if(cs==4 and pieza==1 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma   
-                 if(pieza==2 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma
-                 if(pieza==3 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma
-                 if(pieza==4 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma
-                 if(pieza==5 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma
-                 if(pieza==6 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma
-                   
-                     
-        
-    if (turnos == 3 and sr3==1):
-        reiniciar = 0
-        
-        while(reiniciar == 0):
-            reiniciar = 1
-            while True:
-               while True:
-                  try:
-                     inicio = int(input("\033[1;37;40mIngrese el número (en dígito) de la fila en la que se ubica la pieza que desea mover."))
-                     break
-                  except ValueError:
-                     print("Sólo numero enteros entre 1 y 9.")
-               if(inicio<10 and inicio>0):
-                  break
-               print("Debe ingresar un valor entre 1 y 9.")
-            while True:
-               while True:
-                  try:
-                     inicio2 = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que desea mover"))
-                     break
-                  except ValueError:
-                     print("Sólo numero enteros entre 1 y 9.")
-                     
-               if(inicio2<10 and inicio2>0):
-                  break
-               print("Debe ingresar un valor entre 1 y 9.")
-            
-            if(tablero[inicio][inicio2]== 0):
-              print("No hay pieza en ese lugar.")
-              reiniciar = 0
-            if(tablero[inicio][inicio2]%10==10):
-               print("No puedes seleccionar piezas capturadas.")
-               reiniciar=0
-            if((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10) or (tablero[inicio+1][inicio2]==0 and inicio+1<10) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0)):
-               print(" ",end="")
-            else:   
-               print("No puedes escoger una pieza encerrada.")
-               reiniciar=0
-              
-            
-            
-            if(((tablero[inicio][inicio2]%100)/10 != turnos + 0.1) and tablero[inicio][inicio2]!= 0 ):
-               print("Esa pieza no es de tu  equipo.")
-               reiniciar = 0
-            
-              
-               
-                
-        while (reiniciar==1):
-            reiniciar = 0
-            while True:
-               while True:
-                  try:
-                     final = int(input("Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
-                     break
-                  except ValueError:
-                     print("Sólo números enteros entre 1 y 9.")
-               if(final<10 and final>0):
-                  break
-               print("Debe ingresar un valor entre 1 y 9.")
-            while True:
-               while True:
-                  try:
-                     final2 = int(input("Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
-                     break
-                  except ValueError:
-                     print("Sólo números enteros entre 1 y 9.")
-               if(final2<10 and final2>0):
-                  break
-               print("Debe ingresar un valor entre 1 y 9.")
-
-            if(tablero[final][final2] == tablero[inicio][inicio2] and tablero[final][final2] != 0 ):
-                print("No se puede mover al mismo lugar.")
-                reiniciar = 1
-            if(int(tablero[inicio][inicio2]/100)!=5 and final==5 and final2==5):
-                print("Sólo el líder puede estar en la posicion central.")
-                reiniciar = 1     
-            if((tablero[final][final2]%100)/10 == turnos + 0.1 and tablero[final][final2] != tablero[inicio][inicio2]   ):
-                print("No se pueden piezas de tu mismo equipo.")
-                reiniciar = 1
-            if(tablero[inicio][inicio2]/100==1.11 and (final-inicio<-2 or final-inicio>2 or final2-inicio2<-2 or final2-inicio2>2)):
-               print("Los militantes sólo pueden moverse una o dos casillas.")
-               reiniciar =1
-               #movimientos
-            if(inicio2==final2):
-               vertical=1
-               print("", end ="")
-            elif(inicio==final):
-               horizontal=1
-               print("", end ="")   
-            elif((inicio+1==final and inicio2+1==final2) or (inicio+2==final and inicio2+2==final2) or (inicio+3==final and inicio2+3==final2) or (inicio+4==final and inicio2+4==final2) or (inicio+5==final and inicio2+5==final2) or (inicio+6==final and inicio2+6==final2) or (inicio+7==final and inicio2+7==final2) or (inicio+8==final and inicio2+8==final2)):   
-               print("", end ="")
-               diagonal=1
-            elif((inicio-1==final and inicio2-1==final2) or (inicio-2==final and inicio2-2==final2) or (inicio-3==final and inicio2-3==final2) or (inicio-4==final and inicio2-4==final2) or (inicio-5==final and inicio2-5==final2) or (inicio-6==final and inicio2-6==final2) or (inicio-7==final and inicio2-7==final2) or (inicio-8==final and inicio2-8==final2)):   
-               print("", end ="")
-               diagonal=2
-            elif((inicio-1==final and inicio2+1==final2) or (inicio-2==final and inicio2+2==final2) or (inicio-3==final and inicio2+3==final2) or (inicio-4==final and inicio2+4==final2) or (inicio-5==final and inicio2+5==final2) or (inicio-6==final and inicio2+6==final2) or (inicio-7==final and inicio2+7==final2) or (inicio-8==final and inicio2+8==final2)):   
-               print("", end ="")
-               diagonal=3
-            elif((inicio+1==final and inicio2-1==final2) or (inicio+2==final and inicio2-2==final2) or (inicio+3==final and inicio2-3==final2) or (inicio+4==final and inicio2-4==final2) or (inicio+5==final and inicio2-5==final2) or (inicio+6==final and inicio2-6==final2) or (inicio+7==final and inicio2-7==final2) or (inicio+8==final and inicio2-8==final2)):   
-               print("", end ="")
-               diagonal=4
-            else:   
-               print("Las piezas solo se pueden mover de manera vertical, horizontal o diagonal.")
-               
-               reiniciar=1
-            com=int(tablero[inicio][inicio2]/100)    
-            if(tablero[final][final2]!=0 and tablero[final][final2]%10==0 and com!=2):
-               print("No puedes capturar piezas capturadas.")
-               reiniciar=1
-            if(tablero[final][final2]%10==1 and com==2):
-               print("No puedes situarte sobre otras piezas vivas con el necromóvil.")
-               reiniciar=1  
-            if(com==3 and tablero[final][final2]!=0):
-               print("No puedes capturar piezas directamente encima de ellas con el reportero.")
-               reiniciar=1   
-            if(horizontal==1):
-               if(final2-inicio2>0):
-                  for k in range(inicio2,final2-1,1):
-                     if(tablero[inicio][k+1]!=0):
-                        print("No se pueden saltar piezas.")
-                        reiniciar=1
-                        horizontal=0
-               if(final2-inicio2<0):        
-                  for k in range(inicio2,final2+1,-1):
-                     if(tablero[inicio][k-1]!=0):
-                        print("No se pueden saltar piezas.")
-                        reiniciar=1
-                        horizontal=0
-                     
-            if(vertical==1):
-               if(final-inicio>0):
-                  for k in range(inicio,final-1,1):
-                     if(tablero[k+1][inicio2]!=0):
-                        print("No se pueden saltar piezas.")
-                        reiniciar=1
-                        vertical=0
-               if(final-inicio<0):
-                  for k in range(inicio,final+1,-1):
-                     if(tablero[k-1][inicio2]!=0):
-                        print("No se pueden saltar piezas.")
-                        reiniciar=1
-                        vertical=0
-            if(diagonal==1):
-               for k in range(1,final-inicio-1):
-                  if(tablero[inicio+k][inicio2+k]!=0):
-                     print("No se pueden saltar piezas.")
-                     reiniciar=1
-                     diagonal=0
-                     break            
-            if(diagonal==2):
-               for k in range(1,inicio-final-1):
-                  if(tablero[inicio-k][inicio2-k]!=0):
-                     print("No se pueden saltar piezas.")
-                     reiniciar=1
-                     diagonal=0
-                     break            
-            if(diagonal==3):
-               for k in range(1,final-inicio-1):
-                  if(tablero[inicio-k][inicio2+k]!=0):
-                     print("No se pueden saltar piezas.")
-                     reiniciar=1
-                     diagonal=0
-                     break
-                        
-            if(diagonal==4):
-               for k in range(1,inicio-final-1):
-                  if(tablero[inicio+k][inicio2-k]!=0):
-                     print("No se pueden saltar piezas.")
-                     reiniciar=1
-                     diagonal=0
-                     break
-                     
-                           
-
-               
-            
-                  
-#empezar a capturar xdxd  o movimiento xdxd
-        capturarrey= tablero[final][final2]         
-        pieza=int(tablero[inicio][inicio2]/100)          
-        #cuando solo mueves         
-        if(tablero[final][final2] == 0):         
-           tablero[final][final2] = tablero[inicio][inicio2]
-           tablero[inicio][inicio2] = 0
-        
-        #capturar con necromovil
-        if(pieza==2 and tablero[inicio][inicio2] != 0 ):
-           reiniciar = 0
-           while (reiniciar==0):
-              reiniciar = 1
-              temporal=tablero[final][final2]
-              tablero[final][final2] = tablero[inicio][inicio2]
-              tablero[inicio][inicio2] = 0
-              actualizar()
-              while True:
-                  while True:
-                     try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
-                        break
-                     except ValueError:
-                        print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
-                  if(filam<10 and filam>0):
-                     break
-                  print("Debe ingresar un valor entre 1 y 9.")
-                  reiniciar=0
-              while True:
-                  while True:
-                     try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
-                        break
-                     except ValueError:
-                        print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
-                  if(columnam<10 and columnam>0):
-                     break
-                  print("Debe ingresar un valor entre 1 y 9.")
-                  reiniciar=0
-               
-              if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
-                 print("Las piezas capturadas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro.")     
-           if(temporal%10==0):      
-              tablero[filam][columnam] = temporal
-        #capturar con provocador o diplomatico
-        if(pieza==4 and tablero[inicio][inicio2] != 0):
-           reiniciar = 0
-           while (reiniciar==0):
-              reiniciar = 1
-              temporal=tablero[final][final2]
-              tablero[final][final2] = tablero[inicio][inicio2]
-              tablero[inicio][inicio2] = 0
-              actualizar()
-              while True:
-                  while True:
-                     try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
-                        break
-                     except ValueError:
-                        print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
-                  if(filam<10 and filam>0):
-                     break
-                  print("Debe ingresar un valor entre 1 y 9.")
-                  reiniciar=0
-              while True:
-                  while True:
-                     try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
-                        break
-                     except ValueError:
-                        print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
-                  if(columnam<10 and columnam>0):
-                     break
-                  print("Debe ingresar un valor entre 1 y 9.")
-                  reiniciar=0
-               
-              if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5 and int((temporal%100)/10)!= 5)):
-                 print("Las piezas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro si son un líder.")
-                 reiniciar=0
-                 
-           if(temporal%10==1):      
-              tablero[filam][columnam] = temporal
-             
-        #capturar con líder
-        if(pieza==5 and tablero[inicio][inicio2] != 0):
-           reiniciar = 0
-           while (reiniciar==0):
-              reiniciar = 1
-              temporal=tablero[final][final2]-1
-              tablero[final][final2] = tablero[inicio][inicio2]
-              while True:
-                  while True:
-                     try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
-))
-                        break
-                     except ValueError:
-                        print("Debes ingresar un numero entero entre 1 y 9.")
-                  if(filam<10 and filam>0):
-                     break
-                  print("Debe ingresar un valor entre 1 y 9.")
-                  reiniciar=0
-              while True:
-                  while True:
-                     try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
-))
-                        break
-                     except ValueError:
-                        print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
-                  if(columnam<10 and columnam>0):
-                     break
-                  print("Debe ingresar un valor entre 1 y 9.")
-                  reiniciar=0
-
-              if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5)):
-                 print("Las piezas capturadas sólo pueden ocupar lugares vacíos y no se pueden poner en el centro.")
-                 
-           tablero[inicio][inicio2]=0      
-           tablero[filam][columnam] = temporal
-           
-
-
-
-              
-           #capturar con militante
-        if(pieza==1 and tablero[inicio][inicio2] != 0):
-           reiniciar = 0
-           while (reiniciar==0):
-              reiniciar = 1
-              temporal=tablero[final][final2]-1
-              tablero[final][final2] = tablero[inicio][inicio2]
-              while True:
-                  while True:
-                     try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
-))
-                        break
-                     except ValueError:
-                        print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
-                  if(filam<10 and filam>0):
-                     break
-                  print("Debe ingresar un valor entre 1 y 9.")
-                  reiniciar=0
-              while True:
-                  while True:
-                     try:
-                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
-))
-                        break
-                     except ValueError:
-                        print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
-                  if(columnam<10 and columnam>0):
-                     break
-                  print("Debe ingresar un valor entre 1 y 9.")
-                  reiniciar=0
-
-              if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
-                 print("Las piezas capturadas sólo pueden ocupar lugares vacíos y no se pueden poner en el centro.")
-           tablero[inicio][inicio2]=0 
-           tablero[filam][columnam] = temporal
-         #capturar con reportero
-        if(pieza==3):
-           actualizar()
-           reiniciar==0
-           while True:
-              while True:
-                 try:
-                    cr= int(input("\033[1;37;40mdesea capturar alguna pieza con el reportero? (1.-si 0.-no )   ."))
-                    break
-                 except ValueError:
-                     print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
-              if(cr==0 or cr==1):
-                  break
-              print("Debe ingresar 1 ó 0.")
-           if(cr==1):
-               while (reiniciar==0):
-                 reiniciar=1 
-                 while True:
-                    while True:
-                       try:
-                          filam = int(input("\033[1;37;40mIngrese el número (en dígito) de la fila en la que se ubica la pieza que quiere capturar."
-))
-                          break
-                       except ValueError:
-                           print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
-                    if(filam<10 and filam>0):
-                       break
-                    print("Debe ingresar un valor entre 1 y 9.")
-                    reiniciar=0
-                 while True:
-                    while True:
-                       try:
-                          columnam = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que quiere capturar."
-))
-                          break
-                       except ValueError:
-                           print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
-                    if(columnam<10 and columnam>0):
-                       break
-                    print("Debe ingresar un valor entre 1 y 9.")
-                    reiniciar=0
-                 if((final+1==filam and final2==columnam) or (final-1==filam and final2==columnam) or (final==filam and final2==columnam+1) or (final==filam and final2==columnam-1)):
-                     print("", end="")
-                 else:
-                     print("El reportero sólo puede capturar piezas adyacentes horizontales o verticales.")
-                     reiniciar=0
-                 if(tablero[filam][columnam]==0):
-                    print("No hay pieza ahí para capturar.")
-                    reiniciar=0
-                 if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
-                    print("No puedes capturar piezas capturadas.")
-                    reiniciar=0
-               tablero[inicio][inicio2]=0 
-               tablero[filam][columnam] = tablero[filam][columnam]-1
-              
-        #capturar con asesino
-        if(pieza==6 and tablero[inicio][inicio2] != 0):
-           temporal=tablero[final][final2]-1
-           tablero[final][final2] = tablero[inicio][inicio2]
-           tablero[inicio][inicio2] = temporal
-
-         #darte las piezas de otro equipo si te comes un rey
-        eq=int((capturarrey%100)/10)
-        suma=(((turnos*10)+1))-((eq*10)+1)
-        if(int(capturarrey/100)==5):
-           cs=0
-           for x in range (0,10):
-              for y in range (0,10):
-                 cs=cs+1 
-                 pieza=int(tablero[x][y]/100)   
-                 color=int((tablero[x][y]%100)/10)
-                 status=int(tablero[x][y]%10)
-                 if(pieza==1 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma   
-                 if(cs==2 and pieza==1 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma   
-                 if(cs==3 and pieza==1 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma   
-                 if(cs==4 and pieza==1 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma   
-                 if(pieza==2 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma
-                 if(pieza==3 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma
-                 if(pieza==4 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma
-                 if(pieza==5 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma
-                 if(pieza==6 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma
-                   
-        
-        
-    if(turnos == 4 and sr4==1):
-        reiniciar = 0
-        while(reiniciar == 0):
-            reiniciar = 1
-            while True:
-               while True:
-                  try:
-                     inicio = int(input("\033[1;37;40mIngrese el número (en dígito) de la fila en la que se ubica la pieza que desea mover."))
-                     break
-                  except ValueError:
-                     print("Sólo numero enteros entre 1 y 9.")
                if(inicio<10 and inicio>0):
                   break
                print("Debe ingresar un valor entre 1 y 9.")
@@ -1819,7 +984,7 @@ while(terminar == 0):
             
             
             if(((tablero[inicio][inicio2]%100)/10 != turnos + 0.1) and tablero[inicio][inicio2]!= 0 ):
-               print("Esa pieza no es de tu  equipo.")
+               print("Esa pieza no es de tu equipo.")
                reiniciar = 0
             
               
@@ -1833,7 +998,7 @@ while(terminar == 0):
                      final = int(input("Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
                      break
                   except ValueError:
-                     print("Sólo números enteros entre 1 y 9.")
+                     print("Sólo numeros enteros entre 1 y 9.")
                if(final<10 and final>0):
                   break
                print("Debe ingresar un valor entre 1 y 9.")
@@ -1843,7 +1008,7 @@ while(terminar == 0):
                      final2 = int(input("Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
                      break
                   except ValueError:
-                     print("Sólo números enteros entre 1 y 9.")
+                     print("Sólo numeros enteros entre 1 y 9.")
                if(final2<10 and final2>0):
                   break
                print("Debe ingresar un valor entre 1 y 9.")
@@ -1851,11 +1016,14 @@ while(terminar == 0):
             if(tablero[final][final2] == tablero[inicio][inicio2] and tablero[final][final2] != 0 ):
                 print("No se puede mover al mismo lugar.")
                 reiniciar = 1
-            if(int(tablero[inicio][inicio2]/100)!=5 and final==5 and final2==5):
+            if(tablero[final][final2]!=0 and int(tablero[inicio][inicio2]/100)==1):
+                print("Los militantes no pueden comer a un lider si este se encuentra en la casilla central.")
+                reiniciar = 1      
+            if(int(tablero[inicio][inicio2]/100)!=5 and final==5 and final2==5 and tablero[final][final2]==0):
                 print("Sólo el líder puede estar en la posicion central.")
                 reiniciar = 1     
             if((tablero[final][final2]%100)/10 == turnos + 0.1 and tablero[final][final2] != tablero[inicio][inicio2]   ):
-                print("No se pueden piezas de tu mismo equipo.")
+                print("No se pueden capturar piezas de tu mismo equipo.")
                 reiniciar = 1
             if(tablero[inicio][inicio2]/100==1.11 and (final-inicio<-2 or final-inicio>2 or final2-inicio2<-2 or final2-inicio2>2)):
                print("Los militantes sólo pueden moverse una o dos casillas.")
@@ -1948,13 +1116,7 @@ while(terminar == 0):
                      print("No se pueden saltar piezas.")
                      reiniciar=1
                      diagonal=0
-                     break
-                     
-                           
-
-               
-            
-                  
+                     break                  
 #empezar a capturar xdxd  o movimiento xdxd
         capturarrey= tablero[final][final2]         
         pieza=int(tablero[inicio][inicio2]/100)          
@@ -2048,8 +1210,7 @@ while(terminar == 0):
               while True:
                   while True:
                      try:
-                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
-))
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."))
                         break
                      except ValueError:
                         print("Debes ingresar un numero entero entre 1 y 9.")
@@ -2136,7 +1297,7 @@ while(terminar == 0):
                  while True:
                     while True:
                        try:
-                          filam = int(input("\033[1;37;40mIngrese el número (en dígito) de la fila en la que se ubica la pieza que quiere capturar."
+                          filam = int(input("\033[1;37;40m Ingrese el número (en dígito) de la fila en la que se ubica la pieza que quiere capturar."
 ))
                           break
                        except ValueError:
@@ -2166,7 +1327,7 @@ while(terminar == 0):
                     print("No hay pieza ahí para capturar.")
                     reiniciar=0
                  if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
-                    print("No puedes capturar piezas capturadas.")
+                    print("No puedes capturar piezas capturadas")
                     reiniciar=0
                tablero[inicio][inicio2]=0 
                tablero[filam][columnam] = tablero[filam][columnam]-1
@@ -2176,8 +1337,33 @@ while(terminar == 0):
            temporal=tablero[final][final2]-1
            tablero[final][final2] = tablero[inicio][inicio2]
            tablero[inicio][inicio2] = temporal
-
-         #darte las piezas de otro equipo si te comes un rey
+        # si te comes un rey en el centro con otra pieza que no sea el rey 
+        if(((int(tablero[5][5]/100)!=5) and int(tablero[5][5]/100)!=0) or (((int(tablero[x][y]/100)==5) and (int(tablero[x][y]%10))==0 ))):
+           if(tablero[4][4]==0):
+              tablero[4][4]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[4][5]==0):
+              tablero[4][5]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[4][6]==0):
+              tablero[4][6]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[5][4]==0):
+              tablero[5][4]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[5][6]==0):
+              tablero[5][6]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[6][4]==0):
+              tablero[6][4]=tablero[5][5]
+              tablero[5][5]=0  
+           elif(tablero[6][5]==0):
+              tablero[6][5]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[6][6]==0):
+              tablero[6][6]=tablero[5][5]
+              tablero[5][5]=0                   
+        #darte las piezas de otro equipo si te comes un rey
         eq=int((capturarrey%100)/10)
         suma=(((turnos*10)+1))-((eq*10)+1)
         if(int(capturarrey/100)==5):
@@ -2205,8 +1391,909 @@ while(terminar == 0):
                  if(pieza==5 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
                  if(pieza==6 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma       
+        
+    if (turnos == 3 and sr3==1):
+        reiniciar = 0
+        
+        while(reiniciar == 0):
+            reiniciar = 1
+            while True:
+               while True:
+                  try:
+                     inicio = int(input("\033[1;37;40mIngrese el número (en dígito) de la fila en la que se ubica la pieza que desea mover."))
+                     break
+                  except ValueError:
+                     print("Sólo números enteros entre 1 y 9.")
+               if(inicio<10 and inicio>0):
+                  break
+               print("Debe ingresar un valor entre 1 y 9.")
+            while True:
+               while True:
+                  try:
+                     inicio2 = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que desea mover."))
+                     break
+                  except ValueError:
+                     print("Sólo numero enteros entre 1 y 9.")
+                     
+               if(inicio2<10 and inicio2>0):
+                  break
+               print("Debe ingresar un valor entre 1 y 9.")
+            
+            if(tablero[inicio][inicio2]== 0):
+              print("No hay pieza en ese lugar.")
+              reiniciar = 0
+            if(tablero[inicio][inicio2]%10==10):
+               print("No puedes seleccionar piezas capturadas.")
+               reiniciar=0
+            if((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10) or (tablero[inicio+1][inicio2]==0 and inicio+1<10) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0)):
+               print(" ",end="")
+            else:   
+               print("No puedes escoger una pieza encerrada.")
+               reiniciar=0
+              
+            
+            
+            if(((tablero[inicio][inicio2]%100)/10 != turnos + 0.1) and tablero[inicio][inicio2]!= 0 ):
+               print("Esa pieza no es de tu equipo.")
+               reiniciar = 0
+            
+              
+               
+                
+        while (reiniciar==1):
+            reiniciar = 0
+            while True:
+               while True:
+                  try:
+                     final = int(input("Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
+                     break
+                  except ValueError:
+                     print("Sólo numeros enteros entre 1 y 9.")
+               if(final<10 and final>0):
+                  break
+               print("Debe ingresar un valor entre 1 y 9.")
+            while True:
+               while True:
+                  try:
+                     final2 = int(input("Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
+                     break
+                  except ValueError:
+                     print("Sólo numeros enteros entre 1 y 9.")
+               if(final2<10 and final2>0):
+                  break
+               print("Debe ingresar un valor entre 1 y 9.")
+
+            if(tablero[final][final2] == tablero[inicio][inicio2] and tablero[final][final2] != 0 ):
+                print("No se puede mover al mismo lugar.")
+                reiniciar = 1
+            if(tablero[final][final2]!=0 and int(tablero[inicio][inicio2]/100)==1):
+                print("Los militantes no pueden comer a un lider si este se encuentra en la casilla central.")
+                reiniciar = 1      
+            if(int(tablero[inicio][inicio2]/100)!=5 and final==5 and final2==5 and tablero[final][final2]==0):
+                print("Sólo el líder puede estar en la posicion central.")
+                reiniciar = 1     
+            if((tablero[final][final2]%100)/10 == turnos + 0.1 and tablero[final][final2] != tablero[inicio][inicio2]   ):
+                print("No se pueden capturar piezas de tu mismo equipo.")
+                reiniciar = 1
+            if(tablero[inicio][inicio2]/100==1.11 and (final-inicio<-2 or final-inicio>2 or final2-inicio2<-2 or final2-inicio2>2)):
+               print("Los militantes sólo pueden moverse una o dos casillas.")
+               reiniciar =1
+               #movimientos
+            if(inicio2==final2):
+               vertical=1
+               print("", end ="")
+            elif(inicio==final):
+               horizontal=1
+               print("", end ="")   
+            elif((inicio+1==final and inicio2+1==final2) or (inicio+2==final and inicio2+2==final2) or (inicio+3==final and inicio2+3==final2) or (inicio+4==final and inicio2+4==final2) or (inicio+5==final and inicio2+5==final2) or (inicio+6==final and inicio2+6==final2) or (inicio+7==final and inicio2+7==final2) or (inicio+8==final and inicio2+8==final2)):   
+               print("", end ="")
+               diagonal=1
+            elif((inicio-1==final and inicio2-1==final2) or (inicio-2==final and inicio2-2==final2) or (inicio-3==final and inicio2-3==final2) or (inicio-4==final and inicio2-4==final2) or (inicio-5==final and inicio2-5==final2) or (inicio-6==final and inicio2-6==final2) or (inicio-7==final and inicio2-7==final2) or (inicio-8==final and inicio2-8==final2)):   
+               print("", end ="")
+               diagonal=2
+            elif((inicio-1==final and inicio2+1==final2) or (inicio-2==final and inicio2+2==final2) or (inicio-3==final and inicio2+3==final2) or (inicio-4==final and inicio2+4==final2) or (inicio-5==final and inicio2+5==final2) or (inicio-6==final and inicio2+6==final2) or (inicio-7==final and inicio2+7==final2) or (inicio-8==final and inicio2+8==final2)):   
+               print("", end ="")
+               diagonal=3
+            elif((inicio+1==final and inicio2-1==final2) or (inicio+2==final and inicio2-2==final2) or (inicio+3==final and inicio2-3==final2) or (inicio+4==final and inicio2-4==final2) or (inicio+5==final and inicio2-5==final2) or (inicio+6==final and inicio2-6==final2) or (inicio+7==final and inicio2-7==final2) or (inicio+8==final and inicio2-8==final2)):   
+               print("", end ="")
+               diagonal=4
+            else:   
+               print("Las piezas solo se pueden mover de manera vertical, horizontal o diagonal.")
+               
+               reiniciar=1
+            com=int(tablero[inicio][inicio2]/100)    
+            if(tablero[final][final2]!=0 and tablero[final][final2]%10==0 and com!=2):
+               print("No puedes capturar piezas capturadas.")
+               reiniciar=1
+            if(tablero[final][final2]%10==1 and com==2):
+               print("No puedes situarte sobre otras piezas vivas con el necromóvil.")
+               reiniciar=1  
+            if(com==3 and tablero[final][final2]!=0):
+               print("No puedes capturar piezas directamente encima de ellas con el reportero.")
+               reiniciar=1   
+            if(horizontal==1):
+               if(final2-inicio2>0):
+                  for k in range(inicio2,final2-1,1):
+                     if(tablero[inicio][k+1]!=0):
+                        print("No se pueden saltar piezas.")
+                        reiniciar=1
+                        horizontal=0
+               if(final2-inicio2<0):        
+                  for k in range(inicio2,final2+1,-1):
+                     if(tablero[inicio][k-1]!=0):
+                        print("No se pueden saltar piezas.")
+                        reiniciar=1
+                        horizontal=0
+                     
+            if(vertical==1):
+               if(final-inicio>0):
+                  for k in range(inicio,final-1,1):
+                     if(tablero[k+1][inicio2]!=0):
+                        print("No se pueden saltar piezas.")
+                        reiniciar=1
+                        vertical=0
+               if(final-inicio<0):
+                  for k in range(inicio,final+1,-1):
+                     if(tablero[k-1][inicio2]!=0):
+                        print("No se pueden saltar piezas.")
+                        reiniciar=1
+                        vertical=0
+            if(diagonal==1):
+               for k in range(1,final-inicio-1):
+                  if(tablero[inicio+k][inicio2+k]!=0):
+                     print("No se pueden saltar piezas.")
+                     reiniciar=1
+                     diagonal=0
+                     break            
+            if(diagonal==2):
+               for k in range(1,inicio-final-1):
+                  if(tablero[inicio-k][inicio2-k]!=0):
+                     print("No se pueden saltar piezas.")
+                     reiniciar=1
+                     diagonal=0
+                     break            
+            if(diagonal==3):
+               for k in range(1,final-inicio-1):
+                  if(tablero[inicio-k][inicio2+k]!=0):
+                     print("No se pueden saltar piezas.")
+                     reiniciar=1
+                     diagonal=0
+                     break
+                        
+            if(diagonal==4):
+               for k in range(1,inicio-final-1):
+                  if(tablero[inicio+k][inicio2-k]!=0):
+                     print("No se pueden saltar piezas.")
+                     reiniciar=1
+                     diagonal=0
+                     break                  
+#empezar a capturar xdxd  o movimiento xdxd
+        capturarrey= tablero[final][final2]         
+        pieza=int(tablero[inicio][inicio2]/100)          
+        #cuando solo mueves         
+        if(tablero[final][final2] == 0):         
+           tablero[final][final2] = tablero[inicio][inicio2]
+           tablero[inicio][inicio2] = 0
+        
+        #capturar con necromovil
+        if(pieza==2 and tablero[inicio][inicio2] != 0 ):
+           reiniciar = 0
+           while (reiniciar==0):
+              reiniciar = 1
+              temporal=tablero[final][final2]
+              tablero[final][final2] = tablero[inicio][inicio2]
+              tablero[inicio][inicio2] = 0
+              actualizar()
+              while True:
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        break
+                     except ValueError:
+                        print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
+                  if(filam<10 and filam>0):
+                     break
+                  print("Debe ingresar un valor entre 1 y 9.")
+                  reiniciar=0
+              while True:
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        break
+                     except ValueError:
+                        print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
+                  if(columnam<10 and columnam>0):
+                     break
+                  print("Debe ingresar un valor entre 1 y 9.")
+                  reiniciar=0
+               
+              if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
+                 print("Las piezas capturadas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro.")     
+           if(temporal%10==0):      
+              tablero[filam][columnam] = temporal
+        #capturar con provocador o diplomatico
+        if(pieza==4 and tablero[inicio][inicio2] != 0):
+           reiniciar = 0
+           while (reiniciar==0):
+              reiniciar = 1
+              temporal=tablero[final][final2]
+              tablero[final][final2] = tablero[inicio][inicio2]
+              tablero[inicio][inicio2] = 0
+              actualizar()
+              while True:
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        break
+                     except ValueError:
+                        print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
+                  if(filam<10 and filam>0):
+                     break
+                  print("Debe ingresar un valor entre 1 y 9.")
+                  reiniciar=0
+              while True:
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        break
+                     except ValueError:
+                        print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
+                  if(columnam<10 and columnam>0):
+                     break
+                  print("Debe ingresar un valor entre 1 y 9.")
+                  reiniciar=0
+               
+              if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5 and int((temporal%100)/10)!= 5)):
+                 print("Las piezas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro si son un líder.")
+                 reiniciar=0
+                 
+           if(temporal%10==1):      
+              tablero[filam][columnam] = temporal
+             
+        #capturar con líder
+        if(pieza==5 and tablero[inicio][inicio2] != 0):
+           reiniciar = 0
+           while (reiniciar==0):
+              reiniciar = 1
+              temporal=tablero[final][final2]-1
+              tablero[final][final2] = tablero[inicio][inicio2]
+              while True:
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."))
+                        break
+                     except ValueError:
+                        print("Debes ingresar un numero entero entre 1 y 9.")
+                  if(filam<10 and filam>0):
+                     break
+                  print("Debe ingresar un valor entre 1 y 9.")
+                  reiniciar=0
+              while True:
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
+))
+                        break
+                     except ValueError:
+                        print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
+                  if(columnam<10 and columnam>0):
+                     break
+                  print("Debe ingresar un valor entre 1 y 9.")
+                  reiniciar=0
+
+              if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5)):
+                 print("Las piezas capturadas sólo pueden ocupar lugares vacíos y no se pueden poner en el centro.")
+                 
+           tablero[inicio][inicio2]=0      
+           tablero[filam][columnam] = temporal
+           
+
+
+
+              
+           #capturar con militante
+        if(pieza==1 and tablero[inicio][inicio2] != 0):
+           reiniciar = 0
+           while (reiniciar==0):
+              reiniciar = 1
+              temporal=tablero[final][final2]-1
+              tablero[final][final2] = tablero[inicio][inicio2]
+              while True:
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
+))
+                        break
+                     except ValueError:
+                        print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
+                  if(filam<10 and filam>0):
+                     break
+                  print("Debe ingresar un valor entre 1 y 9.")
+                  reiniciar=0
+              while True:
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
+))
+                        break
+                     except ValueError:
+                        print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
+                  if(columnam<10 and columnam>0):
+                     break
+                  print("Debe ingresar un valor entre 1 y 9.")
+                  reiniciar=0
+
+              if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
+                 print("Las piezas capturadas sólo pueden ocupar lugares vacíos y no se pueden poner en el centro.")
+           tablero[inicio][inicio2]=0 
+           tablero[filam][columnam] = temporal
+         #capturar con reportero
+        if(pieza==3):
+           actualizar()
+           reiniciar==0
+           while True:
+              while True:
+                 try:
+                    cr= int(input("\033[1;37;40m¿Desea capturar alguna pieza con el reportero? (1.-si 0.-no )   ."))
+                    break
+                 except ValueError:
+                     print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
+              if(cr==0 or cr==1):
+                  break
+              print("Debe ingresar 1 ó 0.")
+           if(cr==1):
+               while (reiniciar==0):
+                 reiniciar=1 
+                 while True:
+                    while True:
+                       try:
+                          filam = int(input("\033[1;37;40m Ingrese el número (en dígito) de la fila en la que se ubica la pieza que quiere capturar."
+))
+                          break
+                       except ValueError:
+                           print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
+                    if(filam<10 and filam>0):
+                       break
+                    print("Debe ingresar un valor entre 1 y 9.")
+                    reiniciar=0
+                 while True:
+                    while True:
+                       try:
+                          columnam = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que quiere capturar."
+))
+                          break
+                       except ValueError:
+                           print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
+                    if(columnam<10 and columnam>0):
+                       break
+                    print("Debe ingresar un valor entre 1 y 9.")
+                    reiniciar=0
+                 if((final+1==filam and final2==columnam) or (final-1==filam and final2==columnam) or (final==filam and final2==columnam+1) or (final==filam and final2==columnam-1)):
+                     print("", end="")
+                 else:
+                     print("El reportero solo puede capturar piezas adyacentes horizontales o verticales.")
+                     reiniciar=0
+                 if(tablero[filam][columnam]==0):
+                    print("No hay pieza ahí para capturar.")
+                    reiniciar=0
+                 if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
+                    print("No puedes capturar piezas capturadas")
+                    reiniciar=0
+               tablero[inicio][inicio2]=0 
+               tablero[filam][columnam] = tablero[filam][columnam]-1
+              
+        #capturar con asesino
+        if(pieza==6 and tablero[inicio][inicio2] != 0):
+           temporal=tablero[final][final2]-1
+           tablero[final][final2] = tablero[inicio][inicio2]
+           tablero[inicio][inicio2] = temporal
+        # si te comes un rey en el centro con otra pieza que no sea el rey 
+        if(((int(tablero[5][5]/100)!=5) and int(tablero[5][5]/100)!=0) or (((int(tablero[x][y]/100)==5) and (int(tablero[x][y]%10))==0 ))):
+           if(tablero[4][4]==0):
+              tablero[4][4]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[4][5]==0):
+              tablero[4][5]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[4][6]==0):
+              tablero[4][6]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[5][4]==0):
+              tablero[5][4]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[5][6]==0):
+              tablero[5][6]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[6][4]==0):
+              tablero[6][4]=tablero[5][5]
+              tablero[5][5]=0  
+           elif(tablero[6][5]==0):
+              tablero[6][5]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[6][6]==0):
+              tablero[6][6]=tablero[5][5]
+              tablero[5][5]=0                   
+        #darte las piezas de otro equipo si te comes un rey
+        eq=int((capturarrey%100)/10)
+        suma=(((turnos*10)+1))-((eq*10)+1)
+        if(int(capturarrey/100)==5):
+           cs=0
+           for x in range (0,10):
+              for y in range (0,10):
+                 cs=cs+1 
+                 pieza=int(tablero[x][y]/100)   
+                 color=int((tablero[x][y]%100)/10)
+                 status=int(tablero[x][y]%10)
+                 if(pieza==1 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma   
+                 if(cs==2 and pieza==1 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma   
+                 if(cs==3 and pieza==1 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma   
+                 if(cs==4 and pieza==1 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma   
+                 if(pieza==2 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
-                   
+                 if(pieza==3 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma
+                 if(pieza==4 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma
+                 if(pieza==5 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma
+                 if(pieza==6 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma           
+        
+        
+    if(turnos == 4 and sr4==1):
+        reiniciar = 0
+        while(reiniciar == 0):
+            reiniciar = 1
+            while True:
+               while True:
+                  try:
+                     inicio = int(input("\033[1;37;40mIngrese el número (en dígito) de la fila en la que se ubica la pieza que desea mover."))
+                     break
+                  except ValueError:
+                     print("Sólo números enteros entre 1 y 9.")
+               if(inicio<10 and inicio>0):
+                  break
+               print("Debe ingresar un valor entre 1 y 9.")
+            while True:
+               while True:
+                  try:
+                     inicio2 = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que desea mover."))
+                     break
+                  except ValueError:
+                     print("Sólo numero enteros entre 1 y 9.")
+                     
+               if(inicio2<10 and inicio2>0):
+                  break
+               print("Debe ingresar un valor entre 1 y 9.")
+            
+            if(tablero[inicio][inicio2]== 0):
+              print("No hay pieza en ese lugar.")
+              reiniciar = 0
+            if(tablero[inicio][inicio2]%10==10):
+               print("No puedes seleccionar piezas capturadas.")
+               reiniciar=0
+            if((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10) or (tablero[inicio+1][inicio2]==0 and inicio+1<10) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0)):
+               print(" ",end="")
+            else:   
+               print("No puedes escoger una pieza encerrada.")
+               reiniciar=0
+              
+            
+            
+            if(((tablero[inicio][inicio2]%100)/10 != turnos + 0.1) and tablero[inicio][inicio2]!= 0 ):
+               print("Esa pieza no es de tu equipo.")
+               reiniciar = 0
+            
+              
+               
+                
+        while (reiniciar==1):
+            reiniciar = 0
+            while True:
+               while True:
+                  try:
+                     final = int(input("Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
+                     break
+                  except ValueError:
+                     print("Sólo numeros enteros entre 1 y 9.")
+               if(final<10 and final>0):
+                  break
+               print("Debe ingresar un valor entre 1 y 9.")
+            while True:
+               while True:
+                  try:
+                     final2 = int(input("Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover su pieza seleccionada."))
+                     break
+                  except ValueError:
+                     print("Sólo numeros enteros entre 1 y 9.")
+               if(final2<10 and final2>0):
+                  break
+               print("Debe ingresar un valor entre 1 y 9.")
+
+            if(tablero[final][final2] == tablero[inicio][inicio2] and tablero[final][final2] != 0 ):
+                print("No se puede mover al mismo lugar.")
+                reiniciar = 1
+            if(tablero[final][final2]!=0 and int(tablero[inicio][inicio2]/100)==1):
+                print("Los militantes no pueden comer a un lider si este se encuentra en la casilla central.")
+                reiniciar = 1      
+            if(int(tablero[inicio][inicio2]/100)!=5 and final==5 and final2==5 and tablero[final][final2]==0):
+                print("Sólo el líder puede estar en la posicion central.")
+                reiniciar = 1     
+            if((tablero[final][final2]%100)/10 == turnos + 0.1 and tablero[final][final2] != tablero[inicio][inicio2]   ):
+                print("No se pueden capturar piezas de tu mismo equipo.")
+                reiniciar = 1
+            if(tablero[inicio][inicio2]/100==1.11 and (final-inicio<-2 or final-inicio>2 or final2-inicio2<-2 or final2-inicio2>2)):
+               print("Los militantes sólo pueden moverse una o dos casillas.")
+               reiniciar =1
+               #movimientos
+            if(inicio2==final2):
+               vertical=1
+               print("", end ="")
+            elif(inicio==final):
+               horizontal=1
+               print("", end ="")   
+            elif((inicio+1==final and inicio2+1==final2) or (inicio+2==final and inicio2+2==final2) or (inicio+3==final and inicio2+3==final2) or (inicio+4==final and inicio2+4==final2) or (inicio+5==final and inicio2+5==final2) or (inicio+6==final and inicio2+6==final2) or (inicio+7==final and inicio2+7==final2) or (inicio+8==final and inicio2+8==final2)):   
+               print("", end ="")
+               diagonal=1
+            elif((inicio-1==final and inicio2-1==final2) or (inicio-2==final and inicio2-2==final2) or (inicio-3==final and inicio2-3==final2) or (inicio-4==final and inicio2-4==final2) or (inicio-5==final and inicio2-5==final2) or (inicio-6==final and inicio2-6==final2) or (inicio-7==final and inicio2-7==final2) or (inicio-8==final and inicio2-8==final2)):   
+               print("", end ="")
+               diagonal=2
+            elif((inicio-1==final and inicio2+1==final2) or (inicio-2==final and inicio2+2==final2) or (inicio-3==final and inicio2+3==final2) or (inicio-4==final and inicio2+4==final2) or (inicio-5==final and inicio2+5==final2) or (inicio-6==final and inicio2+6==final2) or (inicio-7==final and inicio2+7==final2) or (inicio-8==final and inicio2+8==final2)):   
+               print("", end ="")
+               diagonal=3
+            elif((inicio+1==final and inicio2-1==final2) or (inicio+2==final and inicio2-2==final2) or (inicio+3==final and inicio2-3==final2) or (inicio+4==final and inicio2-4==final2) or (inicio+5==final and inicio2-5==final2) or (inicio+6==final and inicio2-6==final2) or (inicio+7==final and inicio2-7==final2) or (inicio+8==final and inicio2-8==final2)):   
+               print("", end ="")
+               diagonal=4
+            else:   
+               print("Las piezas solo se pueden mover de manera vertical, horizontal o diagonal.")
+               
+               reiniciar=1
+            com=int(tablero[inicio][inicio2]/100)    
+            if(tablero[final][final2]!=0 and tablero[final][final2]%10==0 and com!=2):
+               print("No puedes capturar piezas capturadas.")
+               reiniciar=1
+            if(tablero[final][final2]%10==1 and com==2):
+               print("No puedes situarte sobre otras piezas vivas con el necromóvil.")
+               reiniciar=1  
+            if(com==3 and tablero[final][final2]!=0):
+               print("No puedes capturar piezas directamente encima de ellas con el reportero.")
+               reiniciar=1   
+            if(horizontal==1):
+               if(final2-inicio2>0):
+                  for k in range(inicio2,final2-1,1):
+                     if(tablero[inicio][k+1]!=0):
+                        print("No se pueden saltar piezas.")
+                        reiniciar=1
+                        horizontal=0
+               if(final2-inicio2<0):        
+                  for k in range(inicio2,final2+1,-1):
+                     if(tablero[inicio][k-1]!=0):
+                        print("No se pueden saltar piezas.")
+                        reiniciar=1
+                        horizontal=0
+                     
+            if(vertical==1):
+               if(final-inicio>0):
+                  for k in range(inicio,final-1,1):
+                     if(tablero[k+1][inicio2]!=0):
+                        print("No se pueden saltar piezas.")
+                        reiniciar=1
+                        vertical=0
+               if(final-inicio<0):
+                  for k in range(inicio,final+1,-1):
+                     if(tablero[k-1][inicio2]!=0):
+                        print("No se pueden saltar piezas.")
+                        reiniciar=1
+                        vertical=0
+            if(diagonal==1):
+               for k in range(1,final-inicio-1):
+                  if(tablero[inicio+k][inicio2+k]!=0):
+                     print("No se pueden saltar piezas.")
+                     reiniciar=1
+                     diagonal=0
+                     break            
+            if(diagonal==2):
+               for k in range(1,inicio-final-1):
+                  if(tablero[inicio-k][inicio2-k]!=0):
+                     print("No se pueden saltar piezas.")
+                     reiniciar=1
+                     diagonal=0
+                     break            
+            if(diagonal==3):
+               for k in range(1,final-inicio-1):
+                  if(tablero[inicio-k][inicio2+k]!=0):
+                     print("No se pueden saltar piezas.")
+                     reiniciar=1
+                     diagonal=0
+                     break
+                        
+            if(diagonal==4):
+               for k in range(1,inicio-final-1):
+                  if(tablero[inicio+k][inicio2-k]!=0):
+                     print("No se pueden saltar piezas.")
+                     reiniciar=1
+                     diagonal=0
+                     break                  
+#empezar a capturar xdxd  o movimiento xdxd
+        capturarrey= tablero[final][final2]         
+        pieza=int(tablero[inicio][inicio2]/100)          
+        #cuando solo mueves         
+        if(tablero[final][final2] == 0):         
+           tablero[final][final2] = tablero[inicio][inicio2]
+           tablero[inicio][inicio2] = 0
+        
+        #capturar con necromovil
+        if(pieza==2 and tablero[inicio][inicio2] != 0 ):
+           reiniciar = 0
+           while (reiniciar==0):
+              reiniciar = 1
+              temporal=tablero[final][final2]
+              tablero[final][final2] = tablero[inicio][inicio2]
+              tablero[inicio][inicio2] = 0
+              actualizar()
+              while True:
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        break
+                     except ValueError:
+                        print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
+                  if(filam<10 and filam>0):
+                     break
+                  print("Debe ingresar un valor entre 1 y 9.")
+                  reiniciar=0
+              while True:
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        break
+                     except ValueError:
+                        print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
+                  if(columnam<10 and columnam>0):
+                     break
+                  print("Debe ingresar un valor entre 1 y 9.")
+                  reiniciar=0
+               
+              if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
+                 print("Las piezas capturadas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro.")     
+           if(temporal%10==0):      
+              tablero[filam][columnam] = temporal
+        #capturar con provocador o diplomatico
+        if(pieza==4 and tablero[inicio][inicio2] != 0):
+           reiniciar = 0
+           while (reiniciar==0):
+              reiniciar = 1
+              temporal=tablero[final][final2]
+              tablero[final][final2] = tablero[inicio][inicio2]
+              tablero[inicio][inicio2] = 0
+              actualizar()
+              while True:
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        break
+                     except ValueError:
+                        print("Sólo se pueden ingresar numero enteros entre 1 y 9.")
+                  if(filam<10 and filam>0):
+                     break
+                  print("Debe ingresar un valor entre 1 y 9.")
+                  reiniciar=0
+              while True:
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a donde quiere mover la pieza seleccionada."))
+                        break
+                     except ValueError:
+                        print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
+                  if(columnam<10 and columnam>0):
+                     break
+                  print("Debe ingresar un valor entre 1 y 9.")
+                  reiniciar=0
+               
+              if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5 and int((temporal%100)/10)!= 5)):
+                 print("Las piezas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro si son un líder.")
+                 reiniciar=0
+                 
+           if(temporal%10==1):      
+              tablero[filam][columnam] = temporal
+             
+        #capturar con líder
+        if(pieza==5 and tablero[inicio][inicio2] != 0):
+           reiniciar = 0
+           while (reiniciar==0):
+              reiniciar = 1
+              temporal=tablero[final][final2]-1
+              tablero[final][final2] = tablero[inicio][inicio2]
+              while True:
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."))
+                        break
+                     except ValueError:
+                        print("Debes ingresar un numero entero entre 1 y 9.")
+                  if(filam<10 and filam>0):
+                     break
+                  print("Debe ingresar un valor entre 1 y 9.")
+                  reiniciar=0
+              while True:
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
+))
+                        break
+                     except ValueError:
+                        print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
+                  if(columnam<10 and columnam>0):
+                     break
+                  print("Debe ingresar un valor entre 1 y 9.")
+                  reiniciar=0
+
+              if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5)):
+                 print("Las piezas capturadas sólo pueden ocupar lugares vacíos y no se pueden poner en el centro.")
+                 
+           tablero[inicio][inicio2]=0      
+           tablero[filam][columnam] = temporal
+           
+
+
+
+              
+           #capturar con militante
+        if(pieza==1 and tablero[inicio][inicio2] != 0):
+           reiniciar = 0
+           while (reiniciar==0):
+              reiniciar = 1
+              temporal=tablero[final][final2]-1
+              tablero[final][final2] = tablero[inicio][inicio2]
+              while True:
+                  while True:
+                     try:
+                        filam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la fila en la que se ubica la casilla a la que quiere mover la pieza capturada."
+))
+                        break
+                     except ValueError:
+                        print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
+                  if(filam<10 and filam>0):
+                     break
+                  print("Debe ingresar un valor entre 1 y 9.")
+                  reiniciar=0
+              while True:
+                  while True:
+                     try:
+                        columnam = int(input("\033[1;37;40ma Ingrese el número (en dígito) de la columna en la que se ubica la casilla a la que quiere mover la pieza capturada."
+))
+                        break
+                     except ValueError:
+                        print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
+                  if(columnam<10 and columnam>0):
+                     break
+                  print("Debe ingresar un valor entre 1 y 9.")
+                  reiniciar=0
+
+              if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
+                 print("Las piezas capturadas sólo pueden ocupar lugares vacíos y no se pueden poner en el centro.")
+           tablero[inicio][inicio2]=0 
+           tablero[filam][columnam] = temporal
+         #capturar con reportero
+        if(pieza==3):
+           actualizar()
+           reiniciar==0
+           while True:
+              while True:
+                 try:
+                    cr= int(input("\033[1;37;40m¿Desea capturar alguna pieza con el reportero? (1.-si 0.-no )   ."))
+                    break
+                 except ValueError:
+                     print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
+              if(cr==0 or cr==1):
+                  break
+              print("Debe ingresar 1 ó 0.")
+           if(cr==1):
+               while (reiniciar==0):
+                 reiniciar=1 
+                 while True:
+                    while True:
+                       try:
+                          filam = int(input("\033[1;37;40m Ingrese el número (en dígito) de la fila en la que se ubica la pieza que quiere capturar."
+))
+                          break
+                       except ValueError:
+                           print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
+                    if(filam<10 and filam>0):
+                       break
+                    print("Debe ingresar un valor entre 1 y 9.")
+                    reiniciar=0
+                 while True:
+                    while True:
+                       try:
+                          columnam = int(input("\033[1;37;40mIngrese el número (en dígito) de la columna en la que se ubica la pieza que quiere capturar."
+))
+                          break
+                       except ValueError:
+                           print("Sólo se pueden ingresar numeros enteros entre 1 y 9.")
+                    if(columnam<10 and columnam>0):
+                       break
+                    print("Debe ingresar un valor entre 1 y 9.")
+                    reiniciar=0
+                 if((final+1==filam and final2==columnam) or (final-1==filam and final2==columnam) or (final==filam and final2==columnam+1) or (final==filam and final2==columnam-1)):
+                     print("", end="")
+                 else:
+                     print("El reportero solo puede capturar piezas adyacentes horizontales o verticales.")
+                     reiniciar=0
+                 if(tablero[filam][columnam]==0):
+                    print("No hay pieza ahí para capturar.")
+                    reiniciar=0
+                 if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
+                    print("No puedes capturar piezas capturadas")
+                    reiniciar=0
+               tablero[inicio][inicio2]=0 
+               tablero[filam][columnam] = tablero[filam][columnam]-1
+              
+        #capturar con asesino
+        if(pieza==6 and tablero[inicio][inicio2] != 0):
+           temporal=tablero[final][final2]-1
+           tablero[final][final2] = tablero[inicio][inicio2]
+           tablero[inicio][inicio2] = temporal
+        # si te comes un rey en el centro con otra pieza que no sea el rey 
+        if(((int(tablero[5][5]/100)!=5) and int(tablero[5][5]/100)!=0) or (((int(tablero[x][y]/100)==5) and (int(tablero[x][y]%10))==0 ))):
+           if(tablero[4][4]==0):
+              tablero[4][4]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[4][5]==0):
+              tablero[4][5]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[4][6]==0):
+              tablero[4][6]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[5][4]==0):
+              tablero[5][4]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[5][6]==0):
+              tablero[5][6]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[6][4]==0):
+              tablero[6][4]=tablero[5][5]
+              tablero[5][5]=0  
+           elif(tablero[6][5]==0):
+              tablero[6][5]=tablero[5][5]
+              tablero[5][5]=0
+           elif(tablero[6][6]==0):
+              tablero[6][6]=tablero[5][5]
+              tablero[5][5]=0                   
+        #darte las piezas de otro equipo si te comes un rey
+        eq=int((capturarrey%100)/10)
+        suma=(((turnos*10)+1))-((eq*10)+1)
+        if(int(capturarrey/100)==5):
+           cs=0
+           for x in range (0,10):
+              for y in range (0,10):
+                 cs=cs+1 
+                 pieza=int(tablero[x][y]/100)   
+                 color=int((tablero[x][y]%100)/10)
+                 status=int(tablero[x][y]%10)
+                 if(pieza==1 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma   
+                 if(cs==2 and pieza==1 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma   
+                 if(cs==3 and pieza==1 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma   
+                 if(cs==4 and pieza==1 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma   
+                 if(pieza==2 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma
+                 if(pieza==3 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma
+                 if(pieza==4 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma
+                 if(pieza==5 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma
+                 if(pieza==6 and color==eq and status==1):
+                    tablero[x][y]=tablero[x][y]+suma        
         
 
                 
