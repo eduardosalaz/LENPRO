@@ -83,8 +83,8 @@ tablero[9][0]=9
 
       
 #Piezas jugador 1
-tablero[1][5]=511
-tablero[1][2]=611  
+tablero[1][1]=511
+tablero[1][2]=611
 tablero[1][3]=111
 tablero[2][1]=311
 tablero[2][2]=411
@@ -94,8 +94,8 @@ tablero[3][2]=111
 tablero[3][3]=211
  
 #Piezas jugador 2
-tablero[4][4]=121
-tablero[5][6]=621  
+tablero[1][7]=121
+tablero[1][8]=621
 tablero[1][9]=521
 tablero[2][7]=121
 tablero[2][8]=421
@@ -357,7 +357,7 @@ for x in range (0,10):
 mensaje_salida()
 def actualizar():
     clear()
-    print("L = Líder. M = Militante. A = Asesino. R = Reportero. P = Provocador. N = Necromóvil.\nSolo se pueden ingresar números enteros del 1 al 9.\n")
+    print("\033[1;37;40m L = Líder. M = Militante. A = Asesino. R = Reportero. P = Provocador. N = Necromóvil.\nSolo se pueden ingresar números enteros del 1 al 9.\n")
     
     for x in range (0,10):
        for y in range (0,10):
@@ -456,19 +456,48 @@ while(terminar == 0):
           pieza=int(tablero[x][y]/100)   
           color=int((tablero[x][y]%100)/10)
           status=int(tablero[x][y]%10)
-          if(color==1 and pieza==5):
+          if(color==1 and pieza==2):
+             necro1=int(tablero[x][y]%10)
+          if(color==2 and pieza==2):
+             necro2=int(tablero[x][y]%10)
+          if(color==3 and pieza==2):
+             necro3=int(tablero[x][y]%10)
+          if(color==4 and pieza==2):
+             necro4=int(tablero[x][y]%10)       
+    for x in range (0,10):
+       for y in range (0,10):
+          pieza=int(tablero[x][y]/100)   
+          color=int((tablero[x][y]%100)/10)
+          status=int(tablero[x][y]%10)
+          if(color==1 and pieza==5 and necro1==0 and status==1):
              rey1=tablero[x][y]
-             
-          if(color==2 and pieza==5):
+             if((int(tablero[x-1][y-1]%10!=0) and x==0 and y==0) and int(tablero[x-1][y]%10!=0) and int(tablero[x-1][y+1]%10!=0) and int(tablero[x][y-1]%10!=0) and int(tablero[x][y+1]%10!=0) and int(tablero[x+1][y-1]%10!=0) and int(tablero[x+1][y]%10!=0) and int(tablero[x+1][y+1]%10!=0)):
+                print("",end="")
+             else:   
+                tablero[x][y]=tablero[x][y]-1
+          if(color==2 and pieza==5 and necro2==0 and status==1):
              rey2=tablero[x][y]
+             if((int(tablero[x-1][y-1]%10!=0) and x==0 and y==0) and int(tablero[x-1][y]%10!=0) and int(tablero[x-1][y+1]%10!=0) and int(tablero[x][y-1]%10!=0) and int(tablero[x][y+1]%10!=0) and int(tablero[x+1][y-1]%10!=0) and int(tablero[x+1][y]%10!=0) and int(tablero[x+1][y+1]%10!=0)):
+                print("",end="")
+             else:   
+                tablero[x][y]=tablero[x][y]-1
              
-          if(color==3 and pieza==5):
+          if(color==3 and pieza==5 and necro3==0 and status==1):
              rey3=tablero[x][y]
+             if((int(tablero[x-1][y-1]%10!=0) and x==0 and y==0) and int(tablero[x-1][y]%10!=0) and int(tablero[x-1][y+1]%10!=0) and int(tablero[x][y-1]%10!=0) and int(tablero[x][y+1]%10!=0) and int(tablero[x+1][y-1]%10!=0) and int(tablero[x+1][y]%10!=0) and int(tablero[x+1][y+1]%10!=0)):
+                print("",end="")
+             else:   
+                tablero[x][y]=tablero[x][y]-1
              
-          if(color==4 and pieza==5):
+          if(color==4 and pieza==5 and necro4==0 and status==1):
              rey4=tablero[x][y]
+             if((int(tablero[x-1][y-1]%10!=0) and x==0 and y==0) and int(tablero[x-1][y]%10!=0) and int(tablero[x-1][y+1]%10!=0) and int(tablero[x][y-1]%10!=0) and int(tablero[x][y+1]%10!=0) and int(tablero[x+1][y-1]%10!=0) and int(tablero[x+1][y]%10!=0) and int(tablero[x+1][y+1]%10!=0)):
+                print("",end="")
+             else:   
+                tablero[x][y]=tablero[x][y]-1
     #checar si el rey esta vivo para turnos         
     actualizar()
+    
     for x in range (0,10):
        for y in range (0,10):
            pieza=int(tablero[x][y]/100)   
