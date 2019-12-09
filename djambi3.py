@@ -173,7 +173,7 @@ for x in range (0,10):
 mensaje_salida()
 #MOVIMIENTO DE LIDER
 impresion_pantalla()
-print("La letra L en el tablero representa a los lideres.\nLos líderes pueden moverse en una de las direcciones marcadas, con un máximo de 8 casillas. \n")
+print("La letra L en el tablero representa a los líderes.\nLos líderes pueden moverse en una de las direcciones marcadas, con un máximo de 8 casillas. \n")
 print("El líder es la pieza mas importante de Djambi, ya que tiene la capacidad de entrar a la casilla central, lo que le permite al jugador volver a hacer un movimiento después del turno de cada uno de sus adversarios. \n ")
 for x in range (0,10):
     for y in range (0,10):
@@ -399,7 +399,7 @@ def actualizar():
                elif(status==0):
                    print ("\033[1;35;40m R", end ="")    
            elif (pieza==4):
-               if (color==1):
+               if (color==1 and status==1):
                    print("\033[1;34;40m P", end ="")
                elif(color==2 and status==1):
                    print ("\033[1;31;40m P", end ="")
@@ -2333,7 +2333,7 @@ while(terminar == 0):
        if(turnos==4):
           turnos = 0
        turnos = turnos + contadorturnos
-       contadorpoder=contadorturnos+1
+       contadorturnos=contadorturnos+1
        if(contadorturnos==4):
           contadorturnos=1
     #turnos repetidos   
