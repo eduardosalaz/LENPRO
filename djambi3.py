@@ -585,7 +585,11 @@ while(terminar == 0):
                if(final2<10 and final2>0):
                   break
                print("Debe ingresar un valor entre 1 y 9.")
-
+            if(tablero[final][final2!=0]):
+               br=(int(tablero[final][final2]%100)/10)
+               if((br==1 and sr1==0) or (br==2 and sr2==0) or (br==3 and sr3==0) or (br==4 and sr4==0)):
+                  print("No puedes comerte las piezas de un lider muerto")
+                  reiniciar=1
             if(tablero[final][final2] == tablero[inicio][inicio2] and tablero[final][final2] != 0 ):
                 print("No se puede mover al mismo lugar.")
                 reiniciar = 1
@@ -1036,7 +1040,11 @@ while(terminar == 0):
                if(final2<10 and final2>0):
                   break
                print("Debe ingresar un valor entre 1 y 9.")
-
+            if(tablero[final][final2!=0]):
+               br=(int(tablero[final][final2]%100)/10)
+               if((br==1 and sr1==0) or (br==2 and sr2==0) or (br==3 and sr3==0) or (br==4 and sr4==0)):
+                  print("No puedes comerte las piezas de un lider muerto")
+                  reiniciar=1
             if(tablero[final][final2] == tablero[inicio][inicio2] and tablero[final][final2] != 0 ):
                 print("No se puede mover al mismo lugar.")
                 reiniciar = 1
@@ -1410,8 +1418,8 @@ while(terminar == 0):
                  if(pieza==5 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
                  if(pieza==6 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma       
-        
+                    tablero[x][y]=tablero[x][y]+suma
+    
     if (turnos == 3 and sr3==1):
         reiniciar = 0
         
@@ -1482,7 +1490,11 @@ while(terminar == 0):
                if(final2<10 and final2>0):
                   break
                print("Debe ingresar un valor entre 1 y 9.")
-
+            if(tablero[final][final2!=0]):
+               br=(int(tablero[final][final2]%100)/10)
+               if((br==1 and sr1==0) or (br==2 and sr2==0) or (br==3 and sr3==0) or (br==4 and sr4==0)):
+                  print("No puedes comerte las piezas de un lider muerto")
+                  reiniciar=1
             if(tablero[final][final2] == tablero[inicio][inicio2] and tablero[final][final2] != 0 ):
                 print("No se puede mover al mismo lugar.")
                 reiniciar = 1
@@ -1751,7 +1763,7 @@ while(terminar == 0):
            while True:
               while True:
                  try:
-                    cr= int(input("\033[1;37;40m¿Desea capturar alguna pieza con el reportero? (1.-si 0.-no )   .\n"))
+                    cr= int(input("\033[1;37;40m¿Desea capturar alguna pieza con el reportero? (1.-si 0.-no )   . \n"))
                     break
                  except ValueError:
                      print("Sólo se pueden ingresar números enteros entre 1 y 9.")
@@ -1856,7 +1868,8 @@ while(terminar == 0):
                  if(pieza==5 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
                  if(pieza==6 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma           
+                    tablero[x][y]=tablero[x][y]+suma
+            
         
         
     if(turnos == 4 and sr4==1):
@@ -1928,7 +1941,11 @@ while(terminar == 0):
                if(final2<10 and final2>0):
                   break
                print("Debe ingresar un valor entre 1 y 9.")
-
+            if(tablero[final][final2!=0]):
+               br=(int(tablero[final][final2]%100)/10)
+               if((br==1 and sr1==0) or (br==2 and sr2==0) or (br==3 and sr3==0) or (br==4 and sr4==0)):
+                  print("No puedes comerte las piezas de un lider muerto")
+                  reiniciar=1
             if(tablero[final][final2] == tablero[inicio][inicio2] and tablero[final][final2] != 0 ):
                 print("No se puede mover al mismo lugar.")
                 reiniciar = 1
@@ -2197,7 +2214,7 @@ while(terminar == 0):
            while True:
               while True:
                  try:
-                    cr= int(input("\033[1;37;40m¿Desea capturar alguna pieza con el reportero? (1.-si 0.-no ).\n"))
+                    cr= int(input("\033[1;37;40m¿Desea capturar alguna pieza con el reportero? (1.-si 0.-no )   . \n"))
                     break
                  except ValueError:
                      print("Sólo se pueden ingresar números enteros entre 1 y 9.")
@@ -2302,15 +2319,16 @@ while(terminar == 0):
                  if(pieza==5 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
                  if(pieza==6 and color==eq and status==1):
-                    tablero[x][y]=tablero[x][y]+suma        
+                    tablero[x][y]=tablero[x][y]+suma
+            
         
 
-                
+    #ver si hay rey en centro            
     if(tablero[5][5]!=0):
        poder=1
     elif(tablero[5][5]==0):
        poder=0
-       
+   #turnos normales    
     if(poder==0):    
        if(turnos==4):
           turnos = 0
@@ -2318,7 +2336,7 @@ while(terminar == 0):
        contadorpoder=contadorturnos+1
        if(contadorturnos==4):
           contadorturnos=1
-       
+    #turnos repetidos   
     if(poder==1):
        if(contadorpoder==0):
           turnos=turnos+contadorturnos
