@@ -174,7 +174,7 @@ mensaje_salida()
 #MOVIMIENTO DE LIDER
 impresion_pantalla()
 print("La letra L en el tablero representa a los líderes.\nLos líderes pueden moverse en una de las direcciones marcadas, con un máximo de 8 casillas. \n")
-print("El líder es la pieza mas importante de Djambi, ya que tiene la capacidad de entrar a la casilla central, lo que le permite al jugador volver a hacer un movimiento después del turno de cada uno de sus adversarios. \n ")
+print("El líder es la pieza más importante de Djambi, ya que tiene la capacidad de ocupar la casilla central, lo que le permite al jugador volver a hacer un movimiento después del turno de cada uno de sus adversarios. \n ")
 for x in range (0,10):
     for y in range (0,10):
         pieza=int(tablero[x][y]/100)   
@@ -286,7 +286,7 @@ for x in range (0,10):
 mensaje_salida()
 #MOVIMIENTO DE reportero
 impresion_pantalla()
-print("La letra R en el tablero representa a los reporteros.\nLos reporteros pueden moverse en una de las direcciones marcadas, con un máximo de 8 casillas.\nLos reporteros solo pueden comer piezas adyacentes a ellos, de manera horizontal o vertical, pero nunca en diagonal.\nLa pieza capturada no se mueve de lugar.\n")
+print("La letra R en el tablero representa a los reporteros.\nLos reporteros pueden moverse en una de las direcciones marcadas, con un máximo de 8 casillas.\nLos reporteros solo pueden capturar piezas adyacentes a ellos, de manera horizontal o vertical, pero nunca en diagonal.\nLa pieza capturada no se mueve de lugar.\n")
 for x in range (0,10):
     for y in range (0,10):
         pieza=int(tablero[x][y]/100)   
@@ -588,13 +588,13 @@ while(terminar == 0):
             if(tablero[final][final2!=0]):
                br=(int(tablero[final][final2]%100)/10)
                if((br==1 and sr1==0) or (br==2 and sr2==0) or (br==3 and sr3==0) or (br==4 and sr4==0)):
-                  print("No puedes comerte las piezas de un lider muerto")
+                  print("No puedes capturar las piezas de un lider capturado")
                   reiniciar=1
             if(tablero[final][final2] == tablero[inicio][inicio2] and tablero[final][final2] != 0 ):
                 print("No se puede mover al mismo lugar.")
                 reiniciar = 1
             if(tablero[final][final2]!=0 and int(tablero[inicio][inicio2]/100)==1):
-                print("Los militantes no pueden comer a un lider si este se encuentra en la casilla central.")
+                print("Los militantes no pueden capturar a un lider si este se encuentra en la casilla central.")
                 reiniciar = 1      
             if(int(tablero[inicio][inicio2]/100)!=5 and final==5 and final2==5 and tablero[final][final2]==0):
                 print("Sólo el líder puede estar en la posicion central.")
@@ -1043,13 +1043,13 @@ while(terminar == 0):
             if(tablero[final][final2!=0]):
                br=(int(tablero[final][final2]%100)/10)
                if((br==1 and sr1==0) or (br==2 and sr2==0) or (br==3 and sr3==0) or (br==4 and sr4==0)):
-                  print("No puedes comerte las piezas de un lider muerto")
+                  print("No puedes capturar las piezas de un lider capturado")
                   reiniciar=1
             if(tablero[final][final2] == tablero[inicio][inicio2] and tablero[final][final2] != 0 ):
                 print("No se puede mover al mismo lugar.")
                 reiniciar = 1
             if(tablero[final][final2]!=0 and int(tablero[inicio][inicio2]/100)==1):
-                print("Los militantes no pueden comer a un lider si este se encuentra en la casilla central.")
+                print("Los militantes no pueden capturar a un lider si este se encuentra en la casilla central.")
                 reiniciar = 1      
             if(int(tablero[inicio][inicio2]/100)!=5 and final==5 and final2==5 and tablero[final][final2]==0):
                 print("Sólo el líder puede estar en la posicion central.")
@@ -1493,13 +1493,13 @@ while(terminar == 0):
             if(tablero[final][final2!=0]):
                br=(int(tablero[final][final2]%100)/10)
                if((br==1 and sr1==0) or (br==2 and sr2==0) or (br==3 and sr3==0) or (br==4 and sr4==0)):
-                  print("No puedes comerte las piezas de un lider muerto")
+                  print("No puedes capturar las piezas de un lider capurado")
                   reiniciar=1
             if(tablero[final][final2] == tablero[inicio][inicio2] and tablero[final][final2] != 0 ):
                 print("No se puede mover al mismo lugar.")
                 reiniciar = 1
             if(tablero[final][final2]!=0 and int(tablero[inicio][inicio2]/100)==1):
-                print("Los militantes no pueden comer a un lider si este se encuentra en la casilla central.")
+                print("Los militantes no pueden capturar a un lider si este se encuentra en la casilla central.")
                 reiniciar = 1      
             if(int(tablero[inicio][inicio2]/100)!=5 and final==5 and final2==5 and tablero[final][final2]==0):
                 print("Sólo el líder puede estar en la posicion central.")
@@ -1944,13 +1944,13 @@ while(terminar == 0):
             if(tablero[final][final2!=0]):
                br=(int(tablero[final][final2]%100)/10)
                if((br==1 and sr1==0) or (br==2 and sr2==0) or (br==3 and sr3==0) or (br==4 and sr4==0)):
-                  print("No puedes comerte las piezas de un lider muerto")
+                  print("No puedes capturar las piezas de un lider capturado")
                   reiniciar=1
             if(tablero[final][final2] == tablero[inicio][inicio2] and tablero[final][final2] != 0 ):
                 print("No se puede mover al mismo lugar.")
                 reiniciar = 1
             if(tablero[final][final2]!=0 and int(tablero[inicio][inicio2]/100)==1):
-                print("Los militantes no pueden comer a un lider si este se encuentra en la casilla central.")
+                print("Los militantes no pueden capturar a un lider si este se encuentra en la casilla central.")
                 reiniciar = 1      
             if(int(tablero[inicio][inicio2]/100)!=5 and final==5 and final2==5 and tablero[final][final2]==0):
                 print("Sólo el líder puede estar en la posicion central.")
