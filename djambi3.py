@@ -14,7 +14,14 @@ piezas=0
 ola=0
 niuna=0
 sig=0
-
+casilla1=0
+casilla2=0
+casilla3=0
+casilla4=0
+casilla5=0
+casilla6=0
+casilla7=0
+casilla8=0
 '''
 MMN
 RPM
@@ -88,10 +95,10 @@ tablero[9][0]=9
       
 #Piezas jugador 1
 tablero[1][1]=511
-tablero[1][2]=611
+tablero[1][2]=610
 tablero[1][3]=111
-tablero[2][1]=311
-tablero[2][2]=411
+tablero[2][1]=310
+tablero[2][2]=410
 tablero[2][3]=111
 tablero[3][1]=111
 tablero[3][2]=111
@@ -473,31 +480,91 @@ while(terminar == 0):
           pieza=int(tablero[x][y]/100)   
           color=int((tablero[x][y]%100)/10)
           status=int(tablero[x][y]%10)
+          casilla1=0
+          casilla2=0
+          casilla3=0
+          casilla4=0
+          casilla5=0
+          casilla6=0
+          casilla7=0
+          casilla8=0
           if(color==1 and pieza==5 and necro1==0 and status==1):
-             rey1=tablero[x][y]
-             if((int(tablero[x-1][y-1]%10!=0) and x==0 and y==0) and int(tablero[x-1][y]%10!=0) and int(tablero[x-1][y+1]%10!=0) and int(tablero[x][y-1]%10!=0) and int(tablero[x][y+1]%10!=0) and int(tablero[x+1][y-1]%10!=0) and int(tablero[x+1][y]%10!=0) and int(tablero[x+1][y+1]%10!=0)):
-                print("",end="")
-             else:   
+             if((tablero[x-1][y-1]!=0 and tablero[x-1][y-1]%10==0) or x-1<1 or y-1<1):
+                casilla1=1
+             if((tablero[x-1][y]!=0 and tablero[x-1][y]%10==0) or x-1<1):   
+                casilla2=1
+             if((tablero[x-1][y+1]!=0 and tablero[x-1][y+1]%10==0) or x-1<1 or y+1>9):   
+                casilla3=1   
+             if((tablero[x][y-1]!=0 and tablero[x][y-1]%10==0) or y-1<1):   
+                casilla4=1
+             if((tablero[x][y+1]!=0 and tablero[x][y+1]%10==0) or y+1>9):   
+                casilla5=1
+             if((tablero[x+1][y-1]!=0 and tablero[x+1][y-1]%10==0) or y-1<1 or x+1>9):   
+                casilla6=1 
+             if((tablero[x+1][y]!=0 and tablero[x+1][y]%10==0) or x+1>9):   
+                casilla7=1     
+             if((tablero[x+1][y+1]!=0 and tablero[x+1][y+1]%10==0) or y+1>9 or x+1>9):   
+                casilla8=1         
+             if(casilla1+casilla2+casilla3+casilla4+casilla5+casilla6+casilla7+casilla8==8): 
                 tablero[x][y]=tablero[x][y]-1
           if(color==2 and pieza==5 and necro2==0 and status==1):
-             rey2=tablero[x][y]
-             if((int(tablero[x-1][y-1]%10!=0) and x==0 and y==0) and int(tablero[x-1][y]%10!=0) and int(tablero[x-1][y+1]%10!=0) and int(tablero[x][y-1]%10!=0) and int(tablero[x][y+1]%10!=0) and int(tablero[x+1][y-1]%10!=0) and int(tablero[x+1][y]%10!=0) and int(tablero[x+1][y+1]%10!=0)):
-                print("",end="")
-             else:   
+             if((tablero[x-1][y-1]!=0 and tablero[x-1][y-1]%10==0) or x-1<1 or y-1<1):
+                casilla1=1
+             if((tablero[x-1][y]!=0 and tablero[x-1][y]%10==0) or x-1<1):   
+                casilla2=1
+             if((tablero[x-1][y+1]!=0 and tablero[x-1][y+1]%10==0) or x-1<1 or y+1>9):   
+                casilla3=1   
+             if((tablero[x][y-1]!=0 and tablero[x][y-1]%10==0) or y-1<1):   
+                casilla4=1
+             if((tablero[x][y+1]!=0 and tablero[x][y+1]%10==0) or y+1>9):   
+                casilla5=1
+             if((tablero[x+1][y-1]!=0 and tablero[x+1][y-1]%10==0) or y-1<1 or x+1>9):   
+                casilla6=1 
+             if((tablero[x+1][y]!=0 and tablero[x+1][y]%10==0) or x+1>9):   
+                casilla7=1     
+             if((tablero[x+1][y+1]!=0 and tablero[x+1][y+1]%10==0) or y+1>9 or x+1>9):   
+                casilla8=1              
+             if(casilla1+casilla2+casilla3+casilla4+casilla5+casilla6+casilla7+casilla8==8): 
                 tablero[x][y]=tablero[x][y]-1
              
           if(color==3 and pieza==5 and necro3==0 and status==1):
-             rey3=tablero[x][y]
-             if((int(tablero[x-1][y-1]%10!=0) and x==0 and y==0) and int(tablero[x-1][y]%10!=0) and int(tablero[x-1][y+1]%10!=0) and int(tablero[x][y-1]%10!=0) and int(tablero[x][y+1]%10!=0) and int(tablero[x+1][y-1]%10!=0) and int(tablero[x+1][y]%10!=0) and int(tablero[x+1][y+1]%10!=0)):
-                print("",end="")
-             else:   
+             if((tablero[x-1][y-1]!=0 and tablero[x-1][y-1]%10==0) or x-1<1 or y-1<1):
+                casilla1=1
+             if((tablero[x-1][y]!=0 and tablero[x-1][y]%10==0) or x-1<1):   
+                casilla2=1
+             if((tablero[x-1][y+1]!=0 and tablero[x-1][y+1]%10==0) or x-1<1 or y+1>9):   
+                casilla3=1   
+             if((tablero[x][y-1]!=0 and tablero[x][y-1]%10==0) or y-1<1):   
+                casilla4=1
+             if((tablero[x][y+1]!=0 and tablero[x][y+1]%10==0) or y+1>9):   
+                casilla5=1
+             if((tablero[x+1][y-1]!=0 and tablero[x+1][y-1]%10==0) or y-1<1 or x+1>9):   
+                casilla6=1 
+             if((tablero[x+1][y]!=0 and tablero[x+1][y]%10==0) or x+1>9):   
+                casilla7=1     
+             if((tablero[x+1][y+1]!=0 and tablero[x+1][y+1]%10==0) or y+1>9 or x+1>9):   
+                casilla8=1              
+             if(casilla1+casilla2+casilla3+casilla4+casilla5+casilla6+casilla7+casilla8==8): 
                 tablero[x][y]=tablero[x][y]-1
              
           if(color==4 and pieza==5 and necro4==0 and status==1):
-             rey4=tablero[x][y]
-             if((int(tablero[x-1][y-1]%10!=0) and x==0 and y==0) and int(tablero[x-1][y]%10!=0) and int(tablero[x-1][y+1]%10!=0) and int(tablero[x][y-1]%10!=0) and int(tablero[x][y+1]%10!=0) and int(tablero[x+1][y-1]%10!=0) and int(tablero[x+1][y]%10!=0) and int(tablero[x+1][y+1]%10!=0)):
-                print("",end="")
-             else:   
+             if((tablero[x-1][y-1]!=0 and tablero[x-1][y-1]%10==0) or x-1<1 or y-1<1):
+                casilla1=1
+             if((tablero[x-1][y]!=0 and tablero[x-1][y]%10==0) or x-1<1):   
+                casilla2=1
+             if((tablero[x-1][y+1]!=0 and tablero[x-1][y+1]%10==0) or x-1<1 or y+1>9):   
+                casilla3=1   
+             if((tablero[x][y-1]!=0 and tablero[x][y-1]%10==0) or y-1<1):   
+                casilla4=1
+             if((tablero[x][y+1]!=0 and tablero[x][y+1]%10==0) or y+1>9):   
+                casilla5=1
+             if((tablero[x+1][y-1]!=0 and tablero[x+1][y-1]%10==0) or y-1<1 or x+1>9):   
+                casilla6=1 
+             if((tablero[x+1][y]!=0 and tablero[x+1][y]%10==0) or x+1>9):   
+                casilla7=1     
+             if((tablero[x+1][y+1]!=0 and tablero[x+1][y+1]%10==0) or y+1>9 or x+1>9):   
+                casilla8=1              
+             if(casilla1+casilla2+casilla3+casilla4+casilla5+casilla6+casilla7+casilla8==8): 
                 tablero[x][y]=tablero[x][y]-1
     #checar si el rey esta vivo para turnos         
     actualizar()
