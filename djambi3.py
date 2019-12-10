@@ -10,6 +10,7 @@ poder=0
 contadorpoder=0
 contadorturnos=1
 r=0
+piezas=0
 
 '''
 MMN
@@ -527,9 +528,22 @@ while(terminar == 0):
                      break
                   except ValueError:
                      print("Sólo números enteros entre 1 y 9.")
-               if(inicio<10 and inicio>0):
+               for x in range (1,9):
+                  gg = (int(tablero[inicio][x]%100)/10)
+                  if(gg==turnos):
+                     piezas=1
+                     break 
+                     x=10
+                  else:
+                     piezas=0
+                     break  
+               if(inicio<10 and inicio>0 and piezas==1):
                   break
-               print("Debe ingresar un valor entre 1 y 9.")
+               if(piezas==0):
+                  print("no tienes piezas en esa fila")
+               if(inicio<0 and inicio>9):
+                  print("Debe ingresar un valor entre 1 y 9.")
+               
             while True:
                while True:
                   try:
