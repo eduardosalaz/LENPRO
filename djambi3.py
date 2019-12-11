@@ -1506,6 +1506,12 @@ while(terminar == 0):
                  if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
                     print("No puedes capturar piezas capturadas")
                     reiniciar=0
+                 if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
+                    print("No puedes capturar piezas capturadas")
+                    reiniciar=0
+                 if(int((tablero[filam][columnam]%100)/10)==turnos):
+                    print("No puedes capturar piezas de tu mismo equipo")      
+                    reiniciar=0
                tablero[inicio][inicio2]=0 
                tablero[filam][columnam] = tablero[filam][columnam]-1
               
@@ -2005,6 +2011,12 @@ while(terminar == 0):
                  if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
                     print("No puedes capturar piezas capturadas")
                     reiniciar=0
+                 if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
+                    print("No puedes capturar piezas capturadas")
+                    reiniciar=0
+                 if(int((tablero[filam][columnam]%100)/10)==turnos):
+                    print("No puedes capturar piezas de tu mismo equipo")      
+                    reiniciar=0
                tablero[inicio][inicio2]=0 
                tablero[filam][columnam] = tablero[filam][columnam]-1
               
@@ -2068,6 +2080,7 @@ while(terminar == 0):
                     tablero[x][y]=tablero[x][y]+suma
                  if(pieza==6 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
+                   
                    
                    
     
@@ -2501,6 +2514,12 @@ while(terminar == 0):
                  if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
                     print("No puedes capturar piezas capturadas")
                     reiniciar=0
+                 if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
+                    print("No puedes capturar piezas capturadas")
+                    reiniciar=0
+                 if(int((tablero[filam][columnam]%100)/10)==turnos):
+                    print("No puedes capturar piezas de tu mismo equipo")      
+                    reiniciar=0
                tablero[inicio][inicio2]=0 
                tablero[filam][columnam] = tablero[filam][columnam]-1
               
@@ -2565,7 +2584,6 @@ while(terminar == 0):
                  if(pieza==6 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
                    
-        
         
     if(turnos == 4 and sr4==1):
         reiniciar = 0
@@ -2996,6 +3014,12 @@ while(terminar == 0):
                  if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
                     print("No puedes capturar piezas capturadas")
                     reiniciar=0
+                 if(tablero[filam][columnam]!=0 and tablero[filam][columnam]%10==0 ):
+                    print("No puedes capturar piezas capturadas")
+                    reiniciar=0
+                 if(int((tablero[filam][columnam]%100)/10)==turnos):
+                    print("No puedes capturar piezas de tu mismo equipo")      
+                    reiniciar=0
                tablero[inicio][inicio2]=0 
                tablero[filam][columnam] = tablero[filam][columnam]-1
               
@@ -3060,9 +3084,7 @@ while(terminar == 0):
                  if(pieza==6 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
                    
-                   
-                   
-        
+      
 
     #ver si hay rey en centro            
     if(tablero[5][5]!=0):
