@@ -27,6 +27,10 @@ clc=0
 abc=0
 capturarrey=0
 necroc=0
+m1=0
+m2=0
+m3=0
+m4=0
 '''
 MMN
 RPM
@@ -123,17 +127,17 @@ tablero[10][9]=10
       
 #Piezas jugador 1
 tablero[1][1]=511
-tablero[1][2]=611
+tablero[1][2]=610
 tablero[1][3]=111
-tablero[2][1]=311
-tablero[2][2]=411
+tablero[2][1]=310
+tablero[2][2]=410
 tablero[2][3]=111
 tablero[3][1]=111
 tablero[3][2]=111
 tablero[3][3]=211
  
 #Piezas jugador 2
-tablero[1][7]=121
+tablero[3][4]=121
 tablero[1][8]=621
 tablero[1][9]=521
 tablero[2][7]=121
@@ -153,6 +157,7 @@ tablero[8][3]=131
 tablero[9][1]=531
 tablero[9][2]=631
 tablero[9][3]=131
+
  
 #Piezas jugador 4
 tablero[7][7]=241
@@ -1060,6 +1065,31 @@ while(terminar == 0):
                 casilla8=1              
              if(casilla1+casilla2+casilla3+casilla4+casilla5+casilla6+casilla7+casilla8==8): 
                 tablero[x][y]=tablero[x][y]-1
+    for x in range(1,10):
+       for y in range(1,10):
+          pieza=int(tablero[x][y]/100)   
+          color=int((tablero[x][y]%100)/10)
+          status=int(tablero[x][y]%10)
+          if(pieza==5 and color==1 and status==0 and m1==0):
+             clear()
+             print("El equipo rojo ha sido eliminado.\n")
+             input("Presione en intro para continuar...")
+             m1=1
+          elif(pieza==5 and color==2 and status==0 and m2==0):
+             clear()
+             print("El equipo Azul ha sido eliminado.\n")
+             input("Presione en intro para continuar...")
+             m2=1
+          elif(pieza==5 and color==3 and status==0 and m3==0):
+             clear()
+             print("El equipo Amarillo ha sido eliminado.\n")
+             input("Presione en intro para continuar...")
+             m3=1
+          elif(pieza==5 and color==4 and status==0 and m4==0):
+             clear()
+             print("El equipo verde ha sido eliminado.\n")
+             input("Presione en intro para continuar...")
+             m4=1                 
                 
     #checar si el rey esta vivo para turnos         
     actualizar()
@@ -1081,6 +1111,7 @@ while(terminar == 0):
     Aqui empieza turnos
     '''
     
+
     if (turnos == 1 and sr1==1):
         reiniciar = 0
         
@@ -3555,7 +3586,7 @@ while(terminar == 0):
                    
                    
                    
-      
+    
     if(turnos==1 and sr1==0):  
       contadorpoder=0
     if(turnos==2 and sr2==0):  
@@ -3678,7 +3709,10 @@ while(terminar == 0):
           if(int((tablero[5][5]%100)/10)==4):
              s2=0
              s3=0
-             s1=0       
+             s1=0
+           
+    
+
 
 
           
@@ -3691,8 +3725,9 @@ if(s2==1):
 if(s3==1):
    print("Ha ganado el jugador 3 (amarillo).")
 if(s4==1):
-   print("Ha ganado el jugador 4 (verde).")   
-input("Pulse en enter para salir...")        
+   print("Ha ganado el jugador 4 (verde).")  
+actualizar()    
+input("Pulse la tecla intro para salir...")        
     
 
 
