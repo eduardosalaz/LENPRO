@@ -1325,11 +1325,12 @@ while(terminar == 0):
         #capturar con provocador o diplomatico
         if(pieza==4 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
+           temporal=tablero[final][final2]
+           tablero[final][final2] = tablero[inicio][inicio2]
+           tablero[inicio][inicio2] = 0
            while (reiniciar==0):
               reiniciar = 1
-              temporal=tablero[final][final2]
-              tablero[final][final2] = tablero[inicio][inicio2]
-              tablero[inicio][inicio2] = 0
+              
               actualizar()
               while True:
                   while True:
@@ -1364,10 +1365,11 @@ while(terminar == 0):
         #capturar con líder
         if(pieza==5 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
+           reiniciar = 1
+           temporal=tablero[final][final2]-1
+           tablero[final][final2] = tablero[inicio][inicio2]
            while (reiniciar==0):
-              reiniciar = 1
-              temporal=tablero[final][final2]-1
-              tablero[final][final2] = tablero[inicio][inicio2]
+              
               while True:
                   while True:
                      try:
@@ -1405,10 +1407,11 @@ while(terminar == 0):
            #capturar con militante
         if(pieza==1 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
+           temporal=tablero[final][final2]-1
+           tablero[final][final2] = tablero[inicio][inicio2]
            while (reiniciar==0):
               reiniciar = 1
-              temporal=tablero[final][final2]-1
-              tablero[final][final2] = tablero[inicio][inicio2]
+              
               while True:
                   while True:
                      try:
@@ -1821,11 +1824,12 @@ while(terminar == 0):
         #capturar con provocador o diplomatico
         if(pieza==4 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
+           temporal=tablero[final][final2]
+           tablero[final][final2] = tablero[inicio][inicio2]
+           tablero[inicio][inicio2] = 0
            while (reiniciar==0):
               reiniciar = 1
-              temporal=tablero[final][final2]
-              tablero[final][final2] = tablero[inicio][inicio2]
-              tablero[inicio][inicio2] = 0
+              
               actualizar()
               while True:
                   while True:
@@ -1860,10 +1864,11 @@ while(terminar == 0):
         #capturar con líder
         if(pieza==5 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
+           reiniciar = 1
+           temporal=tablero[final][final2]-1
+           tablero[final][final2] = tablero[inicio][inicio2]
            while (reiniciar==0):
-              reiniciar = 1
-              temporal=tablero[final][final2]-1
-              tablero[final][final2] = tablero[inicio][inicio2]
+              
               while True:
                   while True:
                      try:
@@ -1901,10 +1906,11 @@ while(terminar == 0):
            #capturar con militante
         if(pieza==1 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
+           temporal=tablero[final][final2]-1
+           tablero[final][final2] = tablero[inicio][inicio2]
            while (reiniciar==0):
               reiniciar = 1
-              temporal=tablero[final][final2]-1
-              tablero[final][final2] = tablero[inicio][inicio2]
+              
               while True:
                   while True:
                      try:
@@ -2314,11 +2320,12 @@ while(terminar == 0):
         #capturar con provocador o diplomatico
         if(pieza==4 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
+           temporal=tablero[final][final2]
+           tablero[final][final2] = tablero[inicio][inicio2]
+           tablero[inicio][inicio2] = 0
            while (reiniciar==0):
               reiniciar = 1
-              temporal=tablero[final][final2]
-              tablero[final][final2] = tablero[inicio][inicio2]
-              tablero[inicio][inicio2] = 0
+              
               actualizar()
               while True:
                   while True:
@@ -2353,10 +2360,11 @@ while(terminar == 0):
         #capturar con líder
         if(pieza==5 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
+           reiniciar = 1
+           temporal=tablero[final][final2]-1
+           tablero[final][final2] = tablero[inicio][inicio2]
            while (reiniciar==0):
-              reiniciar = 1
-              temporal=tablero[final][final2]-1
-              tablero[final][final2] = tablero[inicio][inicio2]
+              
               while True:
                   while True:
                      try:
@@ -2394,10 +2402,11 @@ while(terminar == 0):
            #capturar con militante
         if(pieza==1 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
+           temporal=tablero[final][final2]-1
+           tablero[final][final2] = tablero[inicio][inicio2]
            while (reiniciar==0):
               reiniciar = 1
-              temporal=tablero[final][final2]-1
-              tablero[final][final2] = tablero[inicio][inicio2]
+              
               while True:
                   while True:
                      try:
@@ -2806,11 +2815,12 @@ while(terminar == 0):
         #capturar con provocador o diplomatico
         if(pieza==4 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
+           temporal=tablero[final][final2]
+           tablero[final][final2] = tablero[inicio][inicio2]
+           tablero[inicio][inicio2] = 0
            while (reiniciar==0):
               reiniciar = 1
-              temporal=tablero[final][final2]
-              tablero[final][final2] = tablero[inicio][inicio2]
-              tablero[inicio][inicio2] = 0
+              
               actualizar()
               while True:
                   while True:
@@ -2845,10 +2855,11 @@ while(terminar == 0):
         #capturar con líder
         if(pieza==5 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
+           reiniciar = 1
+           temporal=tablero[final][final2]-1
+           tablero[final][final2] = tablero[inicio][inicio2]
            while (reiniciar==0):
-              reiniciar = 1
-              temporal=tablero[final][final2]-1
-              tablero[final][final2] = tablero[inicio][inicio2]
+              
               while True:
                   while True:
                      try:
@@ -2886,10 +2897,11 @@ while(terminar == 0):
            #capturar con militante
         if(pieza==1 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
+           temporal=tablero[final][final2]-1
+           tablero[final][final2] = tablero[inicio][inicio2]
            while (reiniciar==0):
               reiniciar = 1
-              temporal=tablero[final][final2]-1
-              tablero[final][final2] = tablero[inicio][inicio2]
+              
               while True:
                   while True:
                      try:
@@ -3047,6 +3059,7 @@ while(terminar == 0):
                     tablero[x][y]=tablero[x][y]+suma
                  if(pieza==6 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
+                   
                    
                    
         
