@@ -122,7 +122,7 @@ tablero[10][9]=10
 
       
 #Piezas jugador 1
-tablero[4][4]=511
+tablero[1][1]=511
 tablero[1][2]=611
 tablero[1][3]=111
 tablero[2][1]=311
@@ -135,10 +135,10 @@ tablero[3][3]=211
 #Piezas jugador 2
 tablero[1][7]=121
 tablero[1][8]=621
-tablero[4][6]=521
+tablero[1][9]=521
 tablero[2][7]=121
 tablero[2][8]=421
-tablero[4][5]=321
+tablero[2][9]=321
 tablero[3][7]=221
 tablero[3][8]=121
 tablero[3][9]=121
@@ -151,7 +151,7 @@ tablero[8][1]=331
 tablero[8][2]=431
 tablero[8][3]=131
 tablero[9][1]=531
-tablero[6][4]=631
+tablero[9][2]=631
 tablero[9][3]=131
  
 #Piezas jugador 4
@@ -163,7 +163,7 @@ tablero[8][8]=441
 tablero[8][9]=341
 tablero[9][7]=141
 tablero[9][8]=641
-tablero[6][6]=541
+tablero[9][9]=541
 #MOVIMIENTO DE MILITANTE
 impresion_pantalla()
 print("Objetivo:\nCapturar a los demás líderes enemigos con el uso de las diferentes piezas.\n")
