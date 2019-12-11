@@ -120,12 +120,12 @@ tablero[10][9]=10
 tablero[1][1]=511
 tablero[1][2]=611
 tablero[1][3]=111
-tablero[1][4]=311
+tablero[2][1]=311
 tablero[2][2]=411
 tablero[2][3]=111
 tablero[3][1]=111
 tablero[3][2]=111
-tablero[3][3]=210
+tablero[3][3]=211
  
 #Piezas jugador 2
 tablero[1][7]=121
@@ -134,14 +134,14 @@ tablero[1][9]=521
 tablero[2][7]=121
 tablero[2][8]=421
 tablero[2][9]=321
-tablero[3][7]=220
+tablero[3][7]=221
 tablero[3][8]=121
 tablero[3][9]=121
  
 #Piezas jugador 3
 tablero[7][1]=131
 tablero[7][2]=131
-tablero[7][3]=230
+tablero[7][3]=231
 tablero[8][1]=331
 tablero[8][2]=431
 tablero[8][3]=131
@@ -150,7 +150,7 @@ tablero[9][2]=631
 tablero[9][3]=131
  
 #Piezas jugador 4
-tablero[7][7]=240
+tablero[7][7]=241
 tablero[7][8]=141
 tablero[7][9]=141
 tablero[8][7]=141
