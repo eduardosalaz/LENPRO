@@ -446,8 +446,7 @@ def actualizar():
                print ("\033[1;36;40m",tablero[x][y], end="")
            elif (pieza==0 and pieza!=10 ):
                print ("\033[1;37;40m",tablero[x][y], end="")
-           elif(pieza==10):
-               print ("\033[1;37;40m 0", end="")
+           
               
        print("\n")
     if(turnos==1):
@@ -461,6 +460,443 @@ def actualizar():
 
 
 while(terminar == 0):
+    #checar si un equipo tiene movimientos validos
+    mov1=0
+    mov2=0
+    mov3=0
+    mov4=0
+    for x in range(1,10):
+       for y in range(1,10):
+          pieza=int(tablero[x][y]/100)   
+          color=int((tablero[x][y]%100)/10)
+          status=int(tablero[x][y]%10)
+          if(color==1 and mov1==0 and turnos==1):
+             if(pieza==1 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0)):
+                   mov1=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0)):
+                   mov1=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10)):
+                   mov1=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0)):
+                   mov1=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10)):
+                   mov1=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0)):
+                   mov1=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10)):
+                   mov1=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10)):
+                   mov1=1
+             if(pieza==2 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0 and tablero[x-1][y-1]%10==0)):
+                   mov1=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0 and tablero[x-1][y]%10==0)):
+                   mov1=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10 and tablero[x-1][y+1]%10==0)):
+                   mov1=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0 and tablero[x][y-1]%10==0)):
+                   mov1=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10 and tablero[x][y+1]%10==0)):
+                   mov1=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0 and tablero[x+1][y-1]%10==0)):
+                   mov1=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10 and tablero[x+1][y]%10==0)):
+                   mov1=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10 and tablero[x+1][y+1]%10==0)):
+                   mov1=1
+             if(pieza==3 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0)):
+                   mov1=1  
+                elif((tablero[x-1][y]==0 and x-1>0)):
+                   mov1=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10)):
+                   mov1=1
+                elif((tablero[x][y-1]==0 and y-1>0)):
+                   mov1=1
+                elif((tablero[x][y+1]==0 and y+1<10)):
+                   mov1=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0)):
+                   mov1=1
+                elif((tablero[x+1][y]==0 and x+1<10)):
+                   mov1=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10)):
+                   mov1=1 
+             if(pieza==4 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0)):
+                   mov1=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0)):
+                   mov1=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10)):
+                   mov1=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0)):
+                   mov1=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10)):
+                   mov1=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0)):
+                   mov1=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10)):
+                   mov1=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10)):
+                   mov1=1  
+             if(pieza==5 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0)):
+                   mov1=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0)):
+                   mov1=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10)):
+                   mov1=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0)):
+                   mov1=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10)):
+                   mov1=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0)):
+                   mov1=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10)):
+                   mov1=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10)):
+                   mov1=1 
+             if(pieza==6 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0)):
+                   mov1=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0)):
+                   mov1=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10)):
+                   mov1=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0)):
+                   mov1=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10)):
+                   mov1=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0)):
+                   mov1=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10)):
+                   mov1=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10)):
+                   mov1=1                            
+          if(color==2 and mov2==0 and turnos==2):
+             if(pieza==1 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0)):
+                   mov2=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0)):
+                   mov2=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10)):
+                   mov2=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0)):
+                   mov2=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10)):
+                   mov2=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0)):
+                   mov2=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10)):
+                   mov2=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10)):
+                   mov2=1
+             if(pieza==2 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0 and tablero[x-1][y-1]%10==0)):
+                   mov2=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0 and tablero[x-1][y]%10==0)):
+                   mov2=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10 and tablero[x-1][y+1]%10==0)):
+                   mov2=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0 and tablero[x][y-1]%10==0)):
+                   mov2=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10 and tablero[x][y+1]%10==0)):
+                   mov2=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0 and tablero[x+1][y-1]%10==0)):
+                   mov2=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10 and tablero[x+1][y]%10==0)):
+                   mov2=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10 and tablero[x+1][y+1]%10==0)):
+                   mov2=1
+             if(pieza==3 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0)):
+                   mov2=1  
+                elif((tablero[x-1][y]==0 and x-1>0)):
+                   mov2=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10)):
+                   mov2=1
+                elif((tablero[x][y-1]==0 and y-1>0)):
+                   mov2=1
+                elif((tablero[x][y+1]==0 and y+1<10)):
+                   mov2=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0)):
+                   mov2=1
+                elif((tablero[x+1][y]==0 and x+1<10)):
+                   mov2=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10)):
+                   mov2=1 
+             if(pieza==4 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0)):
+                   mov2=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0)):
+                   mov2=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10)):
+                   mov2=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0)):
+                   mov2=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10)):
+                   mov2=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0)):
+                   mov2=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10)):
+                   mov2=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10)):
+                   mov2=1  
+             if(pieza==5 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0)):
+                   mov2=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0)):
+                   mov2=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10)):
+                   mov2=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0)):
+                   mov2=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10)):
+                   mov2=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0)):
+                   mov2=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10)):
+                   mov2=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10)):
+                   mov2=1 
+             if(pieza==6 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0)):
+                   mov2=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0)):
+                   mov2=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10)):
+                   mov2=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0)):
+                   mov2=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10)):
+                   mov2=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0)):
+                   mov2=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10)):
+                   mov2=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10)):
+                   mov2=1 
+          if(color==3 and mov3==0 and turnos==3):
+             if(pieza==1 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0)):
+                   mov3=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0)):
+                   mov3=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10)):
+                   mov3=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0)):
+                   mov3=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10)):
+                   mov3=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0)):
+                   mov3=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10)):
+                   mov3=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10)):
+                   mov3=1
+             if(pieza==2 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0 and tablero[x-1][y-1]%10==0)):
+                   mov3=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0 and tablero[x-1][y]%10==0)):
+                   mov3=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10 and tablero[x-1][y+1]%10==0)):
+                   mov3=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0 and tablero[x][y-1]%10==0)):
+                   mov3=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10 and tablero[x][y+1]%10==0)):
+                   mov3=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0 and tablero[x+1][y-1]%10==0)):
+                   mov3=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10 and tablero[x+1][y]%10==0)):
+                   mov3=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10 and tablero[x+1][y+1]%10==0)):
+                   mov3=1
+             if(pieza==3 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0)):
+                   mov3=1  
+                elif((tablero[x-1][y]==0 and x-1>0)):
+                   mov3=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10)):
+                   mov3=1
+                elif((tablero[x][y-1]==0 and y-1>0)):
+                   mov3=1
+                elif((tablero[x][y+1]==0 and y+1<10)):
+                   mov3=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0)):
+                   mov3=1
+                elif((tablero[x+1][y]==0 and x+1<10)):
+                   mov3=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10)):
+                   mov3=1 
+             if(pieza==4 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0)):
+                   mov3=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0)):
+                   mov3=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10)):
+                   mov3=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0)):
+                   mov3=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10)):
+                   mov3=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0)):
+                   mov3=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10)):
+                   mov3=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10)):
+                   mov3=1  
+             if(pieza==5 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0)):
+                   mov3=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0)):
+                   mov3=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10)):
+                   mov3=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0)):
+                   mov3=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10)):
+                   mov3=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0)):
+                   mov3=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10)):
+                   mov3=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10)):
+                   mov3=1 
+             if(pieza==6 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0)):
+                   mov3=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0)):
+                   mov3=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10)):
+                   mov3=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0)):
+                   mov3=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10)):
+                   mov3=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0)):
+                   mov3=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10)):
+                   mov3=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10)):
+                   mov3=1
+          if(color==4 and mov4==0 and turnos==4):
+             if(pieza==1 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0)):
+                   mov4=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0)):
+                   mov4=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10)):
+                   mov4=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0)):
+                   mov4=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10)):
+                   mov4=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0)):
+                   mov4=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10)):
+                   mov4=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10)):
+                   mov4=1
+             if(pieza==2 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0 and tablero[x-1][y-1]%10==0)):
+                   mov4=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0 and tablero[x-1][y]%10==0)):
+                   mov4=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10 and tablero[x-1][y+1]%10==0)):
+                   mov4=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0 and tablero[x][y-1]%10==0)):
+                   mov4=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10 and tablero[x][y+1]%10==0)):
+                   mov4=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0 and tablero[x+1][y-1]%10==0)):
+                   mov4=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10 and tablero[x+1][y]%10==0)):
+                   mov4=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10 and tablero[x+1][y+1]%10==0)):
+                   mov4=1
+             if(pieza==3 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0)):
+                   mov4=1  
+                elif((tablero[x-1][y]==0 and x-1>0)):
+                   mov4=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10)):
+                   mov4=1
+                elif((tablero[x][y-1]==0 and y-1>0)):
+                   mov4=1
+                elif((tablero[x][y+1]==0 and y+1<10)):
+                   mov4=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0)):
+                   mov4=1
+                elif((tablero[x+1][y]==0 and x+1<10)):
+                   mov4=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10)):
+                   mov4=1 
+             if(pieza==4 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0)):
+                   mov4=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0)):
+                   mov4=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10)):
+                   mov4=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0)):
+                   mov4=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10)):
+                   mov4=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0)):
+                   mov4=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10)):
+                   mov4=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10)):
+                   mov4=1  
+             if(pieza==5 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0)):
+                   mov4=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0)):
+                   mov4=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10)):
+                   mov4=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0)):
+                   mov4=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10)):
+                   mov4=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0)):
+                   mov4=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10)):
+                   mov4=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10)):
+                   mov4=1 
+             if(pieza==6 and status==1):
+                if((tablero[x-1][y-1]==0 and x-1>0 and y-1>0) or (int((tablero[x-1][y-1]%100)/10!=color) and x-1>0 and y-1>0)):
+                   mov4=1  
+                elif((tablero[x-1][y]==0 and x-1>0) or (int((tablero[x-1][y]%100)/10!=color) and x-1>0)):
+                   mov4=1
+                elif((tablero[x-1][y+1]==0 and x-1>0 and y+1<10) or (int((tablero[x-1][y+1]%100)/10!=color) and x-1>0 and y+1<10)):
+                   mov4=1
+                elif((tablero[x][y-1]==0 and y-1>0) or (int((tablero[x][y-1]%100)/10!=color) and y-1>0)):
+                   mov4=1
+                elif((tablero[x][y+1]==0 and y+1<10) or (int((tablero[x][y+1]%100)/10!=color) and y+1<10)):
+                   mov4=1
+                elif((tablero[x+1][y-1]==0 and x+1<10 and y-1>0) or (int((tablero[x+1][y-1]%100)/10!=color) and x+1<10 and y-1>0)):
+                   mov4=1
+                elif((tablero[x+1][y]==0 and x+1<10) or (int((tablero[x+1][y]%100)/10!=color) and x+1<10)):
+                   mov4=1
+                elif((tablero[x+1][y+1]==0 and x+1<10 and y+1<10) or (int((tablero[x+1][y+1]%100)/10!=color) and x+1<10 and y+1<10)):
+                   mov4=1      
+    #si un equipo tiene 0 movimentos posibles matar la rey
+    for x in range (0,10):
+       for y in range (0,10):
+          pieza=int(tablero[x][y]/100)   
+          color=int((tablero[x][y]%100)/10)
+          status=int(tablero[x][y]%10)
+          if(color==1 and pieza==5 and mov1==0 and status==1 and turnos==1):
+             tablero[x][y]=tablero[x][y]-1
+          if(color==2 and pieza==5 and mov2==0 and status==1 and turnos==2):
+             tablero[x][y]=tablero[x][y]-1
+          if(color==3 and pieza==5 and mov3==0 and status==1 and turnos==3):
+             tablero[x][y]=tablero[x][y]-1
+          if(color==4 and pieza==5 and mov4==0 and status==1 and turnos==4):
+             tablero[x][y]=tablero[x][y]-1         
+
     #checar que ningue rey este encerrado por piezas capturadas y no tenga necromovil
     for x in range (0,10):
        for y in range (0,10):
@@ -474,20 +910,20 @@ while(terminar == 0):
           if(color==3 and pieza==2):
              necro3=int(tablero[x][y]%10)
           if(color==4 and pieza==2):
-             necro4=int(tablero[x][y]%10)       
+             necro4=int(tablero[x][y]%10)  
+    casilla1=0
+    casilla2=0
+    casilla3=0
+    casilla4=0
+    casilla5=0
+    casilla6=0
+    casilla7=0
+    casilla8=0              
     for x in range (0,10):
        for y in range (0,10):
           pieza=int(tablero[x][y]/100)   
           color=int((tablero[x][y]%100)/10)
           status=int(tablero[x][y]%10)
-          casilla1=0
-          casilla2=0
-          casilla3=0
-          casilla4=0
-          casilla5=0
-          casilla6=0
-          casilla7=0
-          casilla8=0
           if(color==1 and pieza==5 and necro1==0 and status==1):
              if((tablero[x-1][y-1]!=0 and tablero[x-1][y-1]%10==0) or x-1<1 or y-1<1):
                 casilla1=1
@@ -637,8 +1073,8 @@ while(terminar == 0):
               reiniciar = 0
             if(tablero[inicio][inicio2]%10==10):
                print("No puedes seleccionar piezas capturadas.")
-               reiniciar=0
-            if((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10) or (tablero[inicio+1][inicio2]==0 and inicio+1<10) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0)):
+               reiniciar=0  
+            if((tablero[inicio-1][inicio2]==0 and inicio-1>0 or (int((tablero[inicio-1][inicio2]%100)/10!=turnos) and tablero[inicio-1][inicio2]>20 and tablero[inicio-1][inicio2]<30)) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0 or (int((tablero[inicio-1][inicio2-1]%100)/10!=turnos) and tablero[inicio-1][inicio2-1]>20)) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0 or (int((tablero[inicio][inicio2-1]%100)/10!=turnos)and tablero[inicio][inicio2-1]>20)) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10 or (int((tablero[inicio+1][inicio2-1]%100)/10!=turnos)and tablero[inicio+1][inicio2-1]>20))  or (tablero[inicio+1][inicio2]==0 and inicio+1<10 or (int((tablero[inicio+1][inicio2]%100)/10!=turnos)and tablero[inicio+1][inicio2]>20)) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10 or (int((tablero[inicio+1][inicio2+1]%100)/10!=turnos)and tablero[inicio+1][inicio2+1]>20)) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10 or (int((tablero[inicio][inicio2+1]%100)/10!=turnos)and tablero[inicio][inicio2+1]>20)) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0 or (int((tablero[inicio-1][inicio2+1]%100)/10!=turnos) and tablero[inicio-1][inicio2+1]>20))):
                print("",end="")
             else:   
                print("No puedes escoger una pieza encerrada.")
@@ -799,12 +1235,11 @@ while(terminar == 0):
         #capturar con necromovil
         if(pieza==2 and tablero[inicio][inicio2] != 0 ):
            reiniciar = 0
+           temporal=tablero[final][final2]
+           tablero[final][final2] = tablero[inicio][inicio2]
+           tablero[inicio][inicio2] = 0
            while (reiniciar==0):
               reiniciar = 1
-              temporal=tablero[final][final2]
-              tablero[final][final2] = tablero[inicio][inicio2]
-              tablero[inicio][inicio2] = 0
-              actualizar()
               while True:
                   while True:
                      try:
@@ -831,8 +1266,8 @@ while(terminar == 0):
               if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
                  print("Las piezas capturadas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro.") 
                  reiniciar=0    
-           if(temporal%10==0):      
-              tablero[filam][columnam] = temporal
+               
+           tablero[filam][columnam] = temporal
         #capturar con provocador o diplomatico
         if(pieza==4 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
@@ -1123,7 +1558,7 @@ while(terminar == 0):
             if(tablero[inicio][inicio2]%10==10):
                print("No puedes seleccionar piezas capturadas.")
                reiniciar=0
-            if((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10) or (tablero[inicio+1][inicio2]==0 and inicio+1<10) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0)):
+            if((tablero[inicio-1][inicio2]==0 and inicio-1>0 or int((tablero[inicio-1][inicio2]%100)/10!=turnos) ) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0 or int((tablero[inicio-1][inicio2-1]%100)/10!=turnos)) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0 or int((tablero[inicio][inicio2-1]%100)/10!=turnos)) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10 or int((tablero[inicio+1][inicio2-1]%100)/10!=turnos))  or (tablero[inicio+1][inicio2]==0 and inicio+1<10 or int((tablero[inicio+1][inicio2]%100)/10!=turnos)) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10 or int((tablero[inicio+1][inicio2+1]%100)/10!=turnos)) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10 or int((tablero[inicio][inicio2+1]%100)/10!=turnos)) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0 or int((tablero[inicio-1][inicio2+1]%100)/10!=turnos))):
                print("",end="")
             else:   
                print("No puedes escoger una pieza encerrada.")
@@ -1284,11 +1719,12 @@ while(terminar == 0):
         #capturar con necromovil
         if(pieza==2 and tablero[inicio][inicio2] != 0 ):
            reiniciar = 0
+           temporal=tablero[final][final2]
+           tablero[final][final2] = tablero[inicio][inicio2]
+           tablero[inicio][inicio2] = 0
            while (reiniciar==0):
               reiniciar = 1
-              temporal=tablero[final][final2]
-              tablero[final][final2] = tablero[inicio][inicio2]
-              tablero[inicio][inicio2] = 0
+              
               actualizar()
               while True:
                   while True:
@@ -1316,8 +1752,8 @@ while(terminar == 0):
               if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
                  print("Las piezas capturadas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro.") 
                  reiniciar=0    
-           if(temporal%10==0):      
-              tablero[filam][columnam] = temporal
+                
+           tablero[filam][columnam] = temporal
         #capturar con provocador o diplomatico
         if(pieza==4 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
@@ -1604,7 +2040,7 @@ while(terminar == 0):
             if(tablero[inicio][inicio2]%10==10):
                print("No puedes seleccionar piezas capturadas.")
                reiniciar=0
-            if((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10) or (tablero[inicio+1][inicio2]==0 and inicio+1<10) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0)):
+            if((tablero[inicio-1][inicio2]==0 and inicio-1>0 or int((tablero[inicio-1][inicio2]%100)/10!=turnos) ) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0 or int((tablero[inicio-1][inicio2-1]%100)/10!=turnos)) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0 or int((tablero[inicio][inicio2-1]%100)/10!=turnos)) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10 or int((tablero[inicio+1][inicio2-1]%100)/10!=turnos))  or (tablero[inicio+1][inicio2]==0 and inicio+1<10 or int((tablero[inicio+1][inicio2]%100)/10!=turnos)) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10 or int((tablero[inicio+1][inicio2+1]%100)/10!=turnos)) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10 or int((tablero[inicio][inicio2+1]%100)/10!=turnos)) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0 or int((tablero[inicio-1][inicio2+1]%100)/10!=turnos))):
                print("",end="")
             else:   
                print("No puedes escoger una pieza encerrada.")
@@ -1765,11 +2201,12 @@ while(terminar == 0):
         #capturar con necromovil
         if(pieza==2 and tablero[inicio][inicio2] != 0 ):
            reiniciar = 0
+           temporal=tablero[final][final2]
+           tablero[final][final2] = tablero[inicio][inicio2]
+           tablero[inicio][inicio2] = 0
            while (reiniciar==0):
               reiniciar = 1
-              temporal=tablero[final][final2]
-              tablero[final][final2] = tablero[inicio][inicio2]
-              tablero[inicio][inicio2] = 0
+              
               actualizar()
               while True:
                   while True:
@@ -1797,7 +2234,7 @@ while(terminar == 0):
               if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
                  print("Las piezas capturadas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro.") 
                  reiniciar=0    
-           if(temporal%10==0):      
+               
               tablero[filam][columnam] = temporal
         #capturar con provocador o diplomatico
         if(pieza==4 and tablero[inicio][inicio2] != 0):
@@ -1835,8 +2272,8 @@ while(terminar == 0):
                  print("Las piezas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro si son un líder.")
                  reiniciar=0
                  
-           if(temporal%10==1):      
-              tablero[filam][columnam] = temporal
+                
+           tablero[filam][columnam] = temporal
              
         #capturar con líder
         if(pieza==5 and tablero[inicio][inicio2] != 0):
@@ -2085,7 +2522,7 @@ while(terminar == 0):
             if(tablero[inicio][inicio2]%10==10):
                print("No puedes seleccionar piezas capturadas.")
                reiniciar=0
-            if((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10) or (tablero[inicio+1][inicio2]==0 and inicio+1<10) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0)):
+            if((tablero[inicio-1][inicio2]==0 and inicio-1>0 or int((tablero[inicio-1][inicio2]%100)/10!=turnos) ) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0 or int((tablero[inicio-1][inicio2-1]%100)/10!=turnos)) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0 or int((tablero[inicio][inicio2-1]%100)/10!=turnos)) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10 or int((tablero[inicio+1][inicio2-1]%100)/10!=turnos))  or (tablero[inicio+1][inicio2]==0 and inicio+1<10 or int((tablero[inicio+1][inicio2]%100)/10!=turnos)) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10 or int((tablero[inicio+1][inicio2+1]%100)/10!=turnos)) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10 or int((tablero[inicio][inicio2+1]%100)/10!=turnos)) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0 or int((tablero[inicio-1][inicio2+1]%100)/10!=turnos))):
                print("",end="")
             else:   
                print("No puedes escoger una pieza encerrada.")
@@ -2246,11 +2683,12 @@ while(terminar == 0):
         #capturar con necromovil
         if(pieza==2 and tablero[inicio][inicio2] != 0 ):
            reiniciar = 0
+           temporal=tablero[final][final2]
+           tablero[final][final2] = tablero[inicio][inicio2]
+           tablero[inicio][inicio2] = 0
            while (reiniciar==0):
               reiniciar = 1
-              temporal=tablero[final][final2]
-              tablero[final][final2] = tablero[inicio][inicio2]
-              tablero[inicio][inicio2] = 0
+              
               actualizar()
               while True:
                   while True:
@@ -2563,9 +3001,9 @@ while(terminar == 0):
 clear()
 print("Game over.")
 if(s1==1):
-   print("Ha ganado el jugador 1 (azul).")
+   print("Ha ganado el jugador 1 (rojo).")
 if(s2==1):
-   print("Ha ganado el jugador 2 (rojo).")
+   print("Ha ganado el jugador 2 (azul).")
 if(s3==1):
    print("Ha ganado el jugador 3 (amarillo).")
 if(s4==1):
