@@ -1444,15 +1444,13 @@ while(terminar == 0):
         #capturar con reportero
         repors=0
        
-        if(tablero[final-1][final2]!=0 and final-1>0 and tablero[final-1][final2]%10==1 and int((tablero[final-1][final2]%100)/10!=turnos)):
+        if(tablero[final-1][final2]!=0 and final-1>0 and tablero[final-1][final2]%10==1 and int((tablero[final-1][final2]%100)/10)!=turnos):
+           repors=1  
+        if(tablero[final][final2-1]!=0 and final2-1>0 and tablero[final][final2-1]%10==1 and int((tablero[final][final2-1]%100)/10)!=turnos):
            repors=1
-        
-        if(tablero[final][final2-1]!=0 and final2-1>0 and tablero[final][final2-1]%10==1 and int((tablero[final][final2-1]%100)/10!=turnos)):
-           repors=1
-        if(tablero[final][final2+1]!=0 and final2+1<10 and tablero[final][final2+1]%10==1 and int((tablero[final][final2+1]%100)/10!=turnos)):
-           repors=1             
-        
-        if(tablero[final+1][final2]!=0 and final+1<10 and tablero[final+1][final2]%10==1 and int((tablero[final+1][final2]%100)/10!=turnos)):
+        if(tablero[final][final2+1]!=0 and final2+1<10 and tablero[final][final2+1]%10==1 and int((tablero[final][final2+1]%100)/10)!=turnos):
+           repors=1               
+        if(tablero[final+1][final2]!=0 and final+1<10 and tablero[final+1][final2]%10==1 and int((tablero[final+1][final2]%100)/10)!=turnos):
            repors=1
         
         if(pieza==3 and repors==1):
@@ -1942,15 +1940,13 @@ while(terminar == 0):
         #capturar con reportero
         repors=0
        
-        if(tablero[final-1][final2]!=0 and final-1>0 and tablero[final-1][final2]%10==1 and int((tablero[final-1][final2]%100)/10!=turnos)):
+        if(tablero[final-1][final2]!=0 and final-1>0 and tablero[final-1][final2]%10==1 and int((tablero[final-1][final2]%100)/10)!=turnos):
+           repors=1  
+        if(tablero[final][final2-1]!=0 and final2-1>0 and tablero[final][final2-1]%10==1 and int((tablero[final][final2-1]%100)/10)!=turnos):
            repors=1
-        
-        if(tablero[final][final2-1]!=0 and final2-1>0 and tablero[final][final2-1]%10==1 and int((tablero[final][final2-1]%100)/10!=turnos)):
-           repors=1
-        if(tablero[final][final2+1]!=0 and final2+1<10 and tablero[final][final2+1]%10==1 and int((tablero[final][final2+1]%100)/10!=turnos)):
-           repors=1             
-        
-        if(tablero[final+1][final2]!=0 and final+1<10 and tablero[final+1][final2]%10==1 and int((tablero[final+1][final2]%100)/10!=turnos)):
+        if(tablero[final][final2+1]!=0 and final2+1<10 and tablero[final][final2+1]%10==1 and int((tablero[final][final2+1]%100)/10)!=turnos):
+           repors=1               
+        if(tablero[final+1][final2]!=0 and final+1<10 and tablero[final+1][final2]%10==1 and int((tablero[final+1][final2]%100)/10)!=turnos):
            repors=1
         
         if(pieza==3 and repors==1):
@@ -2437,15 +2433,13 @@ while(terminar == 0):
         #capturar con reportero
         repors=0
        
-        if(tablero[final-1][final2]!=0 and final-1>0 and tablero[final-1][final2]%10==1 and int((tablero[final-1][final2]%100)/10!=turnos)):
+        if(tablero[final-1][final2]!=0 and final-1>0 and tablero[final-1][final2]%10==1 and int((tablero[final-1][final2]%100)/10)!=turnos):
+           repors=1  
+        if(tablero[final][final2-1]!=0 and final2-1>0 and tablero[final][final2-1]%10==1 and int((tablero[final][final2-1]%100)/10)!=turnos):
            repors=1
-        
-        if(tablero[final][final2-1]!=0 and final2-1>0 and tablero[final][final2-1]%10==1 and int((tablero[final][final2-1]%100)/10!=turnos)):
-           repors=1
-        if(tablero[final][final2+1]!=0 and final2+1<10 and tablero[final][final2+1]%10==1 and int((tablero[final][final2+1]%100)/10!=turnos)):
-           repors=1             
-        
-        if(tablero[final+1][final2]!=0 and final+1<10 and tablero[final+1][final2]%10==1 and int((tablero[final+1][final2]%100)/10!=turnos)):
+        if(tablero[final][final2+1]!=0 and final2+1<10 and tablero[final][final2+1]%10==1 and int((tablero[final][final2+1]%100)/10)!=turnos):
+           repors=1               
+        if(tablero[final+1][final2]!=0 and final+1<10 and tablero[final+1][final2]%10==1 and int((tablero[final+1][final2]%100)/10)!=turnos):
            repors=1
         
         if(pieza==3 and repors==1):
@@ -2931,15 +2925,13 @@ while(terminar == 0):
         #capturar con reportero
         repors=0
        
-        if(tablero[final-1][final2]!=0 and final-1>0 and tablero[final-1][final2]%10==1 and int((tablero[final-1][final2]%100)/10!=turnos)):
+        if(tablero[final-1][final2]!=0 and final-1>0 and tablero[final-1][final2]%10==1 and int((tablero[final-1][final2]%100)/10)!=turnos):
+           repors=1  
+        if(tablero[final][final2-1]!=0 and final2-1>0 and tablero[final][final2-1]%10==1 and int((tablero[final][final2-1]%100)/10)!=turnos):
            repors=1
-        
-        if(tablero[final][final2-1]!=0 and final2-1>0 and tablero[final][final2-1]%10==1 and int((tablero[final][final2-1]%100)/10!=turnos)):
-           repors=1
-        if(tablero[final][final2+1]!=0 and final2+1<10 and tablero[final][final2+1]%10==1 and int((tablero[final][final2+1]%100)/10!=turnos)):
-           repors=1             
-        
-        if(tablero[final+1][final2]!=0 and final+1<10 and tablero[final+1][final2]%10==1 and int((tablero[final+1][final2]%100)/10!=turnos)):
+        if(tablero[final][final2+1]!=0 and final2+1<10 and tablero[final][final2+1]%10==1 and int((tablero[final][final2+1]%100)/10)!=turnos):
+           repors=1               
+        if(tablero[final+1][final2]!=0 and final+1<10 and tablero[final+1][final2]%10==1 and int((tablero[final+1][final2]%100)/10)!=turnos):
            repors=1
         
         if(pieza==3 and repors==1):
