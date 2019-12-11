@@ -22,6 +22,9 @@ casilla5=0
 casilla6=0
 casilla7=0
 casilla8=0
+primerturno=0
+clc=0
+abc=0
 '''
 MMN
 RPM
@@ -1128,12 +1131,118 @@ while(terminar == 0):
             if(tablero[inicio][inicio2]%10==10):
                print("No puedes seleccionar piezas capturadas.")
                reiniciar=0  
-            if((tablero[inicio-1][inicio2]==0 and inicio-1>0 or (int((tablero[inicio-1][inicio2]%100)/10!=turnos) and tablero[inicio-1][inicio2]>20 and tablero[inicio-1][inicio2]<30)) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0 or (int((tablero[inicio-1][inicio2-1]%100)/10!=turnos) and tablero[inicio-1][inicio2-1]>20)) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0 or (int((tablero[inicio][inicio2-1]%100)/10!=turnos)and tablero[inicio][inicio2-1]>20)) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10 or (int((tablero[inicio+1][inicio2-1]%100)/10!=turnos)and tablero[inicio+1][inicio2-1]>20))  or (tablero[inicio+1][inicio2]==0 and inicio+1<10 or (int((tablero[inicio+1][inicio2]%100)/10!=turnos)and tablero[inicio+1][inicio2]>20)) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10 or (int((tablero[inicio+1][inicio2+1]%100)/10!=turnos)and tablero[inicio+1][inicio2+1]>20)) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10 or (int((tablero[inicio][inicio2+1]%100)/10!=turnos)and tablero[inicio][inicio2+1]>20)) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0 or (int((tablero[inicio-1][inicio2+1]%100)/10!=turnos) and tablero[inicio-1][inicio2+1]>20))):
-               print("",end="")
-            else:   
-               print("No puedes escoger una pieza encerrada.")
-               reiniciar=0
-              
+            
+            #checar si la pieza seleccionada tiene movimientos posibles 
+            posp=0
+            pieza=int(tablero[inicio][inicio2]/100) 
+            status= int(tablero[inicio][inicio2]%10)
+            color=turnos 
+            if(pieza==1 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10)):
+                   posp=1
+            if(pieza==2 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0 and tablero[inicio-1][inicio2-1]%10==0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0 and tablero[inicio-1][inicio2]%10==0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10 and tablero[inicio-1][inicio2+1]%10==0)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0 and tablero[inicio][inicio2-1]%10==0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10 and tablero[inicio][inicio2+1]%10==0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0 and tablero[inicio+1][inicio2-1]%10==0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10 and tablero[inicio+1][inicio2]%10==0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10 and tablero[inicio+1][inicio2+1]%10==0)):
+                   posp=1
+            if(pieza==3 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10)):
+                   posp=1 
+            if(pieza==4 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10)):
+                   posp=1  
+            if(pieza==5 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10)):
+                   posp=1  
+            if(pieza==6 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10)):
+                   posp=1 
+            if(posp==0):
+               print("La pieza seleccionada no tiene movimientos posibles.")
+               reiniciar = 0
+               
             
             
             if(((tablero[inicio][inicio2]%100)/10 != turnos + 0.1) and tablero[inicio][inicio2]!= 0 ):
@@ -1364,6 +1473,8 @@ while(terminar == 0):
              
         #capturar con líder
         if(pieza==5 and tablero[inicio][inicio2] != 0):
+           if(final==5 and final2==5 and int(tablero[5][5]/100)==5):
+              clc=1
            reiniciar = 0
            temporal=tablero[final][final2]-1
            tablero[final][final2] = tablero[inicio][inicio2]
@@ -1395,6 +1506,7 @@ while(terminar == 0):
               if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5)):
                  print("Las piezas capturadas sólo pueden ocupar lugares vacíos y no se pueden poner en el centro.")
                  reiniciar=0
+
                  
            tablero[inicio][inicio2]=0      
            tablero[filam][columnam] = temporal
@@ -1632,12 +1744,118 @@ while(terminar == 0):
             if(tablero[inicio][inicio2]%10==10):
                print("No puedes seleccionar piezas capturadas.")
                reiniciar=0  
-            if((tablero[inicio-1][inicio2]==0 and inicio-1>0 or (int((tablero[inicio-1][inicio2]%100)/10!=turnos) and tablero[inicio-1][inicio2]>20 and tablero[inicio-1][inicio2]<30)) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0 or (int((tablero[inicio-1][inicio2-1]%100)/10!=turnos) and tablero[inicio-1][inicio2-1]>20)) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0 or (int((tablero[inicio][inicio2-1]%100)/10!=turnos)and tablero[inicio][inicio2-1]>20)) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10 or (int((tablero[inicio+1][inicio2-1]%100)/10!=turnos)and tablero[inicio+1][inicio2-1]>20))  or (tablero[inicio+1][inicio2]==0 and inicio+1<10 or (int((tablero[inicio+1][inicio2]%100)/10!=turnos)and tablero[inicio+1][inicio2]>20)) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10 or (int((tablero[inicio+1][inicio2+1]%100)/10!=turnos)and tablero[inicio+1][inicio2+1]>20)) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10 or (int((tablero[inicio][inicio2+1]%100)/10!=turnos)and tablero[inicio][inicio2+1]>20)) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0 or (int((tablero[inicio-1][inicio2+1]%100)/10!=turnos) and tablero[inicio-1][inicio2+1]>20))):
-               print("",end="")
-            else:   
-               print("No puedes escoger una pieza encerrada.")
-               reiniciar=0
-              
+            
+            #checar si la pieza seleccionada tiene movimientos posibles 
+            posp=0
+            pieza=int(tablero[inicio][inicio2]/100) 
+            status= int(tablero[inicio][inicio2]%10)
+            color=turnos 
+            if(pieza==1 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10)):
+                   posp=1
+            if(pieza==2 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0 and tablero[inicio-1][inicio2-1]%10==0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0 and tablero[inicio-1][inicio2]%10==0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10 and tablero[inicio-1][inicio2+1]%10==0)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0 and tablero[inicio][inicio2-1]%10==0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10 and tablero[inicio][inicio2+1]%10==0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0 and tablero[inicio+1][inicio2-1]%10==0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10 and tablero[inicio+1][inicio2]%10==0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10 and tablero[inicio+1][inicio2+1]%10==0)):
+                   posp=1
+            if(pieza==3 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10)):
+                   posp=1 
+            if(pieza==4 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10)):
+                   posp=1  
+            if(pieza==5 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10)):
+                   posp=1  
+            if(pieza==6 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10)):
+                   posp=1 
+            if(posp==0):
+               print("La pieza seleccionada no tiene movimientos posibles.")
+               reiniciar = 0
+               
             
             
             if(((tablero[inicio][inicio2]%100)/10 != turnos + 0.1) and tablero[inicio][inicio2]!= 0 ):
@@ -1868,8 +2086,9 @@ while(terminar == 0):
              
         #capturar con líder
         if(pieza==5 and tablero[inicio][inicio2] != 0):
+           if(final==5 and final2==5 and int(tablero[5][5]/100)==5):
+              clc=1
            reiniciar = 0
-           
            temporal=tablero[final][final2]-1
            tablero[final][final2] = tablero[inicio][inicio2]
            while (reiniciar==0):
@@ -1900,6 +2119,7 @@ while(terminar == 0):
               if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5)):
                  print("Las piezas capturadas sólo pueden ocupar lugares vacíos y no se pueden poner en el centro.")
                  reiniciar=0
+
                  
            tablero[inicio][inicio2]=0      
            tablero[filam][columnam] = temporal
@@ -2082,6 +2302,7 @@ while(terminar == 0):
                    
                    
                    
+                   
     
     if (turnos == 3 and sr3==1):
         reiniciar = 0
@@ -2135,12 +2356,118 @@ while(terminar == 0):
             if(tablero[inicio][inicio2]%10==10):
                print("No puedes seleccionar piezas capturadas.")
                reiniciar=0  
-            if((tablero[inicio-1][inicio2]==0 and inicio-1>0 or (int((tablero[inicio-1][inicio2]%100)/10!=turnos) and tablero[inicio-1][inicio2]>20 and tablero[inicio-1][inicio2]<30)) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0 or (int((tablero[inicio-1][inicio2-1]%100)/10!=turnos) and tablero[inicio-1][inicio2-1]>20)) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0 or (int((tablero[inicio][inicio2-1]%100)/10!=turnos)and tablero[inicio][inicio2-1]>20)) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10 or (int((tablero[inicio+1][inicio2-1]%100)/10!=turnos)and tablero[inicio+1][inicio2-1]>20))  or (tablero[inicio+1][inicio2]==0 and inicio+1<10 or (int((tablero[inicio+1][inicio2]%100)/10!=turnos)and tablero[inicio+1][inicio2]>20)) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10 or (int((tablero[inicio+1][inicio2+1]%100)/10!=turnos)and tablero[inicio+1][inicio2+1]>20)) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10 or (int((tablero[inicio][inicio2+1]%100)/10!=turnos)and tablero[inicio][inicio2+1]>20)) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0 or (int((tablero[inicio-1][inicio2+1]%100)/10!=turnos) and tablero[inicio-1][inicio2+1]>20))):
-               print("",end="")
-            else:   
-               print("No puedes escoger una pieza encerrada.")
-               reiniciar=0
-              
+            
+            #checar si la pieza seleccionada tiene movimientos posibles 
+            posp=0
+            pieza=int(tablero[inicio][inicio2]/100) 
+            status= int(tablero[inicio][inicio2]%10)
+            color=turnos 
+            if(pieza==1 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10)):
+                   posp=1
+            if(pieza==2 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0 and tablero[inicio-1][inicio2-1]%10==0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0 and tablero[inicio-1][inicio2]%10==0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10 and tablero[inicio-1][inicio2+1]%10==0)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0 and tablero[inicio][inicio2-1]%10==0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10 and tablero[inicio][inicio2+1]%10==0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0 and tablero[inicio+1][inicio2-1]%10==0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10 and tablero[inicio+1][inicio2]%10==0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10 and tablero[inicio+1][inicio2+1]%10==0)):
+                   posp=1
+            if(pieza==3 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10)):
+                   posp=1 
+            if(pieza==4 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10)):
+                   posp=1  
+            if(pieza==5 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10)):
+                   posp=1  
+            if(pieza==6 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10)):
+                   posp=1 
+            if(posp==0):
+               print("La pieza seleccionada no tiene movimientos posibles.")
+               reiniciar = 0
+               
             
             
             if(((tablero[inicio][inicio2]%100)/10 != turnos + 0.1) and tablero[inicio][inicio2]!= 0 ):
@@ -2371,6 +2698,8 @@ while(terminar == 0):
              
         #capturar con líder
         if(pieza==5 and tablero[inicio][inicio2] != 0):
+           if(final==5 and final2==5 and int(tablero[5][5]/100)==5):
+              clc=1
            reiniciar = 0
            temporal=tablero[final][final2]-1
            tablero[final][final2] = tablero[inicio][inicio2]
@@ -2402,6 +2731,7 @@ while(terminar == 0):
               if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5)):
                  print("Las piezas capturadas sólo pueden ocupar lugares vacíos y no se pueden poner en el centro.")
                  reiniciar=0
+
                  
            tablero[inicio][inicio2]=0      
            tablero[filam][columnam] = temporal
@@ -2634,12 +2964,118 @@ while(terminar == 0):
             if(tablero[inicio][inicio2]%10==10):
                print("No puedes seleccionar piezas capturadas.")
                reiniciar=0  
-            if((tablero[inicio-1][inicio2]==0 and inicio-1>0 or (int((tablero[inicio-1][inicio2]%100)/10!=turnos) and tablero[inicio-1][inicio2]>20 and tablero[inicio-1][inicio2]<30)) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0 or (int((tablero[inicio-1][inicio2-1]%100)/10!=turnos) and tablero[inicio-1][inicio2-1]>20)) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0 or (int((tablero[inicio][inicio2-1]%100)/10!=turnos)and tablero[inicio][inicio2-1]>20)) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10 or (int((tablero[inicio+1][inicio2-1]%100)/10!=turnos)and tablero[inicio+1][inicio2-1]>20))  or (tablero[inicio+1][inicio2]==0 and inicio+1<10 or (int((tablero[inicio+1][inicio2]%100)/10!=turnos)and tablero[inicio+1][inicio2]>20)) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10 or (int((tablero[inicio+1][inicio2+1]%100)/10!=turnos)and tablero[inicio+1][inicio2+1]>20)) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10 or (int((tablero[inicio][inicio2+1]%100)/10!=turnos)and tablero[inicio][inicio2+1]>20)) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0 or (int((tablero[inicio-1][inicio2+1]%100)/10!=turnos) and tablero[inicio-1][inicio2+1]>20))):
-               print("",end="")
-            else:   
-               print("No puedes escoger una pieza encerrada.")
-               reiniciar=0
-              
+            
+            #checar si la pieza seleccionada tiene movimientos posibles 
+            posp=0
+            pieza=int(tablero[inicio][inicio2]/100) 
+            status= int(tablero[inicio][inicio2]%10)
+            color=turnos 
+            if(pieza==1 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10)):
+                   posp=1
+            if(pieza==2 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0 and tablero[inicio-1][inicio2-1]%10==0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0 and tablero[inicio-1][inicio2]%10==0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10 and tablero[inicio-1][inicio2+1]%10==0)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0 and tablero[inicio][inicio2-1]%10==0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10 and tablero[inicio][inicio2+1]%10==0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0 and tablero[inicio+1][inicio2-1]%10==0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10 and tablero[inicio+1][inicio2]%10==0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10 and tablero[inicio+1][inicio2+1]%10==0)):
+                   posp=1
+            if(pieza==3 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10)):
+                   posp=1 
+            if(pieza==4 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10)):
+                   posp=1  
+            if(pieza==5 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10)):
+                   posp=1  
+            if(pieza==6 and status==1):
+                if((tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0) or (int((tablero[inicio-1][inicio2-1]%100)/10)!=color and inicio-1>0 and inicio2-1>0)):
+                   posp=1  
+                elif((tablero[inicio-1][inicio2]==0 and inicio-1>0) or (int((tablero[inicio-1][inicio2]%100)/10)!=color and inicio-1>0)):
+                   posp=1
+                elif((tablero[inicio-1][inicio2+1]==0 and inicio-1>0 and inicio2+1<10) or (int((tablero[inicio-1][inicio2+1]%100)/10)!=color and inicio-1>0 and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio][inicio2-1]==0 and inicio2-1>0) or (int((tablero[inicio][inicio2-1]%100)/10)!=color and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio][inicio2+1]==0 and inicio2+1<10) or (int((tablero[inicio][inicio2+1]%100)/10)!=color and inicio2+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2-1]==0 and inicio+1<10 and inicio2-1>0) or (int((tablero[inicio+1][inicio2-1]%100)/10)!=color and inicio+1<10 and inicio2-1>0)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2]==0 and inicio+1<10) or (int((tablero[inicio+1][inicio2]%100)/10)!=color and inicio+1<10)):
+                   posp=1
+                elif((tablero[inicio+1][inicio2+1]==0 and inicio+1<10 and inicio2+1<10) or (int((tablero[inicio+1][inicio2+1]%100)/10)!=color and inicio+1<10 and inicio2+1<10)):
+                   posp=1 
+            if(posp==0):
+               print("La pieza seleccionada no tiene movimientos posibles.")
+               reiniciar = 0
+               
             
             
             if(((tablero[inicio][inicio2]%100)/10 != turnos + 0.1) and tablero[inicio][inicio2]!= 0 ):
@@ -2870,6 +3306,8 @@ while(terminar == 0):
              
         #capturar con líder
         if(pieza==5 and tablero[inicio][inicio2] != 0):
+           if(final==5 and final2==5 and int(tablero[5][5]/100)==5):
+              clc=1
            reiniciar = 0
            temporal=tablero[final][final2]-1
            tablero[final][final2] = tablero[inicio][inicio2]
@@ -2901,6 +3339,7 @@ while(terminar == 0):
               if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5)):
                  print("Las piezas capturadas sólo pueden ocupar lugares vacíos y no se pueden poner en el centro.")
                  reiniciar=0
+
                  
            tablero[inicio][inicio2]=0      
            tablero[filam][columnam] = temporal
@@ -3082,32 +3521,60 @@ while(terminar == 0):
                     tablero[x][y]=tablero[x][y]+suma
                    
       
+    if(turnos==1 and sr1==0):  
+      contadorpoder=0
+    if(turnos==2 and sr2==0):  
+      contadorpoder=0
+    if(turnos==3 and sr3==0):  
+      contadorpoder=0
+    if(turnos==4 and sr4==0):  
+      contadorpoder=0      
 
     #ver si hay rey en centro            
     if(tablero[5][5]!=0):
        poder=1
-    elif(tablero[5][5]==0):
+    if(tablero[5][5]==0):
        poder=0
+
    #turnos normales    
-    if(poder==0):    
-       if(turnos==4):
-          turnos = 0
-       turnos = turnos + contadorturnos
-       contadorpoder=contadorturnos+1
-       if(contadorturnos==4):
-          contadorturnos=1
+    if(poder==0 and primerturno==0):    
+       if(turnos>4):
+          turnos = 0 
+       turnos = turnos + 1 
+         
+
+    #turnos repetidos
+    if(primerturno==1 and poder==0):
+      turnos=turnos+contadorturnos
+      primerturno=0
+      contadorturnos=1
+          
+    #si comes con lider a lider en centro
+    if(clc==1):
+       clc=0
+       contadorpoder=0
+       contadorturnos=1    
     #turnos repetidos   
     if(poder==1):
        if(contadorpoder==0):
           turnos=turnos+contadorturnos
           contadorturnos=contadorturnos+1
-          
-          if(contadorturnos==4):
+          if(sr1+sr2+sr3+sr4==3):
+             turnos=turnos+1
+          if(sr1+sr2+sr3+sr4==2): 
+             turnos=turnos+2        
+          if(contadorturnos>=4):
              contadorturnos=1
-       if(contadorpoder==1):
+          print("ola gei",turnos) 
+          input("1") 
+       elif(contadorpoder==1):
           turnos=int((tablero[5][5]%100)/10)
           contadorpoder=-1
-       contadorpoder=contadorpoder+1   
+          print("ola",turnos)   
+          input("2")
+       contadorpoder=contadorpoder+1  
+       primerturno=1
+
     #checar que solo haya un rey vivo
     for x in range (0,10):
        for y in range (0,10):
