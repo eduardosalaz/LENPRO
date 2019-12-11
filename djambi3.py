@@ -1365,11 +1365,10 @@ while(terminar == 0):
         #capturar con líder
         if(pieza==5 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
-           reiniciar = 1
            temporal=tablero[final][final2]-1
            tablero[final][final2] = tablero[inicio][inicio2]
            while (reiniciar==0):
-              
+              reiniciar=1
               while True:
                   while True:
                      try:
@@ -1870,11 +1869,11 @@ while(terminar == 0):
         #capturar con líder
         if(pieza==5 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
-           reiniciar = 1
+           
            temporal=tablero[final][final2]-1
            tablero[final][final2] = tablero[inicio][inicio2]
            while (reiniciar==0):
-              
+              reiniciar=1
               while True:
                   while True:
                      try:
@@ -2373,11 +2372,10 @@ while(terminar == 0):
         #capturar con líder
         if(pieza==5 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
-           reiniciar = 1
            temporal=tablero[final][final2]-1
            tablero[final][final2] = tablero[inicio][inicio2]
            while (reiniciar==0):
-              
+              reiniciar=1
               while True:
                   while True:
                      try:
@@ -2873,11 +2871,10 @@ while(terminar == 0):
         #capturar con líder
         if(pieza==5 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
-           reiniciar = 1
            temporal=tablero[final][final2]-1
            tablero[final][final2] = tablero[inicio][inicio2]
            while (reiniciar==0):
-              
+              reiniciar=1
               while True:
                   while True:
                      try:
