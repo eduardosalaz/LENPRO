@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>
+        numeros pseudoaleatorios
+        </title>
+    </head>
+    <body>
+        <script type="text/javascript">
+        var x,a , c, m, date, numero, valor, valor_usado;
+        alert("Generar numeros pseudoaleatorios");
+        //Aqui se obtienen los valores iniciales del generador basandose en la fecha del sistema
+        date = new Date();
+        x =date.getMonth();
+        a =date.getDate();
+        if (a%2==0)
+        {
+        	a = date.getMinutes();
+        }
+        c =date.getDay();
+        if (c%8!=5)
+        {
+        	c =date.getMinutes();
+            if (a==c)
+            {
+                c = date.getSeconds();
+            }
+        }
+        m =date.getHours();
+        document.write("x " , x, "\n", "a " , a, "\n", "c " ,c, "\n", "m " ,m, "\n");
+        //Esta es la formula inicial del generador|
+        numero = (((a*x+c)%m)/m);
+        for(i=0;i<10000;i++)
+        {
+            //Se generan los numeros con la condicion que sean menor que 10 y mayor que 0
+            numero = ((a*numero+c)%m);
+            valor = numero/m;
+            if(valor<10 && valor!=0)
+            {
+                //Se multiplica por 10 el numero para que quede mayor que 1, si sigue siendo menor se multiplica de nuevo por 10 para obtener flotantes mayores a 1 que luego se redondean
+                valor=valor*10;
+                if(valor<1)
+                {
+                    valor=valor*10;
+                    if(valor<1)
+                    {
+                        valor=valor*10;
+                    }
+                }
+            }
+            valor_usado= Math.round(valor);
+            if(valor_usado<10 && valor_usado !=0)
+            {
+                document.write( valor_usado, "\n");
+            }
+        }
+        </script>
+    </body>
+</html>
