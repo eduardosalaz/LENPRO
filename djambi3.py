@@ -92,17 +92,40 @@ tablero[7][0]=7
 tablero[8][0]=8
 tablero[9][0]=9
 
+tablero[0][10]=10
+tablero[1][10]=10
+tablero[2][10]=10
+tablero[3][10]=10
+tablero[4][10]=10
+tablero[5][10]=10
+tablero[6][10]=10
+tablero[7][10]=10
+tablero[8][10]=10
+tablero[9][10]=10
+tablero[10][10]=10
+
+tablero[10][0]=10
+tablero[10][1]=10
+tablero[10][2]=10
+tablero[10][3]=10
+tablero[10][4]=10
+tablero[10][5]=10
+tablero[10][6]=10
+tablero[10][7]=10
+tablero[10][8]=10
+tablero[10][9]=10
+
       
 #Piezas jugador 1
 tablero[1][1]=511
 tablero[1][2]=611
 tablero[1][3]=111
-tablero[2][1]=311
+tablero[1][4]=311
 tablero[2][2]=411
 tablero[2][3]=111
 tablero[3][1]=111
 tablero[3][2]=111
-tablero[3][3]=211
+tablero[3][3]=210
  
 #Piezas jugador 2
 tablero[1][7]=121
@@ -111,14 +134,14 @@ tablero[1][9]=521
 tablero[2][7]=121
 tablero[2][8]=421
 tablero[2][9]=321
-tablero[3][7]=221
+tablero[3][7]=220
 tablero[3][8]=121
 tablero[3][9]=121
  
 #Piezas jugador 3
 tablero[7][1]=131
 tablero[7][2]=131
-tablero[7][3]=231
+tablero[7][3]=230
 tablero[8][1]=331
 tablero[8][2]=431
 tablero[8][3]=131
@@ -127,7 +150,7 @@ tablero[9][2]=631
 tablero[9][3]=131
  
 #Piezas jugador 4
-tablero[7][7]=241
+tablero[7][7]=240
 tablero[7][8]=141
 tablero[7][9]=141
 tablero[8][7]=141
@@ -896,7 +919,7 @@ while(terminar == 0):
              tablero[x][y]=tablero[x][y]-1
           if(color==4 and pieza==5 and mov4==0 and status==1 and turnos==4):
              tablero[x][y]=tablero[x][y]-1         
-
+    
     #checar que ningue rey este encerrado por piezas capturadas y no tenga necromovil
     for x in range (0,10):
        for y in range (0,10):
@@ -924,6 +947,14 @@ while(terminar == 0):
           pieza=int(tablero[x][y]/100)   
           color=int((tablero[x][y]%100)/10)
           status=int(tablero[x][y]%10)
+          casilla1=0
+          casilla2=0
+          casilla3=0
+          casilla4=0
+          casilla5=0
+          casilla6=0
+          casilla7=0
+          casilla8=0 
           if(color==1 and pieza==5 and necro1==0 and status==1):
              if((tablero[x-1][y-1]!=0 and tablero[x-1][y-1]%10==0) or x-1<1 or y-1<1):
                 casilla1=1
@@ -943,6 +974,14 @@ while(terminar == 0):
                 casilla8=1         
              if(casilla1+casilla2+casilla3+casilla4+casilla5+casilla6+casilla7+casilla8==8): 
                 tablero[x][y]=tablero[x][y]-1
+          casilla1=0
+          casilla2=0
+          casilla3=0
+          casilla4=0
+          casilla5=0
+          casilla6=0
+          casilla7=0
+          casilla8=0       
           if(color==2 and pieza==5 and necro2==0 and status==1):
              if((tablero[x-1][y-1]!=0 and tablero[x-1][y-1]%10==0) or x-1<1 or y-1<1):
                 casilla1=1
@@ -962,7 +1001,14 @@ while(terminar == 0):
                 casilla8=1              
              if(casilla1+casilla2+casilla3+casilla4+casilla5+casilla6+casilla7+casilla8==8): 
                 tablero[x][y]=tablero[x][y]-1
-             
+          casilla1=0
+          casilla2=0
+          casilla3=0
+          casilla4=0
+          casilla5=0
+          casilla6=0
+          casilla7=0
+          casilla8=0    
           if(color==3 and pieza==5 and necro3==0 and status==1):
              if((tablero[x-1][y-1]!=0 and tablero[x-1][y-1]%10==0) or x-1<1 or y-1<1):
                 casilla1=1
@@ -982,7 +1028,14 @@ while(terminar == 0):
                 casilla8=1              
              if(casilla1+casilla2+casilla3+casilla4+casilla5+casilla6+casilla7+casilla8==8): 
                 tablero[x][y]=tablero[x][y]-1
-             
+          casilla1=0
+          casilla2=0
+          casilla3=0
+          casilla4=0
+          casilla5=0
+          casilla6=0
+          casilla7=0
+          casilla8=0    
           if(color==4 and pieza==5 and necro4==0 and status==1):
              if((tablero[x-1][y-1]!=0 and tablero[x-1][y-1]%10==0) or x-1<1 or y-1<1):
                 casilla1=1
@@ -1002,6 +1055,7 @@ while(terminar == 0):
                 casilla8=1              
              if(casilla1+casilla2+casilla3+casilla4+casilla5+casilla6+casilla7+casilla8==8): 
                 tablero[x][y]=tablero[x][y]-1
+                
     #checar si el rey esta vivo para turnos         
     actualizar()
     
@@ -1300,7 +1354,7 @@ while(terminar == 0):
                   print("Debe ingresar un valor entre 1 y 9.")
                   reiniciar=0
                
-              if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5 and int((temporal%100)/10)!= 5)):
+              if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5 and int(temporal/100)!= 5)):
                  print("Las piezas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro si son un líder.")
                  reiniciar=0
                  
@@ -1387,10 +1441,23 @@ while(terminar == 0):
            if(reiniciar==1):     
               tablero[inicio][inicio2]=0 
               tablero[filam][columnam] = temporal
-         #capturar con reportero
-        if(pieza==3):
+        #capturar con reportero
+        repors=0
+       
+        if(tablero[final-1][final2]!=0 and final-1>0 and tablero[final-1][final2]%10==1 and int((tablero[final-1][final2]%100)/10!=turnos)):
+           repors=1
+        
+        if(tablero[final][final2-1]!=0 and final2-1>0 and tablero[final][final2-1]%10==1 and int((tablero[final][final2-1]%100)/10!=turnos)):
+           repors=1
+        if(tablero[final][final2+1]!=0 and final2+1<10 and tablero[final][final2+1]%10==1 and int((tablero[final][final2+1]%100)/10!=turnos)):
+           repors=1             
+        
+        if(tablero[final+1][final2]!=0 and final+1<10 and tablero[final+1][final2]%10==1 and int((tablero[final+1][final2]%100)/10!=turnos)):
+           repors=1
+        
+        if(pieza==3 and repors==1):
            actualizar()
-           reiniciar==0
+           reiniciar==0         
            while True:
               while True:
                  try:
@@ -1401,6 +1468,7 @@ while(terminar == 0):
               if(cr==0 or cr==1):
                   break
               print("Debe ingresar 1 ó 0.")
+           
            if(cr==1):
                while (reiniciar==0):
                  reiniciar=1 
@@ -1557,8 +1625,8 @@ while(terminar == 0):
               reiniciar = 0
             if(tablero[inicio][inicio2]%10==10):
                print("No puedes seleccionar piezas capturadas.")
-               reiniciar=0
-            if((tablero[inicio-1][inicio2]==0 and inicio-1>0 or int((tablero[inicio-1][inicio2]%100)/10!=turnos) ) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0 or int((tablero[inicio-1][inicio2-1]%100)/10!=turnos)) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0 or int((tablero[inicio][inicio2-1]%100)/10!=turnos)) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10 or int((tablero[inicio+1][inicio2-1]%100)/10!=turnos))  or (tablero[inicio+1][inicio2]==0 and inicio+1<10 or int((tablero[inicio+1][inicio2]%100)/10!=turnos)) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10 or int((tablero[inicio+1][inicio2+1]%100)/10!=turnos)) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10 or int((tablero[inicio][inicio2+1]%100)/10!=turnos)) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0 or int((tablero[inicio-1][inicio2+1]%100)/10!=turnos))):
+               reiniciar=0  
+            if((tablero[inicio-1][inicio2]==0 and inicio-1>0 or (int((tablero[inicio-1][inicio2]%100)/10!=turnos) and tablero[inicio-1][inicio2]>20 and tablero[inicio-1][inicio2]<30)) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0 or (int((tablero[inicio-1][inicio2-1]%100)/10!=turnos) and tablero[inicio-1][inicio2-1]>20)) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0 or (int((tablero[inicio][inicio2-1]%100)/10!=turnos)and tablero[inicio][inicio2-1]>20)) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10 or (int((tablero[inicio+1][inicio2-1]%100)/10!=turnos)and tablero[inicio+1][inicio2-1]>20))  or (tablero[inicio+1][inicio2]==0 and inicio+1<10 or (int((tablero[inicio+1][inicio2]%100)/10!=turnos)and tablero[inicio+1][inicio2]>20)) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10 or (int((tablero[inicio+1][inicio2+1]%100)/10!=turnos)and tablero[inicio+1][inicio2+1]>20)) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10 or (int((tablero[inicio][inicio2+1]%100)/10!=turnos)and tablero[inicio][inicio2+1]>20)) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0 or (int((tablero[inicio-1][inicio2+1]%100)/10!=turnos) and tablero[inicio-1][inicio2+1]>20))):
                print("",end="")
             else:   
                print("No puedes escoger una pieza encerrada.")
@@ -1724,8 +1792,6 @@ while(terminar == 0):
            tablero[inicio][inicio2] = 0
            while (reiniciar==0):
               reiniciar = 1
-              
-              actualizar()
               while True:
                   while True:
                      try:
@@ -1752,7 +1818,7 @@ while(terminar == 0):
               if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
                  print("Las piezas capturadas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro.") 
                  reiniciar=0    
-                
+               
            tablero[filam][columnam] = temporal
         #capturar con provocador o diplomatico
         if(pieza==4 and tablero[inicio][inicio2] != 0):
@@ -1786,7 +1852,7 @@ while(terminar == 0):
                   print("Debe ingresar un valor entre 1 y 9.")
                   reiniciar=0
                
-              if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5 and int((temporal%100)/10)!= 5)):
+              if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5 and int(temporal/100)!= 5)):
                  print("Las piezas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro si son un líder.")
                  reiniciar=0
                  
@@ -1873,10 +1939,23 @@ while(terminar == 0):
            if(reiniciar==1):     
               tablero[inicio][inicio2]=0 
               tablero[filam][columnam] = temporal
-         #capturar con reportero
-        if(pieza==3):
+        #capturar con reportero
+        repors=0
+       
+        if(tablero[final-1][final2]!=0 and final-1>0 and tablero[final-1][final2]%10==1 and int((tablero[final-1][final2]%100)/10!=turnos)):
+           repors=1
+        
+        if(tablero[final][final2-1]!=0 and final2-1>0 and tablero[final][final2-1]%10==1 and int((tablero[final][final2-1]%100)/10!=turnos)):
+           repors=1
+        if(tablero[final][final2+1]!=0 and final2+1<10 and tablero[final][final2+1]%10==1 and int((tablero[final][final2+1]%100)/10!=turnos)):
+           repors=1             
+        
+        if(tablero[final+1][final2]!=0 and final+1<10 and tablero[final+1][final2]%10==1 and int((tablero[final+1][final2]%100)/10!=turnos)):
+           repors=1
+        
+        if(pieza==3 and repors==1):
            actualizar()
-           reiniciar==0
+           reiniciar==0         
            while True:
               while True:
                  try:
@@ -1887,6 +1966,7 @@ while(terminar == 0):
               if(cr==0 or cr==1):
                   break
               print("Debe ingresar 1 ó 0.")
+           
            if(cr==1):
                while (reiniciar==0):
                  reiniciar=1 
@@ -1987,6 +2067,7 @@ while(terminar == 0):
                  if(pieza==6 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
                    
+                   
     
     if (turnos == 3 and sr3==1):
         reiniciar = 0
@@ -2039,8 +2120,8 @@ while(terminar == 0):
               reiniciar = 0
             if(tablero[inicio][inicio2]%10==10):
                print("No puedes seleccionar piezas capturadas.")
-               reiniciar=0
-            if((tablero[inicio-1][inicio2]==0 and inicio-1>0 or int((tablero[inicio-1][inicio2]%100)/10!=turnos) ) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0 or int((tablero[inicio-1][inicio2-1]%100)/10!=turnos)) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0 or int((tablero[inicio][inicio2-1]%100)/10!=turnos)) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10 or int((tablero[inicio+1][inicio2-1]%100)/10!=turnos))  or (tablero[inicio+1][inicio2]==0 and inicio+1<10 or int((tablero[inicio+1][inicio2]%100)/10!=turnos)) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10 or int((tablero[inicio+1][inicio2+1]%100)/10!=turnos)) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10 or int((tablero[inicio][inicio2+1]%100)/10!=turnos)) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0 or int((tablero[inicio-1][inicio2+1]%100)/10!=turnos))):
+               reiniciar=0  
+            if((tablero[inicio-1][inicio2]==0 and inicio-1>0 or (int((tablero[inicio-1][inicio2]%100)/10!=turnos) and tablero[inicio-1][inicio2]>20 and tablero[inicio-1][inicio2]<30)) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0 or (int((tablero[inicio-1][inicio2-1]%100)/10!=turnos) and tablero[inicio-1][inicio2-1]>20)) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0 or (int((tablero[inicio][inicio2-1]%100)/10!=turnos)and tablero[inicio][inicio2-1]>20)) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10 or (int((tablero[inicio+1][inicio2-1]%100)/10!=turnos)and tablero[inicio+1][inicio2-1]>20))  or (tablero[inicio+1][inicio2]==0 and inicio+1<10 or (int((tablero[inicio+1][inicio2]%100)/10!=turnos)and tablero[inicio+1][inicio2]>20)) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10 or (int((tablero[inicio+1][inicio2+1]%100)/10!=turnos)and tablero[inicio+1][inicio2+1]>20)) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10 or (int((tablero[inicio][inicio2+1]%100)/10!=turnos)and tablero[inicio][inicio2+1]>20)) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0 or (int((tablero[inicio-1][inicio2+1]%100)/10!=turnos) and tablero[inicio-1][inicio2+1]>20))):
                print("",end="")
             else:   
                print("No puedes escoger una pieza encerrada.")
@@ -2206,8 +2287,6 @@ while(terminar == 0):
            tablero[inicio][inicio2] = 0
            while (reiniciar==0):
               reiniciar = 1
-              
-              actualizar()
               while True:
                   while True:
                      try:
@@ -2235,7 +2314,7 @@ while(terminar == 0):
                  print("Las piezas capturadas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro.") 
                  reiniciar=0    
                
-              tablero[filam][columnam] = temporal
+           tablero[filam][columnam] = temporal
         #capturar con provocador o diplomatico
         if(pieza==4 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
@@ -2268,12 +2347,12 @@ while(terminar == 0):
                   print("Debe ingresar un valor entre 1 y 9.")
                   reiniciar=0
                
-              if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5 and int((temporal%100)/10)!= 5)):
+              if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5 and int(temporal/100)!= 5)):
                  print("Las piezas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro si son un líder.")
                  reiniciar=0
                  
-                
-           tablero[filam][columnam] = temporal
+           if(temporal%10==1):      
+              tablero[filam][columnam] = temporal
              
         #capturar con líder
         if(pieza==5 and tablero[inicio][inicio2] != 0):
@@ -2355,10 +2434,23 @@ while(terminar == 0):
            if(reiniciar==1):     
               tablero[inicio][inicio2]=0 
               tablero[filam][columnam] = temporal
-         #capturar con reportero
-        if(pieza==3):
+        #capturar con reportero
+        repors=0
+       
+        if(tablero[final-1][final2]!=0 and final-1>0 and tablero[final-1][final2]%10==1 and int((tablero[final-1][final2]%100)/10!=turnos)):
+           repors=1
+        
+        if(tablero[final][final2-1]!=0 and final2-1>0 and tablero[final][final2-1]%10==1 and int((tablero[final][final2-1]%100)/10!=turnos)):
+           repors=1
+        if(tablero[final][final2+1]!=0 and final2+1<10 and tablero[final][final2+1]%10==1 and int((tablero[final][final2+1]%100)/10!=turnos)):
+           repors=1             
+        
+        if(tablero[final+1][final2]!=0 and final+1<10 and tablero[final+1][final2]%10==1 and int((tablero[final+1][final2]%100)/10!=turnos)):
+           repors=1
+        
+        if(pieza==3 and repors==1):
            actualizar()
-           reiniciar==0
+           reiniciar==0         
            while True:
               while True:
                  try:
@@ -2369,6 +2461,7 @@ while(terminar == 0):
               if(cr==0 or cr==1):
                   break
               print("Debe ingresar 1 ó 0.")
+           
            if(cr==1):
                while (reiniciar==0):
                  reiniciar=1 
@@ -2521,8 +2614,8 @@ while(terminar == 0):
               reiniciar = 0
             if(tablero[inicio][inicio2]%10==10):
                print("No puedes seleccionar piezas capturadas.")
-               reiniciar=0
-            if((tablero[inicio-1][inicio2]==0 and inicio-1>0 or int((tablero[inicio-1][inicio2]%100)/10!=turnos) ) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0 or int((tablero[inicio-1][inicio2-1]%100)/10!=turnos)) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0 or int((tablero[inicio][inicio2-1]%100)/10!=turnos)) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10 or int((tablero[inicio+1][inicio2-1]%100)/10!=turnos))  or (tablero[inicio+1][inicio2]==0 and inicio+1<10 or int((tablero[inicio+1][inicio2]%100)/10!=turnos)) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10 or int((tablero[inicio+1][inicio2+1]%100)/10!=turnos)) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10 or int((tablero[inicio][inicio2+1]%100)/10!=turnos)) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0 or int((tablero[inicio-1][inicio2+1]%100)/10!=turnos))):
+               reiniciar=0  
+            if((tablero[inicio-1][inicio2]==0 and inicio-1>0 or (int((tablero[inicio-1][inicio2]%100)/10!=turnos) and tablero[inicio-1][inicio2]>20 and tablero[inicio-1][inicio2]<30)) or (tablero[inicio-1][inicio2-1]==0 and inicio-1>0 and inicio2-1>0 or (int((tablero[inicio-1][inicio2-1]%100)/10!=turnos) and tablero[inicio-1][inicio2-1]>20)) or (tablero[inicio][inicio2-1]==0 and inicio2-1>0 or (int((tablero[inicio][inicio2-1]%100)/10!=turnos)and tablero[inicio][inicio2-1]>20)) or (tablero[inicio+1][inicio2-1]==0 and inicio2-1>0 and inicio+1<10 or (int((tablero[inicio+1][inicio2-1]%100)/10!=turnos)and tablero[inicio+1][inicio2-1]>20))  or (tablero[inicio+1][inicio2]==0 and inicio+1<10 or (int((tablero[inicio+1][inicio2]%100)/10!=turnos)and tablero[inicio+1][inicio2]>20)) or (tablero[inicio+1][inicio2+1]==0 and inicio2+1<10 and inicio+1<10 or (int((tablero[inicio+1][inicio2+1]%100)/10!=turnos)and tablero[inicio+1][inicio2+1]>20)) or (tablero[inicio][inicio2+1]==0 and  inicio2+1<10 or (int((tablero[inicio][inicio2+1]%100)/10!=turnos)and tablero[inicio][inicio2+1]>20)) or (tablero[inicio-1][inicio2+1]==0 and  inicio2+1<10 and inicio-1>0 or (int((tablero[inicio-1][inicio2+1]%100)/10!=turnos) and tablero[inicio-1][inicio2+1]>20))):
                print("",end="")
             else:   
                print("No puedes escoger una pieza encerrada.")
@@ -2688,8 +2781,6 @@ while(terminar == 0):
            tablero[inicio][inicio2] = 0
            while (reiniciar==0):
               reiniciar = 1
-              
-              actualizar()
               while True:
                   while True:
                      try:
@@ -2716,8 +2807,8 @@ while(terminar == 0):
               if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
                  print("Las piezas capturadas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro.") 
                  reiniciar=0    
-           if(temporal%10==0):      
-              tablero[filam][columnam] = temporal
+               
+           tablero[filam][columnam] = temporal
         #capturar con provocador o diplomatico
         if(pieza==4 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
@@ -2750,7 +2841,7 @@ while(terminar == 0):
                   print("Debe ingresar un valor entre 1 y 9.")
                   reiniciar=0
                
-              if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5 and int((temporal%100)/10)!= 5)):
+              if(tablero[filam][columnam]!=0 or (filam==5 and columnam==5 and int(temporal/100)!= 5)):
                  print("Las piezas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro si son un líder.")
                  reiniciar=0
                  
@@ -2837,10 +2928,23 @@ while(terminar == 0):
            if(reiniciar==1):     
               tablero[inicio][inicio2]=0 
               tablero[filam][columnam] = temporal
-         #capturar con reportero
-        if(pieza==3):
+        #capturar con reportero
+        repors=0
+       
+        if(tablero[final-1][final2]!=0 and final-1>0 and tablero[final-1][final2]%10==1 and int((tablero[final-1][final2]%100)/10!=turnos)):
+           repors=1
+        
+        if(tablero[final][final2-1]!=0 and final2-1>0 and tablero[final][final2-1]%10==1 and int((tablero[final][final2-1]%100)/10!=turnos)):
+           repors=1
+        if(tablero[final][final2+1]!=0 and final2+1<10 and tablero[final][final2+1]%10==1 and int((tablero[final][final2+1]%100)/10!=turnos)):
+           repors=1             
+        
+        if(tablero[final+1][final2]!=0 and final+1<10 and tablero[final+1][final2]%10==1 and int((tablero[final+1][final2]%100)/10!=turnos)):
+           repors=1
+        
+        if(pieza==3 and repors==1):
            actualizar()
-           reiniciar==0
+           reiniciar==0         
            while True:
               while True:
                  try:
@@ -2851,6 +2955,7 @@ while(terminar == 0):
               if(cr==0 or cr==1):
                   break
               print("Debe ingresar 1 ó 0.")
+           
            if(cr==1):
                while (reiniciar==0):
                  reiniciar=1 
@@ -2950,6 +3055,7 @@ while(terminar == 0):
                     tablero[x][y]=tablero[x][y]+suma
                  if(pieza==6 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
+                   
                    
         
 
