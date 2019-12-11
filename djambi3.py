@@ -25,6 +25,8 @@ casilla8=0
 primerturno=0
 clc=0
 abc=0
+capturarrey=0
+necroc=0
 '''
 MMN
 RPM
@@ -120,7 +122,7 @@ tablero[10][9]=10
 
       
 #Piezas jugador 1
-tablero[1][1]=511
+tablero[4][4]=511
 tablero[1][2]=611
 tablero[1][3]=111
 tablero[2][1]=311
@@ -133,10 +135,10 @@ tablero[3][3]=211
 #Piezas jugador 2
 tablero[1][7]=121
 tablero[1][8]=621
-tablero[1][9]=521
+tablero[4][6]=521
 tablero[2][7]=121
 tablero[2][8]=421
-tablero[2][9]=321
+tablero[4][5]=321
 tablero[3][7]=221
 tablero[3][8]=121
 tablero[3][9]=121
@@ -149,7 +151,7 @@ tablero[8][1]=331
 tablero[8][2]=431
 tablero[8][3]=131
 tablero[9][1]=531
-tablero[9][2]=631
+tablero[6][4]=631
 tablero[9][3]=131
  
 #Piezas jugador 4
@@ -161,7 +163,7 @@ tablero[8][8]=441
 tablero[8][9]=341
 tablero[9][7]=141
 tablero[9][8]=641
-tablero[9][9]=541
+tablero[6][6]=541
 #MOVIMIENTO DE MILITANTE
 impresion_pantalla()
 print("Objetivo:\nCapturar a los demás líderes enemigos con el uso de las diferentes piezas.\n")
@@ -1388,7 +1390,9 @@ while(terminar == 0):
                diagonal=0
                                        
 #empezar a capturar xdxd  o movimiento xdxd
-        capturarrey= tablero[final][final2]         
+        capturarrey=0 
+        if(tablero[final][final2]%10==1): 
+            capturarrey= tablero[final][final2]         
         pieza=int(tablero[inicio][inicio2]/100)          
         #cuando solo mueves         
         if(tablero[final][final2] == 0):         
@@ -1396,8 +1400,10 @@ while(terminar == 0):
            tablero[inicio][inicio2] = 0
         
         #capturar con necromovil
+        necro=0
         if(pieza==2 and tablero[inicio][inicio2] != 0 ):
            reiniciar = 0
+           necro=1
            temporal=tablero[final][final2]
            tablero[final][final2] = tablero[inicio][inicio2]
            tablero[inicio][inicio2] = 0
@@ -1429,11 +1435,12 @@ while(terminar == 0):
               if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
                  print("Las piezas capturadas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro.") 
                  reiniciar=0    
-               
+                
            tablero[filam][columnam] = temporal
         #capturar con provocador o diplomatico
         if(pieza==4 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
+           
            temporal=tablero[final][final2]
            tablero[final][final2] = tablero[inicio][inicio2]
            tablero[inicio][inicio2] = 0
@@ -1623,6 +1630,8 @@ while(terminar == 0):
                  if(int((tablero[filam][columnam]%100)/10)==turnos):
                     print("No puedes capturar piezas de tu mismo equipo")      
                     reiniciar=0
+                 if(int(tablero[filam][columnam]/100)==5 and filam==5 and columnam==5): 
+                    capturarrey= tablero[filam][columnam]   
                tablero[inicio][inicio2]=0 
                tablero[filam][columnam] = tablero[filam][columnam]-1
               
@@ -1632,7 +1641,7 @@ while(terminar == 0):
            tablero[final][final2] = tablero[inicio][inicio2]
            tablero[inicio][inicio2] = temporal
         # si te comes un rey en el centro con otra pieza que no sea el rey 
-        if(((int(tablero[5][5]/100)!=5) and int(tablero[5][5]/100)!=0) or (((int(tablero[x][y]/100)==5) and (int(tablero[x][y]%10))==0 ))):
+        if(((int(tablero[5][5]/100)!=5) and int(tablero[5][5]/100)!=0) or (((int(tablero[x][y]/100)==5) and (int(tablero[x][y]%10))==0 )) and necroc==0):
            if(tablero[4][4]==0):
               tablero[4][4]=tablero[5][5]
               tablero[5][5]=0
@@ -2001,7 +2010,9 @@ while(terminar == 0):
                diagonal=0
                                        
 #empezar a capturar xdxd  o movimiento xdxd
-        capturarrey= tablero[final][final2]         
+        capturarrey=0 
+        if(tablero[final][final2]%10==1): 
+            capturarrey= tablero[final][final2]         
         pieza=int(tablero[inicio][inicio2]/100)          
         #cuando solo mueves         
         if(tablero[final][final2] == 0):         
@@ -2009,8 +2020,10 @@ while(terminar == 0):
            tablero[inicio][inicio2] = 0
         
         #capturar con necromovil
+        necro=0
         if(pieza==2 and tablero[inicio][inicio2] != 0 ):
            reiniciar = 0
+           necro=1
            temporal=tablero[final][final2]
            tablero[final][final2] = tablero[inicio][inicio2]
            tablero[inicio][inicio2] = 0
@@ -2042,11 +2055,12 @@ while(terminar == 0):
               if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
                  print("Las piezas capturadas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro.") 
                  reiniciar=0    
-               
+                
            tablero[filam][columnam] = temporal
         #capturar con provocador o diplomatico
         if(pieza==4 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
+           
            temporal=tablero[final][final2]
            tablero[final][final2] = tablero[inicio][inicio2]
            tablero[inicio][inicio2] = 0
@@ -2236,6 +2250,8 @@ while(terminar == 0):
                  if(int((tablero[filam][columnam]%100)/10)==turnos):
                     print("No puedes capturar piezas de tu mismo equipo")      
                     reiniciar=0
+                 if(int(tablero[filam][columnam]/100)==5 and filam==5 and columnam==5): 
+                    capturarrey= tablero[filam][columnam]   
                tablero[inicio][inicio2]=0 
                tablero[filam][columnam] = tablero[filam][columnam]-1
               
@@ -2245,7 +2261,7 @@ while(terminar == 0):
            tablero[final][final2] = tablero[inicio][inicio2]
            tablero[inicio][inicio2] = temporal
         # si te comes un rey en el centro con otra pieza que no sea el rey 
-        if(((int(tablero[5][5]/100)!=5) and int(tablero[5][5]/100)!=0) or (((int(tablero[x][y]/100)==5) and (int(tablero[x][y]%10))==0 ))):
+        if(((int(tablero[5][5]/100)!=5) and int(tablero[5][5]/100)!=0) or (((int(tablero[x][y]/100)==5) and (int(tablero[x][y]%10))==0 )) and necroc==0):
            if(tablero[4][4]==0):
               tablero[4][4]=tablero[5][5]
               tablero[5][5]=0
@@ -2299,6 +2315,7 @@ while(terminar == 0):
                     tablero[x][y]=tablero[x][y]+suma
                  if(pieza==6 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
+                   
                    
                    
                    
@@ -2613,7 +2630,9 @@ while(terminar == 0):
                diagonal=0
                                        
 #empezar a capturar xdxd  o movimiento xdxd
-        capturarrey= tablero[final][final2]         
+        capturarrey=0 
+        if(tablero[final][final2]%10==1): 
+            capturarrey= tablero[final][final2]         
         pieza=int(tablero[inicio][inicio2]/100)          
         #cuando solo mueves         
         if(tablero[final][final2] == 0):         
@@ -2621,8 +2640,10 @@ while(terminar == 0):
            tablero[inicio][inicio2] = 0
         
         #capturar con necromovil
+        necro=0
         if(pieza==2 and tablero[inicio][inicio2] != 0 ):
            reiniciar = 0
+           necro=1
            temporal=tablero[final][final2]
            tablero[final][final2] = tablero[inicio][inicio2]
            tablero[inicio][inicio2] = 0
@@ -2654,11 +2675,12 @@ while(terminar == 0):
               if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
                  print("Las piezas capturadas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro.") 
                  reiniciar=0    
-               
+                
            tablero[filam][columnam] = temporal
         #capturar con provocador o diplomatico
         if(pieza==4 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
+           
            temporal=tablero[final][final2]
            tablero[final][final2] = tablero[inicio][inicio2]
            tablero[inicio][inicio2] = 0
@@ -2848,6 +2870,8 @@ while(terminar == 0):
                  if(int((tablero[filam][columnam]%100)/10)==turnos):
                     print("No puedes capturar piezas de tu mismo equipo")      
                     reiniciar=0
+                 if(int(tablero[filam][columnam]/100)==5 and filam==5 and columnam==5): 
+                    capturarrey= tablero[filam][columnam]   
                tablero[inicio][inicio2]=0 
                tablero[filam][columnam] = tablero[filam][columnam]-1
               
@@ -2857,7 +2881,7 @@ while(terminar == 0):
            tablero[final][final2] = tablero[inicio][inicio2]
            tablero[inicio][inicio2] = temporal
         # si te comes un rey en el centro con otra pieza que no sea el rey 
-        if(((int(tablero[5][5]/100)!=5) and int(tablero[5][5]/100)!=0) or (((int(tablero[x][y]/100)==5) and (int(tablero[x][y]%10))==0 ))):
+        if(((int(tablero[5][5]/100)!=5) and int(tablero[5][5]/100)!=0) or (((int(tablero[x][y]/100)==5) and (int(tablero[x][y]%10))==0 )) and necroc==0):
            if(tablero[4][4]==0):
               tablero[4][4]=tablero[5][5]
               tablero[5][5]=0
@@ -2911,6 +2935,8 @@ while(terminar == 0):
                     tablero[x][y]=tablero[x][y]+suma
                  if(pieza==6 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
+                   
+                   
                    
         
     if(turnos == 4 and sr4==1):
@@ -3221,7 +3247,9 @@ while(terminar == 0):
                diagonal=0
                                        
 #empezar a capturar xdxd  o movimiento xdxd
-        capturarrey= tablero[final][final2]         
+        capturarrey=0 
+        if(tablero[final][final2]%10==1): 
+            capturarrey= tablero[final][final2]         
         pieza=int(tablero[inicio][inicio2]/100)          
         #cuando solo mueves         
         if(tablero[final][final2] == 0):         
@@ -3229,8 +3257,10 @@ while(terminar == 0):
            tablero[inicio][inicio2] = 0
         
         #capturar con necromovil
+        necro=0
         if(pieza==2 and tablero[inicio][inicio2] != 0 ):
            reiniciar = 0
+           necro=1
            temporal=tablero[final][final2]
            tablero[final][final2] = tablero[inicio][inicio2]
            tablero[inicio][inicio2] = 0
@@ -3262,11 +3292,12 @@ while(terminar == 0):
               if(tablero[filam][columnam]!=0 or(filam==5 and columnam==5)):
                  print("Las piezas capturadas sólo pueden ocupar lugares vacíos o no pueden ocupar el centro.") 
                  reiniciar=0    
-               
+                
            tablero[filam][columnam] = temporal
         #capturar con provocador o diplomatico
         if(pieza==4 and tablero[inicio][inicio2] != 0):
            reiniciar = 0
+           
            temporal=tablero[final][final2]
            tablero[final][final2] = tablero[inicio][inicio2]
            tablero[inicio][inicio2] = 0
@@ -3456,6 +3487,8 @@ while(terminar == 0):
                  if(int((tablero[filam][columnam]%100)/10)==turnos):
                     print("No puedes capturar piezas de tu mismo equipo")      
                     reiniciar=0
+                 if(int(tablero[filam][columnam]/100)==5 and filam==5 and columnam==5): 
+                    capturarrey= tablero[filam][columnam]   
                tablero[inicio][inicio2]=0 
                tablero[filam][columnam] = tablero[filam][columnam]-1
               
@@ -3465,7 +3498,7 @@ while(terminar == 0):
            tablero[final][final2] = tablero[inicio][inicio2]
            tablero[inicio][inicio2] = temporal
         # si te comes un rey en el centro con otra pieza que no sea el rey 
-        if(((int(tablero[5][5]/100)!=5) and int(tablero[5][5]/100)!=0) or (((int(tablero[x][y]/100)==5) and (int(tablero[x][y]%10))==0 ))):
+        if(((int(tablero[5][5]/100)!=5) and int(tablero[5][5]/100)!=0) or (((int(tablero[x][y]/100)==5) and (int(tablero[x][y]%10))==0 )) and necroc==0):
            if(tablero[4][4]==0):
               tablero[4][4]=tablero[5][5]
               tablero[5][5]=0
@@ -3520,6 +3553,8 @@ while(terminar == 0):
                  if(pieza==6 and color==eq and status==1):
                     tablero[x][y]=tablero[x][y]+suma
                    
+                   
+                   
       
     if(turnos==1 and sr1==0):  
       contadorpoder=0
@@ -3531,7 +3566,7 @@ while(terminar == 0):
       contadorpoder=0      
 
     #ver si hay rey en centro            
-    if(tablero[5][5]!=0):
+    if(tablero[5][5]!=0 and tablero[5][5]%10==1):
        poder=1
     if(tablero[5][5]==0):
        poder=0
@@ -3542,7 +3577,7 @@ while(terminar == 0):
           turnos = 0 
        turnos = turnos + 1 
          
-
+#esto funciona si hay 4 reyes
     #turnos repetidos
     if(primerturno==1 and poder==0):
       turnos=turnos+contadorturnos
@@ -3558,20 +3593,12 @@ while(terminar == 0):
     if(poder==1):
        if(contadorpoder==0):
           turnos=turnos+contadorturnos
-          contadorturnos=contadorturnos+1
-          if(sr1+sr2+sr3+sr4==3):
-             turnos=turnos+1
-          if(sr1+sr2+sr3+sr4==2): 
-             turnos=turnos+2        
+          contadorturnos=contadorturnos+1       
           if(contadorturnos>=4):
-             contadorturnos=1
-          print("ola gei",turnos) 
-          input("1") 
+             contadorturnos=1  
        elif(contadorpoder==1):
           turnos=int((tablero[5][5]%100)/10)
           contadorpoder=-1
-          print("ola",turnos)   
-          input("2")
        contadorpoder=contadorpoder+1  
        primerturno=1
 
