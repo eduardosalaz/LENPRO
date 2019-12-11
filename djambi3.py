@@ -3595,6 +3595,66 @@ while(terminar == 0):
              s4=status
     if(s1+s2+s3+s4==1):
        terminar=1
+    #si hay un lider en el centro rodeado de piezas muertas y no hay necromovil
+    for x in range (0,10):
+       for y in range (0,10):
+          pieza=int(tablero[x][y]/100)   
+          color=int((tablero[x][y]%100)/10)
+          status=int(tablero[x][y]%10)
+          if(color==1 and pieza==2):
+             necro1=int(tablero[x][y]%10)
+          if(color==2 and pieza==2):
+             necro2=int(tablero[x][y]%10)
+          if(color==3 and pieza==2):
+             necro3=int(tablero[x][y]%10)
+          if(color==4 and pieza==2):
+             necro4=int(tablero[x][y]%10) 
+    if(necro1+necro2+necro3+necro4==0):         
+       nnrg=0
+       if(tablero[4][4]!=0 and tablero[4][4]%10==0):
+          nnrg=nnrg+1
+       
+       if(tablero[4][5]!=0 and tablero[4][5]%10==0):
+          nnrg=nnrg+1
+       
+       if(tablero[4][6]!=0 and tablero[4][6]%10==0):
+          nnrg=nnrg+1
+       
+       if(tablero[5][4]!=0 and tablero[5][4]%10==0):
+          nnrg=nnrg+1
+       
+       if(tablero[5][6]!=0 and tablero[5][6]%10==0):
+          nnrg=nnrg+1
+       
+       if(tablero[6][4]!=0 and tablero[6][4]%10==0):
+          nnrg=nnrg+1
+         
+       if(tablero[6][5]!=0 and tablero[6][5]%10==0):
+          nnrg=nnrg+1
+       
+       if(tablero[6][6]!=0 and tablero[6][6]%10==0):
+          nnrg=nnrg+1
+       if(nnrg==8): 
+          terminar=1
+          if(int((tablero[5][5]%100)/10)==1):
+             s2=0
+             s3=0
+             s4=0
+          if(int((tablero[5][5]%100)/10)==2):
+             s1=0
+             s3=0
+             s4=0
+          if(int((tablero[5][5]%100)/10)==3):
+             s2=0
+             s1=0
+             s4=0
+          if(int((tablero[5][5]%100)/10)==4):
+             s2=0
+             s3=0
+             s1=0       
+
+
+          
 clear()
 print("Game over.")
 if(s1==1):
