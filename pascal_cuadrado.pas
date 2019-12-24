@@ -29,4 +29,3 @@ else
     else
     writeln('Ingresar filas y bases mayores a 0')
 end.
-recetas d eofrtran romeo y julieta
