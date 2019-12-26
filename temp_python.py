@@ -25,7 +25,7 @@ elif escala_inicial == "Fahrenheit":
             temp_final= (temp_inicial - 32) * 0.555
             print ("La temperatura en " + escala_final + " es " + repr(temp_final))
         elif escala_final == "Kelvin":
-            temp_final= (temp_inicial +459.67) *0.555
+            temp_final= (temp_inicial +459.67) * 0.555
             print ("La temperatura en " + escala_final + " es " + repr(temp_final))
         elif escala_final == "Rankine":
             temp_final = (temp_inicial + 459.67)
