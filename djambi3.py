@@ -54,7 +54,7 @@ LAM
 '''
 Inicio del menu
 '''
-print("     Bienvenido a Djambi.\n")
+print("     Bienvenido a Djambi yeah.\n")
 def impresion_pantalla():
     print(r"""
 ____   _                 _     _ 
